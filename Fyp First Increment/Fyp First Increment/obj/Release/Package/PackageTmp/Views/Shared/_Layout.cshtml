@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <title>Online Truck Ada</title>
+    <link href="~/Assets/bootstrap/css/glyphicon.css" rel="stylesheet">
+    <link href="~/Assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/bootstrap/css/stylesheet.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 20px;
+            width: 25px;
+            color: #d6d8d9;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50%;
+        }
+
+        .ahsan {
+            background: red;
+            color: white;
+            border-radius: 10%;
+        }
+        .rad
+        {
+            border-radius:5px 5px 5px 5px;
+        }
+        .over
+        {
+          font-family: 'Arvo', serif;
+        }
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+    </style>
+</head>
+<body class="over">
+    <div class="container-fluid">
+
+        <div class="container-fluid">
+            <div class="row bg-light">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12 m-4">
+                            <span class="glyphicon glyphicon-earphone text-black-50 font-weight-bold "></span>
+                            <span class="font-weight-normal">UAN: 111-005-006,   00333-009-003</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="row">
+                        <div class="col-12 d-none d-sm-block" align="right">
+                            <a href="https://www.facebook.com/Online-Truck-Ada-502214740190652/?ref=br_rs" class="fa fa-facebook text-info"></a>
+                            <a href="#" class="fa fa-google text-info"></a>
+                            <a href="#" class="fa fa-youtube text-danger"></a>
+                        </div>
+                    </div>
+                </div><hr style="height: 3px" width="100%" class="bg-info">
+            </div>
+        </div>
+        <div class="container-fluid bg-light">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light py-5">
+                <a class="navbar-brand text-info font-weight-bold" style="font-family:Comic Sans MS;font-size:30px;" href="#">Online Truck Ada</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcolapmenu" aria-controls="navbarcolapmenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarcolapmenu">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-3">
+                        <li class="nav-item active flex-sm-fill text-sm-center ml-3">
+                            <a class="nav-link" style="font-size:18px;" href="/Home">HOME <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item flex-sm-fill text-sm-center ml-3">
+                            <a class="nav-link flex-sm-fill text-sm-center" style="font-size:18px;" href="/Home/About">ABOUT US</a>
+                        </li>
+                        <li class="nav-item flex-sm-fill text-sm-center ml-3">
+                            <a class="nav-link flex-sm-fill text-sm-center" style="font-size:18px;" href="#ContactUs">CONTACT US</a>
+                        </li>
+                        <li class="nav-item flex-sm-fill text-sm-center ml-3">
+                            <a class="nav-link flex-sm-fill text-sm-center" style="font-size:18px;" href="/BusPanel" target="_blank">BUS SERVICE</a>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle ml-4 btn btn-info text-white rad border-white" style="font-size:19px;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:18px">
+                                Login
+                            </a>
+                            <div class="dropdown-menu ml-5 " aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item text-info border-success" @Html.ActionLink("Admin", "Login", "Registration", new { id = 1 }, null)</a>
+                                <a class="dropdown-item text-info border-success" @Html.ActionLink("Customer", "Login", "Registration", new { id = 4 }, null)</a>
+
+                                <a class="dropdown-item text-info border-success" @Html.ActionLink("Driver", "Login", "Registration", new { id = 2 }, null)</a>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+
+
+        <hr style="height: 3px" width="100%" class="bg-primary">
+        @RenderBody()
+        <br>
+        <div class="container-fluid">
+            <div class="row bg-secondary">
+                <div class="col-9 rad">
+                    <div class="row">
+                        <div class="col-12 m-4 rad">
+                            <span class="font-weight-bold text-white" style="font-size:14px">CopyRight &copy;-Sindhu Bas Company / Developed by ZAAN Tech / All Right Reserved</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 rad">
+                    <div class="row">
+                        <div class="col-12 m-2" align="right">
+                            <a href="#" class="fa fa-facebook text-white"></a>
+                            <a href="#" class="fa fa-google text-white"></a>
+                            <a href="#" class="fa fa-youtube text-danger"></a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="~/Assets/bootstrap/js/popper.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>

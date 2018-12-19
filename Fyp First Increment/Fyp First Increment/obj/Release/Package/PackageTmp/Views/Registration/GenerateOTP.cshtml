@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "GenerateOTP";
+    Layout = "";
+}
+
+@using (Html.BeginForm("GenerateNumericOTP", "Registration"))
+{
+    <table>
+        <tr>
+            <td>Click on button to Generate Numeric OTP :</td>
+            <td><input id="Submit1" type="submit" value="GenerateOTP" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@ViewBag.otp</td>
+        </tr>
+    </table>
+}
+
+@using (Html.BeginForm("GenerateAlphaNumericOTP", "OTP"))
+{
+    <table>
+        <tr>
+            <td>Click on button to Generate Alphanumeric OTP :</td>
+            <td><input id="Submit1" type="submit" value="GenerateOTP" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@ViewBag.anotp</td>
+        </tr>
+    </table>
+}

@@ -1,0 +1,479 @@
+﻿@model Fyp_First_Increment.Models.Companydetail
+@{
+    ViewBag.Title = "AdminRegister";
+    Layout = "~/Views/Shared/Registration_file.cshtml";
+}
+
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header text-center">Customer Registration</div>
+        <div class="card-body">
+            <p>@TempData["extensionerror"]</p>
+            @TempData["Erroruserexist"]
+            @using (Html.BeginForm("AdminRegister", "Registration", FormMethod.Post, new { enctype = "multipart/form-data", id = "formvalid" }))
+            {
+                <p>@TempData["message"]</p>
+                <p>@ViewBag.message</p>
+                <div class="form-group">
+                    <div class="form-row">
+
+                      
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.UserFirstName, "First Name")
+                                    @Html.TextBoxFor(model => model.UserFirstName, new { @class = "form-control", placeholder = "Enter name", type = "text" })
+                                    @Html.ValidationMessageFor(model => model.UserFirstName)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.UserLastName, "Last Name")
+                                    @Html.TextBoxFor(model => model.UserLastName, new { @class = "form-control", placeholder = "Enter Last name", type = "text" })
+                                    @Html.ValidationMessageFor(model => model.UserLastName)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div >
+                                       
+                                        <div id="imagepreview" class="thumbnail">
+                                            <img class="img-responsive" id="targetimage" height="100" width="200" />
+
+                                            @*<div class="caption">
+                                                <a href="#" onclick="clearpreview()"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                                <p id="descieption"></p>
+                                            </div>*@
+                                        </div>
+                                   
+                                     
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    
+                                    <input type="file" name="image_file" id="show" required />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-row">
+
+                        
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.UserEmail, "Email")
+                                    @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control", placeholder = "Enter Email", type = "Email" })
+                                    @Html.ValidationMessageFor(model => model.UserEmail)
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.UserCnic, "CNIC No")
+                                    @Html.TextBoxFor(model => model.UserCnic, new { @class = "form-control", placeholder = "CNIC No", @minlength = "13", @maxlength = "13" })
+                                    @Html.ValidationMessageFor(model => model.UserCnic)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.User_PhoneNumber, "Mobile NO")
+                                    @Html.TextBoxFor(model => model.User_PhoneNumber, new { @class = "form-control", placeholder = "Mobile No", @minlength = "11", @maxlength = "11" })
+                                    @Html.ValidationMessageFor(model => model.User_PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.user_City, "City")
+                                    @Html.TextBoxFor(model => model.user_City, new { @class = "form-control", placeholder = "Select City" })
+                                    @Html.ValidationMessageFor(model => model.user_City)
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                       
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.user_comp, "Company Name")
+                                    @Html.TextBoxFor(model => model.user_comp, new { @class = "form-control", placeholder = "Company Name", @minlength = "5", @maxlength = "40" })
+                                    @Html.ValidationMessageFor(model => model.user_comp)
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.user_comp_type, "Company Type")
+                                    @Html.TextBoxFor(model => model.user_comp_type, new { @class = "form-control", placeholder = "Company Type" })
+                                    @Html.ValidationMessageFor(model => model.user_comp_type)
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <br />
+                        <div class="col-md-10">
+
+                            @Html.LabelFor(model => model.UserAddress, "Adress")
+
+                            @Html.TextAreaFor(model => model.UserAddress, new { @class = "form-control", placeholder = "Enter name" })
+
+                            @Html.ValidationMessageFor(model => model.UserAddress)
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                        @Html.LabelFor(model => model.User_Password, "Password")
+                        @Html.TextBoxFor(model => model.User_Password, new { @class = "form-control", placeholder = "Enter Password", type = "Password", @minlength = "6" })
+                        @Html.ValidationMessageFor(model => model.User_Password)
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                  
+                                    @Html.LabelFor(model => model.ConfirmPassowrd, "Confirm Password")
+                                    @Html.TextBoxFor(model => model.ConfirmPassowrd, new { @class = "form-control", placeholder = "Retype Password", type = "Password", @minlength = "6" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassowrd)
+                                      </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <br />
+                    <h5>Company Detail</h5>
+                    <div class="form-row">
+
+                       
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.Comp_Reg_No, "Company Registration No")
+                                    @Html.TextBoxFor(model => model.Comp_Reg_No, new { @class = "form-control", placeholder = "Enter Registration No", @minlength = "13", @maxlength = "13" })
+                                    @Html.ValidationMessageFor(model => model.Comp_Reg_No)
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Comp__owner_name, "Company Owner Name")
+                                    @Html.TextBoxFor(model => model.Comp__owner_name, new { @class = "form-control", placeholder = "owener name" })
+                                    @Html.ValidationMessageFor(model => model.Comp__owner_name)
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.owner_cnic, "Owner CNIC No")
+                                    @Html.TextBoxFor(model => model.owner_cnic, new { @class = "form-control", placeholder = "Enter Cnic No", @minlength = "13", @maxlength = "13"})
+                                    @Html.ValidationMessageFor(model => model.owner_cnic)
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.CompanyPhoneNumber, "Company Phone Number")
+                                    @Html.TextBoxFor(model => model.CompanyPhoneNumber, new { @class = "form-control", placeholder = "i.e 03064446673", @minlength = "11", @maxlength = "11" })
+                                    @Html.ValidationMessageFor(model => model.CompanyPhoneNumber)
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+
+                      
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.comp_no_vehicle, "Company No Of Vehicle")
+                                    @Html.TextBoxFor(model => model.comp_no_vehicle, new { @class = "form-control", placeholder = "No Of Vehicle" })
+                                    @Html.ValidationMessageFor(model => model.comp_no_vehicle)
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.comp_worth, "Company Worth")
+                                    @Html.TextBoxFor(model => model.comp_worth, new { @class = "form-control", placeholder = "Company Worth" })
+                                    @Html.ValidationMessageFor(model => model.comp_worth)
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <br />
+                        <div class="col-md-10">
+
+
+                            @Html.LabelFor(model => model.comp_adress, " Company Adress")
+
+                            @Html.TextAreaFor(model => model.comp_adress, new { @class = "form-control", placeholder = "Enter Company Adress" })
+
+                            @Html.ValidationMessageFor(model => model.comp_adress)
+
+
+                        </div>
+
+                    </div>
+                </div>
+                
+            @Html.AntiForgeryToken()
+               
+
+    <input type="submit" id="Admin" value="Register" name="Command" title="Admin" class="btn btn-primary btn-block" onclick="Loginuser()"/>
+
+
+               
+            }
+            <div class="text-center">
+                
+                <a href="@Url.Action("Login", "Registration", new { id = 1 }, null)"><span>Login Page</span></a><br />
+                <a href="@Url.Action(  "ForgetPassword", "Registration" )"><span>Forgot Password?</span></a>
+
+
+                @*<a class="d-block small mt-3" href="login.html">Login Page</a>
+                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+@*
+    
+*@
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var Loginuser=function(){
+        debugger
+        var data = $("#formvalid").serialize;
+        if (!$("#formvalid").valid())
+        {
+            return false;
+        }
+    
+    
+    }
+
+
+</script>
+<script>
+
+    $(document).ready(function(){
+    
+        $("#show").change(function () {
+
+            var File = this.files;
+            if (File && File[0]) {
+
+                ReadImage(File[0]);
+            }
+        })
+    
+    })
+
+    var ReadImage=function(file)
+    {
+
+
+        var reader = new FileReader;
+        var image = new Image;
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "Kb";
+                $("#targetimage").attr('src', _file.target.result);
+                $("#descieption").text("size" + size + "," + height + "X" + width + "");
+                $("#imagepreview").show();
+            }
+
+
+
+        }
+        
+        
+    }
+    var clearpreview = function () {
+
+        $("#show").val('');
+        $("#descieption").text('');
+        $("#imagepreview").hide();
+    }
+
+</script>

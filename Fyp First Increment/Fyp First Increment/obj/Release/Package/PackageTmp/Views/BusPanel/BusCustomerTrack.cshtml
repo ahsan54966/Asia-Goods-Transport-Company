@@ -1,0 +1,50 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "BusCustomerTrack";
+    Layout = "~/Views/Shared/_BusPanel.cshtml";
+}
+<div class="row">
+
+</div>
+
+
+@if (Model.Count > 0)
+{
+    <div class="row">
+        <div class="card col-12 col-md-6">
+            <div class="card-header bg-info text-white font-weight-bold">
+                <h5>Customer Traveling Information</h5>
+            </div>
+            <div class="card-body">
+                From : @Model[3] : To @Model[2] <br />
+                Ph- No: @Model[0]<br />
+                Bus Number:@Model[1]
+            </div>
+        </div>
+        <div id="map" style="height:400px" class="col-12 col-md-6"></div>
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: @Model[4], lng: @Model[5] },
+                    zoom: 8
+                });
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({
+                    position: { lat: @Model[4], lng: @Model[5] },
+                    map: map
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&callback=initMap"
+                async defer>
+
+        </script>
+    </div>
+}
+else
+{
+    <p class="alert alert-info">Record Not Found</p>
+}
+
+

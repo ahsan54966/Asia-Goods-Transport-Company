@@ -1,0 +1,245 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Booking.AdminPrimaryViewModel
+@{
+    ViewBag.Title = "AdminBookingComplete";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Complete Bookings</li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            @TempData["message"]
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center">Booking Panel</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("AdminBookingComplete", "Admin", FormMethod.Post))
+            {
+
+                <div class="form-group">
+
+                    <h3>Booking Service Detail</h3>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="ServiceType">Service Type</label>
+                            @Html.DropDownListFor(m => m.PrimaryBooking.BookingServiceType, new SelectList(Model.ServiceTypeList, "BookingServiceType", "BookingServiceType"), "Choose Service", new { @class = "form-control", @id = "ServiceType", disabled = "true" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingVehicleType">Choose Truck Type</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.PrimaryBooking.BookingVehicleType, new SelectList(Model.VehicleTypeList, "BookingVehicleType", "BookingVehicleType"), "Choose Truck Type", new { @class = "form-control", @id = "BookingVehicleType", disabled = "true" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingTimeArrival">Choose Delivery Hours</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingTimeArrival, new { @id = "BookingTimeArrival", @Class = "form-control", @type = "Number", disabled = "true" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <h3>Booking Goods Detail</h3>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="BookingGoodsDetail">Product Name</label>
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingGoodsDetail, new { @id = "BookingGoodsDetail", @Class = "form-control", @Placeholder = "Banana", disabled = "true" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingQunatity"> Quantity</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingQunatity, new { @id = "BookingQunatity", @Class = "form-control", @Placeholder = "ie. 300 Bags", disabled = "true" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingWeight">Enter Weight</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingWeight, new { @id = "BookingWeight", @Class = "form-control", @Placeholder = "ie. 30 Ton", disabled = "true" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="BookingFare">Enter Budget in PKR</label>
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingFare, new { @id = "BookingFare", @Class = "form-control", @Placeholder = "ie. 50000", disabled = "true" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingMaterialType">Choose Material Type</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.PrimaryBooking.BookingMaterialType, new SelectList(Model.MaterialTypeList, "BookingMaterialType", "BookingMaterialType"), "Choose Material Type", new { @class = "form-control", @id = "BookingMaterialType", disabled = "true" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingPhoneNumber">Enter Mobile Number</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingPhoneNumber, new { @id = "BookingPhoneNumber", @Class = "form-control", @Placeholder = "ie. 03064446673", disabled = "true" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <label for="BookingRequestDate">Choose Date</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingRequestDate, new { @id = "BookingRequestDate", @Class = "form-control", disabled = "true" })
+
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingDate, new { @Value = Model.PrimaryBooking.BookingDate, disabled = "true", @Class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingCustomerId, new { @Value = Model.BookingCustomerId, @Class = "form-control", disabled = "true" })
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h4>LOCATION</h4>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="BookingSource">Choose Source Location</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingSource, new { @class = "form-control", @id = "BookingSource", disabled = "true" })
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-3">
+                            <h5>TO</h5>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingDestination">Choose Destination</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.PrimaryBooking.BookingDestination, new { @class = "form-control", @id = "BookingDestination", disabled = "true" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h3>Company Area</h3>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <label for="LiveVehicleNumber">Choose Vehicle</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.LiveBooking.LiveVehicleNumber, new { @class = "form-control", @id = "LiveVehicleNumber", disabled = "true" })
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LiveCompanyId">Company ID</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.LiveBooking.LiveCompanyId, new { @Value = Model.LiveBooking.LiveCompanyId, @class = "form-control", disabled = "true" })
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LiveCustomerId">Customer Id</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.LiveBooking.LiveCustomerId, new { @Value = Model.LiveBooking.LiveCustomerId, @class = "form-control", disabled = "true" })
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LivePrimaryBookingId">P Booking id</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.LiveBooking.LivePrimaryBookingId, new { @Value = Model.LiveBooking.LivePrimaryBookingId, @class = "form-control", disabled = "true" })
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <h3>Completing Arguments</h3>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <h4>Extra Financials</h4>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="CompleteMisExpenses">Enter Any Misceleanious</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.CompleteBooking.CompleteMisExpenses, new { @id = "CompleteMisExpenses", @Class = "form-control", @minlength = "1", @maxlength = "6" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="CompletePayMethod">Choose Payment Method</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.CompleteBooking.CompletePayMethod, new SelectList(Model.PaymentMethodList, "CompletePayMethod", "CompletePayMethod"), "Choose payment Method", new { @class = "form-control", @id = "CompletePayMethod" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="CompletePayStatus">Choose Payment Status</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.CompleteBooking.CompletePayStatus, new SelectList(Model.PaymentStatusList, "CompletePayMethod", "CompletePayStatus"), "Choose payment Status", new { @class = "form-control", @id = "CompletePayStatus" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="CompleteDate">Enter Date</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.CompleteBooking.CompleteDate, new { @id = "CompleteMisExpenses", @Class = "form-control", type = "date" })
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <br />
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+
+                            <input class="btn btn-primary btn-block" type="submit" value="Submit" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

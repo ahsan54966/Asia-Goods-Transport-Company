@@ -1,0 +1,77 @@
+﻿@model Fyp_First_Increment.Models.CompleteBooking
+
+@{
+    ViewBag.Title = "AdminCompletedBookingDetail";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Completed Booking Detail</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Complete Booking Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Customer Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteCustomerId)</dd>
+                        <dt class="col-5">Company Idr</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteCompanyId)</dd>
+                        <dt class="col-5">Payment Method</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompletePayMethod)</dd>
+                        <dt class="col-5">Payment Status</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompletePayStatus)</dd>
+
+                        <dt class="col-5">Companplete Date</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteDate)</dd>
+
+                    </dl>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+
+
+                        <dt class="col-5">Vehicle ID</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteVehicleId)</dd>
+                        <dt class="col-5">Intial Fare</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteFare)</dd>
+                        <dt class="col-5">Misleanious</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteMisExpenses)</dd>
+                        <dt class="col-5">Success Status</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteSuccessStatus)</dd>
+                        <dt class="col-5">Total Fare</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompleteFinalFare)</dd>
+
+
+                    </dl>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

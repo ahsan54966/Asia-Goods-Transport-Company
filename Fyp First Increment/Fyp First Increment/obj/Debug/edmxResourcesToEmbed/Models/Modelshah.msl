@@ -1,0 +1,1526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="temp_transportModelStoreContainer" CdmEntityContainer="temp_transportEntities">
+    <EntitySetMapping Name="tbl_BusReservation">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_BusReservation">
+        <MappingFragment StoreEntitySet="tbl_BusReservation">
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="ReservationPhoneNumber" ColumnName="ReservationPhoneNumber" />
+          <ScalarProperty Name="ReservationCustomerName" ColumnName="ReservationCustomerName" />
+          <ScalarProperty Name="ReservationTickitId" ColumnName="ReservationTickitId" />
+          <ScalarProperty Name="BookedAt" ColumnName="BookedAt" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BusRoute">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_BusRoute">
+        <MappingFragment StoreEntitySet="tbl_BusRoute">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BusTerminal">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_BusTerminal">
+        <MappingFragment StoreEntitySet="tbl_BusTerminal">
+          <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+          <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+          <ScalarProperty Name="TerminalAddress" ColumnName="TerminalAddress" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="TerminalCity" ColumnName="TerminalCity" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BusTickit">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_BusTickit">
+        <MappingFragment StoreEntitySet="tbl_BusTickit">
+          <ScalarProperty Name="TickitId" ColumnName="TickitId" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="SeatStatus" ColumnName="SeatStatus" />
+          <ScalarProperty Name="TickitRouteId" ColumnName="TickitRouteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_City">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_City">
+        <MappingFragment StoreEntitySet="tbl_City">
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityZipCode" ColumnName="CityZipCode" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="CityDistrict" ColumnName="CityDistrict" />
+          <ScalarProperty Name="CityDivision" ColumnName="CityDivision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CompleteBooking">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_CompleteBooking">
+        <MappingFragment StoreEntitySet="tbl_CompleteBooking">
+          <ScalarProperty Name="CompleteBookingId" ColumnName="CompleteBookingId" />
+          <ScalarProperty Name="CompleteCustomerId" ColumnName="CompleteCustomerId" />
+          <ScalarProperty Name="CompleteCompanyId" ColumnName="CompleteCompanyId" />
+          <ScalarProperty Name="CompleteVehicleId" ColumnName="CompleteVehicleId" />
+          <ScalarProperty Name="CompleteFare" ColumnName="CompleteFare" />
+          <ScalarProperty Name="CompleteMisExpenses" ColumnName="CompleteMisExpenses" />
+          <ScalarProperty Name="CompletePayMethod" ColumnName="CompletePayMethod" />
+          <ScalarProperty Name="CompletePayStatus" ColumnName="CompletePayStatus" />
+          <ScalarProperty Name="CompleteSuccessStatus" ColumnName="CompleteSuccessStatus" />
+          <ScalarProperty Name="CompleteFinalFare" ColumnName="CompleteFinalFare" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="CompletePrimaryTableId" ColumnName="CompletePrimaryTableId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_JazzCashPayment">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_JazzCashPayment">
+        <MappingFragment StoreEntitySet="tbl_JazzCashPayment">
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentPhoneNumber" ColumnName="PaymentPhoneNumber" />
+          <ScalarProperty Name="PaymentPhoneCode" ColumnName="PaymentPhoneCode" />
+          <ScalarProperty Name="PaymentRemainingBalance" ColumnName="PaymentRemainingBalance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_LiveBooking">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_LiveBooking">
+        <MappingFragment StoreEntitySet="tbl_LiveBooking">
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Location">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_Location">
+        <MappingFragment StoreEntitySet="tbl_Location">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="LocationLong" ColumnName="LocationLong" />
+          <ScalarProperty Name="LocationLat" ColumnName="LocationLat" />
+          <ScalarProperty Name="LocationVehicleNumber" ColumnName="LocationVehicleNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Payments">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_Payments">
+        <MappingFragment StoreEntitySet="tbl_Payments">
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentCustomerId" ColumnName="PaymentCustomerId" />
+          <ScalarProperty Name="PaymentTotal" ColumnName="PaymentTotal" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PrimaryBooking">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_PrimaryBooking">
+        <MappingFragment StoreEntitySet="tbl_PrimaryBooking">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Ride">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_Ride">
+        <MappingFragment StoreEntitySet="tbl_Ride">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Roles">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_Roles">
+        <MappingFragment StoreEntitySet="tbl_Roles">
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+          <ScalarProperty Name="Role_Salary" ColumnName="Role_Salary" />
+          <ScalarProperty Name="Role_Company" ColumnName="Role_Company" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_User">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_User">
+        <MappingFragment StoreEntitySet="tbl_User">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Vehicle">
+      <EntityTypeMapping TypeName="temp_transportModel.tbl_Vehicle">
+        <MappingFragment StoreEntitySet="tbl_Vehicle">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Admin_Registration" FunctionName="temp_transportModel.Store.Admin_Registration" />
+    <FunctionImportMapping FunctionImportName="Company_info" FunctionName="temp_transportModel.Store.Company_info" />
+    <FunctionImportMapping FunctionImportName="Driver_info" FunctionName="temp_transportModel.Store.Driver_info" />
+    <FunctionImportMapping FunctionImportName="forgetpassword" FunctionName="temp_transportModel.Store.forgetpassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.forgetpassword_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LiveRide" FunctionName="temp_transportModel.Store.LiveRide">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.LiveRide_Result">
+          <ScalarProperty Name="allvehicle" ColumnName="allvehicle" />
+          <ScalarProperty Name="livevehicleno" ColumnName="livevehicleno" />
+          <ScalarProperty Name="sorce" ColumnName="sorce" />
+          <ScalarProperty Name="destiation" ColumnName="destiation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LiveRideAdmin_Customer" FunctionName="temp_transportModel.Store.LiveRideAdmin_Customer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.LiveRideAdmin_Customer_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="CompanyOwner" ColumnName="CompanyOwner" />
+          <ScalarProperty Name="CompanyPhoneNumber" ColumnName="CompanyPhoneNumber" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+          <ScalarProperty Name="LocationLat" ColumnName="LocationLat" />
+          <ScalarProperty Name="LocationLong" ColumnName="LocationLong" />
+          <ScalarProperty Name="LocationVehicleNumber" ColumnName="LocationVehicleNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Login" FunctionName="temp_transportModel.Store.Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.Login_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusReservation_DeAllocateTickits" FunctionName="temp_transportModel.Store.sp_BusReservation_DeAllocateTickits">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusReservation_DeAllocateTickits_Result">
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="ReservationPhoneNumber" ColumnName="ReservationPhoneNumber" />
+          <ScalarProperty Name="ReservationCustomerName" ColumnName="ReservationCustomerName" />
+          <ScalarProperty Name="ReservationTickitId" ColumnName="ReservationTickitId" />
+          <ScalarProperty Name="BookedAt" ColumnName="BookedAt" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusReservation_FreeRoute" FunctionName="temp_transportModel.Store.sp_BusReservation_FreeRoute">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusReservation_FreeRoute_Result">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="TickitId" ColumnName="TickitId" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="SeatStatus" ColumnName="SeatStatus" />
+          <ScalarProperty Name="TickitRouteId" ColumnName="TickitRouteId" />
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="ReservationPhoneNumber" ColumnName="ReservationPhoneNumber" />
+          <ScalarProperty Name="ReservationCustomerName" ColumnName="ReservationCustomerName" />
+          <ScalarProperty Name="ReservationTickitId" ColumnName="ReservationTickitId" />
+          <ScalarProperty Name="BookedAt" ColumnName="BookedAt" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRide_Create" FunctionName="temp_transportModel.Store.sp_BusRide_Create" />
+    <FunctionImportMapping FunctionImportName="sp_BusRide_update" FunctionName="temp_transportModel.Store.sp_BusRide_update" />
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_CheckRouteExist" FunctionName="temp_transportModel.Store.sp_BusRoute_CheckRouteExist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRoute_CheckRouteExist_Result">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_CreateRoute" FunctionName="temp_transportModel.Store.sp_BusRoute_CreateRoute" />
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_DeleteRoute" FunctionName="temp_transportModel.Store.sp_BusRoute_DeleteRoute" />
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_DeleteTerminal" FunctionName="temp_transportModel.Store.sp_BusRoute_DeleteTerminal" />
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_GetAllRoutes" FunctionName="temp_transportModel.Store.sp_BusRoute_GetAllRoutes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRoute_GetAllRoutes_Result">
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_GetDataFoRTickitInsert" FunctionName="temp_transportModel.Store.sp_BusRoute_GetDataFoRTickitInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRoute_GetDataFoRTickitInsert_Result">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_GetSingleRoute" FunctionName="temp_transportModel.Store.sp_BusRoute_GetSingleRoute">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRoute_GetSingleRoute_Result">
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_GetSingleTerminal" FunctionName="temp_transportModel.Store.sp_BusRoute_GetSingleTerminal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRoute_GetSingleTerminal_Result">
+          <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+          <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+          <ScalarProperty Name="TerminalAddress" ColumnName="TerminalAddress" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="TerminalCity" ColumnName="TerminalCity" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_TerminalListForBusCustomers" FunctionName="temp_transportModel.Store.sp_BusRoute_TerminalListForBusCustomers" />
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_UpdateRoute" FunctionName="temp_transportModel.Store.sp_BusRoute_UpdateRoute" />
+    <FunctionImportMapping FunctionImportName="sp_BusRoute_UpdateTerminal" FunctionName="temp_transportModel.Store.sp_BusRoute_UpdateTerminal" />
+    <FunctionImportMapping FunctionImportName="sp_BusRouteFare_CalculateSeats" FunctionName="temp_transportModel.Store.sp_BusRouteFare_CalculateSeats" />
+    <FunctionImportMapping FunctionImportName="sp_BusRouteFare_GetBusSchedules" FunctionName="temp_transportModel.Store.sp_BusRouteFare_GetBusSchedules">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRouteFare_GetBusSchedules_Result">
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusRouteFare_GetFare" FunctionName="temp_transportModel.Store.sp_BusRouteFare_GetFare">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusRouteFare_GetFare_Result">
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteDepartureTime" ColumnName="RouteDepartureTime" />
+          <ScalarProperty Name="RouteArrivalTime" ColumnName="RouteArrivalTime" />
+          <ScalarProperty Name="RouteClass" ColumnName="RouteClass" />
+          <ScalarProperty Name="RouteDay" ColumnName="RouteDay" />
+          <ScalarProperty Name="RouteBusId" ColumnName="RouteBusId" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusTerminal_CreateTerminal" FunctionName="temp_transportModel.Store.sp_BusTerminal_CreateTerminal" />
+    <FunctionImportMapping FunctionImportName="sp_BusTerminal_GetAllTerminals" FunctionName="temp_transportModel.Store.sp_BusTerminal_GetAllTerminals">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusTerminal_GetAllTerminals_Result">
+          <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+          <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+          <ScalarProperty Name="TerminalAddress" ColumnName="TerminalAddress" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="TerminalCity" ColumnName="TerminalCity" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusTerminal_TerminalExistOrNot" FunctionName="temp_transportModel.Store.sp_BusTerminal_TerminalExistOrNot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusTerminal_TerminalExistOrNot_Result">
+          <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+          <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+          <ScalarProperty Name="TerminalAddress" ColumnName="TerminalAddress" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="TerminalCity" ColumnName="TerminalCity" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusTickit_ClearBusTickitStatus" FunctionName="temp_transportModel.Store.sp_BusTickit_ClearBusTickitStatus" />
+    <FunctionImportMapping FunctionImportName="sp_BusTickit_CreateRouteTickit" FunctionName="temp_transportModel.Store.sp_BusTickit_CreateRouteTickit" />
+    <FunctionImportMapping FunctionImportName="sp_BusTickit_GetAllTickits" FunctionName="temp_transportModel.Store.sp_BusTickit_GetAllTickits">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusTickit_GetAllTickits_Result">
+          <ScalarProperty Name="TickitId" ColumnName="TickitId" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="SeatStatus" ColumnName="SeatStatus" />
+          <ScalarProperty Name="TickitRouteId" ColumnName="TickitRouteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusTickit_GetFare" FunctionName="temp_transportModel.Store.sp_BusTickit_GetFare">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusTickit_GetFare_Result">
+          <ScalarProperty Name="TickitId" ColumnName="TickitId" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="SeatStatus" ColumnName="SeatStatus" />
+          <ScalarProperty Name="TickitRouteId" ColumnName="TickitRouteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusTickit_GetTikitsForReservation" FunctionName="temp_transportModel.Store.sp_BusTickit_GetTikitsForReservation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_BusTickit_GetTikitsForReservation_Result">
+          <ScalarProperty Name="TickitId" ColumnName="TickitId" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="SeatStatus" ColumnName="SeatStatus" />
+          <ScalarProperty Name="TickitRouteId" ColumnName="TickitRouteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusTickitReservation_ClearRouteTickits" FunctionName="temp_transportModel.Store.sp_BusTickitReservation_ClearRouteTickits" />
+    <FunctionImportMapping FunctionImportName="sp_BusTickitReservation_FinalReservationConfirm" FunctionName="temp_transportModel.Store.sp_BusTickitReservation_FinalReservationConfirm" />
+    <FunctionImportMapping FunctionImportName="sp_BusTickitReservation_ReserveTickit" FunctionName="temp_transportModel.Store.sp_BusTickitReservation_ReserveTickit" />
+    <FunctionImportMapping FunctionImportName="sp_CompleteBooking_Completed" FunctionName="temp_transportModel.Store.sp_CompleteBooking_Completed">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_CompleteBooking_Completed_Result">
+          <ScalarProperty Name="CompleteBookingId" ColumnName="CompleteBookingId" />
+          <ScalarProperty Name="CompleteCustomerId" ColumnName="CompleteCustomerId" />
+          <ScalarProperty Name="CompleteCompanyId" ColumnName="CompleteCompanyId" />
+          <ScalarProperty Name="CompleteVehicleId" ColumnName="CompleteVehicleId" />
+          <ScalarProperty Name="CompleteFare" ColumnName="CompleteFare" />
+          <ScalarProperty Name="CompleteMisExpenses" ColumnName="CompleteMisExpenses" />
+          <ScalarProperty Name="CompletePayMethod" ColumnName="CompletePayMethod" />
+          <ScalarProperty Name="CompletePayStatus" ColumnName="CompletePayStatus" />
+          <ScalarProperty Name="CompleteSuccessStatus" ColumnName="CompleteSuccessStatus" />
+          <ScalarProperty Name="CompleteFinalFare" ColumnName="CompleteFinalFare" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="CompletePrimaryTableId" ColumnName="CompletePrimaryTableId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CompleteBooking_CompleteDetail" FunctionName="temp_transportModel.Store.sp_CompleteBooking_CompleteDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_CompleteBooking_CompleteDetail_Result">
+          <ScalarProperty Name="CompleteBookingId" ColumnName="CompleteBookingId" />
+          <ScalarProperty Name="CompleteCustomerId" ColumnName="CompleteCustomerId" />
+          <ScalarProperty Name="CompleteCompanyId" ColumnName="CompleteCompanyId" />
+          <ScalarProperty Name="CompleteVehicleId" ColumnName="CompleteVehicleId" />
+          <ScalarProperty Name="CompleteFare" ColumnName="CompleteFare" />
+          <ScalarProperty Name="CompleteMisExpenses" ColumnName="CompleteMisExpenses" />
+          <ScalarProperty Name="CompletePayMethod" ColumnName="CompletePayMethod" />
+          <ScalarProperty Name="CompletePayStatus" ColumnName="CompletePayStatus" />
+          <ScalarProperty Name="CompleteSuccessStatus" ColumnName="CompleteSuccessStatus" />
+          <ScalarProperty Name="CompleteFinalFare" ColumnName="CompleteFinalFare" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="CompletePrimaryTableId" ColumnName="CompletePrimaryTableId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CompleteBooking_Completeed" FunctionName="temp_transportModel.Store.sp_CompleteBooking_Completeed" />
+    <FunctionImportMapping FunctionImportName="sp_CompleteBooking_GetAll" FunctionName="temp_transportModel.Store.sp_CompleteBooking_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_CompleteBooking_GetAll_Result">
+          <ScalarProperty Name="CompleteBookingId" ColumnName="CompleteBookingId" />
+          <ScalarProperty Name="CompleteCustomerId" ColumnName="CompleteCustomerId" />
+          <ScalarProperty Name="CompleteCompanyId" ColumnName="CompleteCompanyId" />
+          <ScalarProperty Name="CompleteVehicleId" ColumnName="CompleteVehicleId" />
+          <ScalarProperty Name="CompleteFare" ColumnName="CompleteFare" />
+          <ScalarProperty Name="CompleteMisExpenses" ColumnName="CompleteMisExpenses" />
+          <ScalarProperty Name="CompletePayMethod" ColumnName="CompletePayMethod" />
+          <ScalarProperty Name="CompletePayStatus" ColumnName="CompletePayStatus" />
+          <ScalarProperty Name="CompleteSuccessStatus" ColumnName="CompleteSuccessStatus" />
+          <ScalarProperty Name="CompleteFinalFare" ColumnName="CompleteFinalFare" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="CompletePrimaryTableId" ColumnName="CompletePrimaryTableId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CompleteBooking_GetUnPaidCompleteBookings" FunctionName="temp_transportModel.Store.sp_CompleteBooking_GetUnPaidCompleteBookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_CompleteBooking_GetUnPaidCompleteBookings_Result">
+          <ScalarProperty Name="CompleteBookingId" ColumnName="CompleteBookingId" />
+          <ScalarProperty Name="CompleteCustomerId" ColumnName="CompleteCustomerId" />
+          <ScalarProperty Name="CompleteCompanyId" ColumnName="CompleteCompanyId" />
+          <ScalarProperty Name="CompleteVehicleId" ColumnName="CompleteVehicleId" />
+          <ScalarProperty Name="CompleteFare" ColumnName="CompleteFare" />
+          <ScalarProperty Name="CompleteMisExpenses" ColumnName="CompleteMisExpenses" />
+          <ScalarProperty Name="CompletePayMethod" ColumnName="CompletePayMethod" />
+          <ScalarProperty Name="CompletePayStatus" ColumnName="CompletePayStatus" />
+          <ScalarProperty Name="CompleteSuccessStatus" ColumnName="CompleteSuccessStatus" />
+          <ScalarProperty Name="CompleteFinalFare" ColumnName="CompleteFinalFare" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="CompletePrimaryTableId" ColumnName="CompletePrimaryTableId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Driver_GetAllDrivers" FunctionName="temp_transportModel.Store.sp_Driver_GetAllDrivers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Driver_GetAllDrivers_Result">
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Driver_SelectExistOrNot" FunctionName="temp_transportModel.Store.sp_Driver_SelectExistOrNot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Driver_SelectExistOrNot_Result">
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DriverUser_update" FunctionName="temp_transportModel.Store.sp_DriverUser_update" />
+    <FunctionImportMapping FunctionImportName="sp_JazzCashPayments_Verify" FunctionName="temp_transportModel.Store.sp_JazzCashPayments_Verify">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_JazzCashPayments_Verify_Result">
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentPhoneNumber" ColumnName="PaymentPhoneNumber" />
+          <ScalarProperty Name="PaymentPhoneCode" ColumnName="PaymentPhoneCode" />
+          <ScalarProperty Name="PaymentRemainingBalance" ColumnName="PaymentRemainingBalance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_LiveBooking_Create" FunctionName="temp_transportModel.Store.sp_LiveBooking_Create" />
+    <FunctionImportMapping FunctionImportName="sp_LiveBooking_DetailBooking" FunctionName="temp_transportModel.Store.sp_LiveBooking_DetailBooking">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_LiveBooking_DetailBooking_Result">
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_LiveBooking_GetAll" FunctionName="temp_transportModel.Store.sp_LiveBooking_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_LiveBooking_GetAll_Result">
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_LiveBooking_GetAllCustomerBooking" FunctionName="temp_transportModel.Store.sp_LiveBooking_GetAllCustomerBooking">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_LiveBooking_GetAllCustomerBooking_Result">
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_LiveBookingBooking_CancelBooking" FunctionName="temp_transportModel.Store.sp_LiveBookingBooking_CancelBooking" />
+    <FunctionImportMapping FunctionImportName="sp_Location_GetLiveLocation" FunctionName="temp_transportModel.Store.sp_Location_GetLiveLocation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Location_GetLiveLocation_Result">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="LocationLong" ColumnName="LocationLong" />
+          <ScalarProperty Name="LocationLat" ColumnName="LocationLat" />
+          <ScalarProperty Name="LocationVehicleNumber" ColumnName="LocationVehicleNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Payments_GetAllPayments" FunctionName="temp_transportModel.Store.sp_Payments_GetAllPayments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Payments_GetAllPayments_Result">
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentCustomerId" ColumnName="PaymentCustomerId" />
+          <ScalarProperty Name="PaymentTotal" ColumnName="PaymentTotal" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Payments_Pay" FunctionName="temp_transportModel.Store.sp_Payments_Pay" />
+    <FunctionImportMapping FunctionImportName="sp_Payments_sp_Payments_Pay" FunctionName="temp_transportModel.Store.sp_Payments_sp_Payments_Pay" />
+    <FunctionImportMapping FunctionImportName="sp_PrimaryBooking_Create" FunctionName="temp_transportModel.Store.sp_PrimaryBooking_Create" />
+    <FunctionImportMapping FunctionImportName="sp_PrimaryBooking_CustomerBookingUpdate" FunctionName="temp_transportModel.Store.sp_PrimaryBooking_CustomerBookingUpdate" />
+    <FunctionImportMapping FunctionImportName="sp_PrimaryBooking_GetAdminRequestBooking" FunctionName="temp_transportModel.Store.sp_PrimaryBooking_GetAdminRequestBooking">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_PrimaryBooking_GetAdminRequestBooking_Result">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_PrimaryBooking_GetAdminSide" FunctionName="temp_transportModel.Store.sp_PrimaryBooking_GetAdminSide">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_PrimaryBooking_GetAdminSide_Result">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_PrimaryBooking_GetAll" FunctionName="temp_transportModel.Store.sp_PrimaryBooking_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_PrimaryBooking_GetAll_Result">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingSource" ColumnName="BookingSource" />
+          <ScalarProperty Name="BookingDestination" ColumnName="BookingDestination" />
+          <ScalarProperty Name="BookingGoodsDetail" ColumnName="BookingGoodsDetail" />
+          <ScalarProperty Name="BookingQunatity" ColumnName="BookingQunatity" />
+          <ScalarProperty Name="BookingWeight" ColumnName="BookingWeight" />
+          <ScalarProperty Name="BookingFare" ColumnName="BookingFare" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingRequestDate" ColumnName="BookingRequestDate" />
+          <ScalarProperty Name="BookingTimeArrival" ColumnName="BookingTimeArrival" />
+          <ScalarProperty Name="BookingCustomerId" ColumnName="BookingCustomerId" />
+          <ScalarProperty Name="BookingPhoneNumber" ColumnName="BookingPhoneNumber" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingServiceType" ColumnName="BookingServiceType" />
+          <ScalarProperty Name="BookingMaterialType" ColumnName="BookingMaterialType" />
+          <ScalarProperty Name="BookingVehicleType" ColumnName="BookingVehicleType" />
+          <ScalarProperty Name="BookingSourceLat" ColumnName="BookingSourceLat" />
+          <ScalarProperty Name="BookingSourceLon" ColumnName="BookingSourceLon" />
+          <ScalarProperty Name="BookingDestinationLat" ColumnName="BookingDestinationLat" />
+          <ScalarProperty Name="BookingDestinationLon" ColumnName="BookingDestinationLon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Reservation_GetDataForReservationConfirmation" FunctionName="temp_transportModel.Store.sp_Reservation_GetDataForReservationConfirmation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Reservation_GetDataForReservationConfirmation_Result">
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="ReservationCustomerName" ColumnName="ReservationCustomerName" />
+          <ScalarProperty Name="ReservationPhoneNumber" ColumnName="ReservationPhoneNumber" />
+          <ScalarProperty Name="SeatFare" ColumnName="SeatFare" />
+          <ScalarProperty Name="RouteDeparture" ColumnName="RouteDeparture" />
+          <ScalarProperty Name="RouteArrival" ColumnName="RouteArrival" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_create" FunctionName="temp_transportModel.Store.sp_Ride_create" />
+    <FunctionImportMapping FunctionImportName="sp_Ride_delete" FunctionName="temp_transportModel.Store.sp_Ride_delete" />
+    <FunctionImportMapping FunctionImportName="sp_Ride_GetAllBusRides" FunctionName="temp_transportModel.Store.sp_Ride_GetAllBusRides">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_GetAllBusRides_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_GetAllTruckRides" FunctionName="temp_transportModel.Store.sp_Ride_GetAllTruckRides">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_GetAllTruckRides_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_RideReportProfit" FunctionName="temp_transportModel.Store.sp_Ride_RideReportProfit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_RideReportProfit_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_RideReportProfitLastFifteenDays" FunctionName="temp_transportModel.Store.sp_Ride_RideReportProfitLastFifteenDays">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_RideReportProfitLastFifteenDays_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_RideReportProfitSpecificDate" FunctionName="temp_transportModel.Store.sp_Ride_RideReportProfitSpecificDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_RideReportProfitSpecificDate_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_RideReportProfitYear" FunctionName="temp_transportModel.Store.sp_Ride_RideReportProfitYear">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_RideReportProfitYear_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_RideReportProfitYearandMonth" FunctionName="temp_transportModel.Store.sp_Ride_RideReportProfitYearandMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_RideReportProfitYearandMonth_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_select" FunctionName="temp_transportModel.Store.sp_Ride_select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Ride_select_Result">
+          <ScalarProperty Name="Ride_Id" ColumnName="Ride_Id" />
+          <ScalarProperty Name="Ride_Source" ColumnName="Ride_Source" />
+          <ScalarProperty Name="Ride_Destination" ColumnName="Ride_Destination" />
+          <ScalarProperty Name="Ride_DieselExpenses" ColumnName="Ride_DieselExpenses" />
+          <ScalarProperty Name="Ride_MaintainanceExpenses" ColumnName="Ride_MaintainanceExpenses" />
+          <ScalarProperty Name="Ride_FoodExpenses" ColumnName="Ride_FoodExpenses" />
+          <ScalarProperty Name="Ride_MobileExpenses" ColumnName="Ride_MobileExpenses" />
+          <ScalarProperty Name="Ride_TaxExpenses" ColumnName="Ride_TaxExpenses" />
+          <ScalarProperty Name="Ride_DriverCharges" ColumnName="Ride_DriverCharges" />
+          <ScalarProperty Name="Ride_CommisionCharges" ColumnName="Ride_CommisionCharges" />
+          <ScalarProperty Name="Ride_DieselQuantity" ColumnName="Ride_DieselQuantity" />
+          <ScalarProperty Name="Ride_DriverId" ColumnName="Ride_DriverId" />
+          <ScalarProperty Name="Ride_VehicleNumber" ColumnName="Ride_VehicleNumber" />
+          <ScalarProperty Name="Ride_ProfitLoss" ColumnName="Ride_ProfitLoss" />
+          <ScalarProperty Name="RideSeller" ColumnName="RideSeller" />
+          <ScalarProperty Name="RideBuyer" ColumnName="RideBuyer" />
+          <ScalarProperty Name="RideFare" ColumnName="RideFare" />
+          <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+          <ScalarProperty Name="RideDetail" ColumnName="RideDetail" />
+          <ScalarProperty Name="RidePassenger" ColumnName="RidePassenger" />
+          <ScalarProperty Name="ConductorName" ColumnName="ConductorName" />
+          <ScalarProperty Name="RidePassengerFare" ColumnName="RidePassengerFare" />
+          <ScalarProperty Name="RideType" ColumnName="RideType" />
+          <ScalarProperty Name="RideCompanyId" ColumnName="RideCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ride_update" FunctionName="temp_transportModel.Store.sp_Ride_update" />
+    <FunctionImportMapping FunctionImportName="sp_User_Busdrivers" FunctionName="temp_transportModel.Store.sp_User_Busdrivers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_Busdrivers_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_EditUser" FunctionName="temp_transportModel.Store.sp_User_EditUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_EditUser_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_ReportALLDrivers" FunctionName="temp_transportModel.Store.sp_User_ReportALLDrivers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_ReportALLDrivers_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_ReportDrivers" FunctionName="temp_transportModel.Store.sp_User_ReportDrivers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_ReportDrivers_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_ReportTruckVehicles" FunctionName="temp_transportModel.Store.sp_User_ReportTruckVehicles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_ReportTruckVehicles_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="TruckCatagory" ColumnName="TruckCatagory" />
+          <ScalarProperty Name="TruckRating" ColumnName="TruckRating" />
+          <ScalarProperty Name="TruckType" ColumnName="TruckType" />
+          <ScalarProperty Name="TruckId" ColumnName="TruckId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_ReportVehicles" FunctionName="temp_transportModel.Store.sp_User_ReportVehicles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_ReportVehicles_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="BusModel" ColumnName="BusModel" />
+          <ScalarProperty Name="BusId" ColumnName="BusId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_Truckdrivers" FunctionName="temp_transportModel.Store.sp_User_Truckdrivers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_User_Truckdrivers_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_UpdateUser" FunctionName="temp_transportModel.Store.sp_User_UpdateUser" />
+    <FunctionImportMapping FunctionImportName="sp_UserDriver_Delete" FunctionName="temp_transportModel.Store.sp_UserDriver_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_UserDriver_Edit" FunctionName="temp_transportModel.Store.sp_UserDriver_Edit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_UserDriver_Edit_Result">
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Users_GetDriverDetail" FunctionName="temp_transportModel.Store.sp_Users_GetDriverDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Users_GetDriverDetail_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Users_GetFreeDrivers" FunctionName="temp_transportModel.Store.sp_Users_GetFreeDrivers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Users_GetFreeDrivers_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+          <ScalarProperty Name="DriverSalary" ColumnName="DriverSalary" />
+          <ScalarProperty Name="DriverExperience" ColumnName="DriverExperience" />
+          <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+          <ScalarProperty Name="DriverPosition" ColumnName="DriverPosition" />
+          <ScalarProperty Name="DriverRouteCharge" ColumnName="DriverRouteCharge" />
+          <ScalarProperty Name="DriverUserId" ColumnName="DriverUserId" />
+          <ScalarProperty Name="DriverCompanyId" ColumnName="DriverCompanyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Vehicle_GetFreeVehicles" FunctionName="temp_transportModel.Store.sp_Vehicle_GetFreeVehicles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Vehicle_GetFreeVehicles_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="LiveBookingId" ColumnName="LiveBookingId" />
+          <ScalarProperty Name="LiveCompanyId" ColumnName="LiveCompanyId" />
+          <ScalarProperty Name="LiveCustomerId" ColumnName="LiveCustomerId" />
+          <ScalarProperty Name="LiveStatus" ColumnName="LiveStatus" />
+          <ScalarProperty Name="LiveVehicleNumber" ColumnName="LiveVehicleNumber" />
+          <ScalarProperty Name="LivePrimaryBookingId" ColumnName="LivePrimaryBookingId" />
+          <ScalarProperty Name="LiveApprovedDate" ColumnName="LiveApprovedDate" />
+          <ScalarProperty Name="LiveDriverId" ColumnName="LiveDriverId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Vehicle_VehicleLogin" FunctionName="temp_transportModel.Store.sp_Vehicle_VehicleLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_Vehicle_VehicleLogin_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_VehicleBus_Create" FunctionName="temp_transportModel.Store.sp_VehicleBus_Create" />
+    <FunctionImportMapping FunctionImportName="sp_VehicleBus_Edit" FunctionName="temp_transportModel.Store.sp_VehicleBus_Edit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_VehicleBus_Edit_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="BusModel" ColumnName="BusModel" />
+          <ScalarProperty Name="BusId" ColumnName="BusId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_VehicleBus_GetAllBuses" FunctionName="temp_transportModel.Store.sp_VehicleBus_GetAllBuses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_VehicleBus_GetAllBuses_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="BusModel" ColumnName="BusModel" />
+          <ScalarProperty Name="BusId" ColumnName="BusId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_VehicleBus_SelectExistOrNot" FunctionName="temp_transportModel.Store.sp_VehicleBus_SelectExistOrNot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_VehicleBus_SelectExistOrNot_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_VehicleBus_sp_VehicleBus_Delete" FunctionName="temp_transportModel.Store.sp_VehicleBus_sp_VehicleBus_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_VehicleBus_update" FunctionName="temp_transportModel.Store.sp_VehicleBus_update" />
+    <FunctionImportMapping FunctionImportName="sp_VehicleTruck_Create" FunctionName="temp_transportModel.Store.sp_VehicleTruck_Create" />
+    <FunctionImportMapping FunctionImportName="sp_VehicleTruck_Delete" FunctionName="temp_transportModel.Store.sp_VehicleTruck_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_VehicleTruck_Edit" FunctionName="temp_transportModel.Store.sp_VehicleTruck_Edit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_VehicleTruck_Edit_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="TruckCatagory" ColumnName="TruckCatagory" />
+          <ScalarProperty Name="TruckRating" ColumnName="TruckRating" />
+          <ScalarProperty Name="TruckType" ColumnName="TruckType" />
+          <ScalarProperty Name="TruckId" ColumnName="TruckId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_VehicleTruck_GetAllTrucks" FunctionName="temp_transportModel.Store.sp_VehicleTruck_GetAllTrucks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.sp_VehicleTruck_GetAllTrucks_Result">
+          <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+          <ScalarProperty Name="Vehicle_Catagory" ColumnName="Vehicle_Catagory" />
+          <ScalarProperty Name="Vehicle_Size" ColumnName="Vehicle_Size" />
+          <ScalarProperty Name="Vehicle_Manufacturer" ColumnName="Vehicle_Manufacturer" />
+          <ScalarProperty Name="Vehicle_Route" ColumnName="Vehicle_Route" />
+          <ScalarProperty Name="Vehicle_ImageUrl" ColumnName="Vehicle_ImageUrl" />
+          <ScalarProperty Name="VehicleCapacity" ColumnName="VehicleCapacity" />
+          <ScalarProperty Name="VehicleCompanyId" ColumnName="VehicleCompanyId" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="TruckCatagory" ColumnName="TruckCatagory" />
+          <ScalarProperty Name="TruckRating" ColumnName="TruckRating" />
+          <ScalarProperty Name="TruckType" ColumnName="TruckType" />
+          <ScalarProperty Name="TruckId" ColumnName="TruckId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_VehicleTruck_update" FunctionName="temp_transportModel.Store.sp_VehicleTruck_update" />
+    <FunctionImportMapping FunctionImportName="UpdateCurentLocation" FunctionName="temp_transportModel.Store.UpdateCurentLocation" />
+    <FunctionImportMapping FunctionImportName="UpdatePassword" FunctionName="temp_transportModel.Store.UpdatePassword" />
+    <FunctionImportMapping FunctionImportName="User_Registration" FunctionName="temp_transportModel.Store.User_Registration" />
+    <FunctionImportMapping FunctionImportName="validuser" FunctionName="temp_transportModel.Store.validuser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="temp_transportModel.validuser_Result">
+          <ScalarProperty Name="User_FirstName" ColumnName="User_FirstName" />
+          <ScalarProperty Name="User_LastName" ColumnName="User_LastName" />
+          <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Cnic" ColumnName="User_Cnic" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Role_Id" ColumnName="User_Role_Id" />
+          <ScalarProperty Name="User_Image" ColumnName="User_Image" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

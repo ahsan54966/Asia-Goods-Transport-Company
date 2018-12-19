@@ -1,0 +1,313 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Drivers.DriverViewModel
+@{
+    ViewBag.Title = "AdminAddDriver";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Add Driver</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center font-weight-bold text-white bg-info">Add New Driver</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("AdminAddDriver", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "formvalid" }))
+            {
+                <p>@TempData["message"]</p>
+                <p>@ViewBag.message</p>
+                <div class="form-group">
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.Driver.UserFirstName, "First Name")
+                                    @Html.TextBoxFor(model => model.Driver.UserFirstName, new { @class = "form-control", placeholder = "Enter name", type = "text" })
+                                    @Html.ValidationMessageFor(model => model.Driver.UserFirstName)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.UserLastName, "Last Name")
+                                    @Html.TextBoxFor(model => model.Driver.UserLastName, new { @class = "form-control", placeholder = "Enter Last name", type = "text" })
+                                    @Html.ValidationMessageFor(model => model.Driver.UserLastName)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div>
+                                        @*<div id="imagepreview" class="thumbnail">
+                                                <img class="img-responsive" id="targetimage" height="100" width="200" />
+
+                                                <div class="caption">
+                                                        <a href="#" onclick="clearpreview()"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                                        <p id="descieption"></p>
+                                                    </div>
+                                            </div>*@
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="show">Choose Image</label>
+                                    @*<input type="file" class="form-control-file" id="ImageUrl" name="ImageFile" />*@
+                                    @Html.TextBoxFor(m => m.Driver.image_file, new { @type = "file", @Class = "form-control-file", @id = "show" })
+                                    <p class="text-danger">@Html.ValidationMessageFor(m => m.Driver.image_file)</p>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.User_PhoneNumber, "Mobile NO")
+                                    @Html.TextBoxFor(model => model.Driver.User_PhoneNumber, new { @class = "form-control", placeholder = "Mobile No", @minlength = "11", @maxlength = "11" })
+                                    @Html.ValidationMessageFor(model => model.Driver.User_PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.UserCnic, "CNIC No")
+                                    @Html.TextBoxFor(model => model.Driver.UserCnic, new { @class = "form-control", placeholder = "CNIC No", @minlength = "13", @maxlength = "13" })
+                                    @Html.ValidationMessageFor(model => model.Driver.UserCnic)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+                                        @Html.HiddenFor(model => model.Driver.DriverCompanyId, new { @Value = Session["user_Id"] })
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.user_City, "City")
+                                    @Html.TextBoxFor(model => model.Driver.user_City, new { @class = "form-control", placeholder = "Select City" })
+                                    @Html.ValidationMessageFor(model => model.Driver.user_City)
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.DriverSalary, "Salary")
+                                    @Html.TextBoxFor(model => model.Driver.DriverSalary, new { @class = "form-control", placeholder = "Enter Salary", @id = "Salary", type = "text", @minlength = "1", @maxlength = "6" })
+                                    @Html.ValidationMessageFor(model => model.Driver.DriverSalary)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Driver.DriverExperience, "Experience")
+                                    @Html.TextBoxFor(model => model.Driver.DriverExperience, new { @class = "form-control", placeholder = "Experience", type = "text", @minlength = "1", @maxlength = "2" })
+                                    @Html.ValidationMessageFor(model => model.Driver.DriverExperience)
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.DriverType, "Type")
+                                    @Html.DropDownListFor(model => model.Driver.DriverType, new SelectList(Model.DriverTypeList, "DriverType", "DriverType"), "Choose Driver Type", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Driver.DriverType)
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.DriverPostion, "Position")
+                                    @Html.DropDownListFor(model => model.Driver.DriverPostion, new SelectList(Model.DriverPositionList, "DriverPostion", "DriverPostion"), "Choose Driver Position", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Driver.DriverPostion)
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.Driver.DriverRouteCharge, "Route Charge")
+                                    @Html.DropDownListFor(model => model.Driver.DriverRouteCharge, new SelectList(Model.RouteChargeList, "DriverRouteCharge", "DriverRouteCharge"), "Choose Charges", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Driver.DriverRouteCharge)
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <br />
+                        <div class="col-md-10">
+
+                            @Html.LabelFor(model => model.Driver.UserAddress, "Adress")
+
+                            @Html.TextAreaFor(model => model.Driver.UserAddress, new { @class = "form-control", placeholder = "Enter Address" })
+
+                            @Html.ValidationMessageFor(model => model.Driver.UserAddress)
+
+                        </div>
+
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.Driver.user_comp, new { @Value = Session["CompanyName"] })
+                @Html.HiddenFor(model => model.Driver.DriverUserId)
+                @Html.HiddenFor(model => model.Driver.UserId);
+                @Html.HiddenFor(m => m.Driver.Image)
+
+                @Html.AntiForgeryToken()
+                <input type="submit" id="Admin" value="Register" name="Command" title="Admin" class="btn btn-info font-weight-bold" onclick="Loginuser()" />
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&sensor=false&libraries=places"></script>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function () {
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: { country: "pak" }
+        };
+        var source = document.getElementById('user_City');
+        var place2 = new google.maps.places.Autocomplete(source, options);
+
+    });
+    $(document).ready(function () {
+
+        $("#show").change(function () {
+
+            var File = this.files;
+            if (File && File[0]) {
+
+                ReadImage(File[0]);
+            }
+        })
+
+    })
+
+    var ReadImage = function (file) {
+
+
+        var reader = new FileReader;
+        var image = new Image;
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "Kb";
+                $("#targetimage").attr('src', _file.target.result);
+                $("#descieption").text("size" + size + "," + height + "X" + width + "");
+                $("#imagepreview").show();
+            }
+
+
+
+        }
+
+
+    }
+    var clearpreview = function () {
+
+        $("#show").val('');
+        $("#descieption").text('');
+        $("#imagepreview").hide();
+    }
+
+</script>

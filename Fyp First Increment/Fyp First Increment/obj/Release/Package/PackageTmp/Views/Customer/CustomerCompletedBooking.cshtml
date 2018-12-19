@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Fyp_First_Increment.ViewModel.AdminCustomerTraits.AdminCustomerBookingViewModel>
+
+@{
+    ViewBag.Title = "CustomerCompletedBooking";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Completed Booking</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+        <span class="text-danger">
+            @TempData["data"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header text-info font-weight-bold">
+            <i class="fa fa-table"></i>Live Booking
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-info">
+                            <th scope="col">
+                                Id
+                            </th>
+                            <th scope="col">
+                                Book Date
+                            </th>
+                            <th scope="col">
+                                Goods
+                            </th>
+                            <th scope="col">
+                                Fare
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>Comp Date</th>
+                            <th>Pay Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+                    <tfoot>
+                        <tr class="text-info">
+                            <th scope="col">
+                                Id
+                            </th>
+                            <th scope="col">
+                                Book Date
+                            </th>
+                            <th scope="col">
+                                Goods
+                            </th>
+                            <th scope="col">
+                                Fare
+                            </th>
+                            <th scope="col">
+                                Success Status
+                            </th>
+                            <th>
+                                Payment Status
+                            </th>
+                            <th>Comp Date</th>
+
+                            <th>Action</th>
+                        </tr>
+
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr onclick="location.href = '@(Url.Action("CustomerCompleteBooking", "Customer", new { id = item.CompleteBooking.CompleteBookingId }))'">
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.primarybooking.BookingId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.primarybooking.BookingDate)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.primarybooking.BookingGoodsDetail)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.CompleteBooking.CompleteFinalFare)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.CompleteBooking.CompleteSuccessStatus)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.CompleteBooking.CompletePayStatus)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.CompleteBooking.CompleteDate)
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Preview", "CompletedBookingDetail", "Customer", new { id = item.CompleteBooking.CompleteBookingId }, new { @class = "btn btn-info btn-sm" })
+                                </td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

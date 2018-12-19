@@ -1,0 +1,88 @@
+﻿@model Fyp_First_Increment.Models.Builty
+@{
+    ViewBag.Title = "BuiltyDetail";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info"> Builty Home</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Builty Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <dl class="row">
+                        <dt class="col-5">Builty Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyId )</dd>
+                        <dt class="col-5">Vehicle Number</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyVehicleNumber)</dd>
+                        <dt class="col-5">Source</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltySource)</dd>
+                        <dt class="col-5">Destination</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyDestination)</dd>
+                        <dt class="col-5">Driver Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyDriverId)</dd>
+                        <dt class="col-5">Seller</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltySeller)</dd>
+                        <dt class="col-5">Buyer</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyBuyer)</dd>
+                        <dt class="col-5">Ride Date</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyDate)</dd>
+                        
+                       
+
+                    </dl>
+
+                </div>
+                <div class="col-6">
+                    <dl class="row">
+                        <dt class="col-5">Detail</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyDetail)</dd>
+                        <dt class="col-5">Company Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompanyId)</dd>
+                        <dt class="col-5">Weight</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyWeight)</dd>
+
+                        <dt class="col-5">Ride Incom</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyFare)</dd>
+                        <dt class="col-5">Miscellaneous</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyMiscellaneous)</dd>
+
+
+                        <dt class="col-5">WorkerCharge</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyWorkerCharge)</dd>
+
+                        <dt class="col-5">TotalFare</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BuiltyTotalFare)</dd>
+
+                    </dl>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

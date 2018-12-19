@@ -1,0 +1,64 @@
+﻿@model Fyp_First_Increment.Models.Bus
+
+@{
+    ViewBag.Title = "AdminBusDetail";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Bus Detail</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Truck Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <dl class="row">
+                        <dt class="col-5">vehicle Type</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.type)</dd>
+                        <dt class="col-5">Vehicle Number</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleNumber)</dd>
+                        <dt class="col-5">Catagory</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleCatagory)</dd>
+                        <dt class="col-5">Size</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleSize)</dd>
+                        <dt class="col-5">Manufacturer</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleManufacturer)</dd>
+                    </dl>
+
+                </div>
+                <div class="col-6">
+                    <dl class="row">
+                        <dt class="col-5">Route</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleRoute)</dd>
+                        <dt class="col-5">Capacity</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleCapacity)</dd>
+                        <dt class="col-5">Company Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.VehicleCompanyId)</dd>
+                        <dt class="col-5">Pin Code</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.PinCode)</dd>
+                        <dt class="col-5">Bus Model</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BusModel)</dd>
+                    </dl>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/Assets/vendor/datatables/jquery.dataTables.js"></script>
+<script src="~/Assets/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for this page-->
+<script src="~/Assets/js/sb-admin-datatables.min.js"></script>

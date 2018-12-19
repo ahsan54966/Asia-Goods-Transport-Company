@@ -1,0 +1,64 @@
+﻿@model Fyp_First_Increment.Models.PrimaryBooking
+
+@{
+    ViewBag.Title = "PrimaryBookingDetail";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Reeequested Booking Details</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Request Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Booking Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingId)</dd>
+                        <dt class="col-5">Source</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingSource)</dd>
+                        <dt class="col-5">Destination</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingDestination)</dd>
+                        <dt class="col-5">Goods</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingGoodsDetail)</dd>
+                        <dt class="col-5">Quantity</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingQunatity)</dd>
+
+                    </dl>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Customer Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingCustomerId)</dd>
+                        <dt class="col-5">Phone Number</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingPhoneNumber)</dd>
+                        <dt class="col-5">Status</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingStatus)</dd>
+                        <dt class="col-5">Service Type</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingServiceType)</dd>
+                        <dt class="col-5">Material Type</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.BookingMaterialType)</dd>
+
+                    </dl>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,252 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.PrimaryBooking>
+
+@{
+    ViewBag.Title = "BookingHome";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- BreadCrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Booking Home</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            @*<button class="btn btn-primary" type="submit" > Add New Ride @Html.RouteLink("click", new { action = "addnewvehicle", controller = "Default", area = "Vehicle" })</button>*@
+            <input type="submit" class="btn btn-info" value="New Request" onclick="location.href='@Url.Action("CustomerTruckBooking", "Customer")'" />
+        </div>
+    </div>
+    <br />
+
+    <div class="card mb-3">
+        <div class="card-header text-info font-weight-bold">
+            <i class="fa fa-table"></i> Booking Home
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-sm table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-info">
+                            <th scope="col">
+                                Booking Id
+                                @*@Html.DisplayNameFor(model => model.BookingId)*@
+                            </th>
+                            <th scope="col">
+                                Source
+                                @*@Html.DisplayNameFor(model => model.BookingSource)*@
+                            </th>
+                            <th scope="col">
+                                Destination
+                                @*@Html.DisplayNameFor(model => model.BookingDestination)*@
+                            </th>
+                            <th scope="col">
+                                Goods Detail
+                                @*@Html.DisplayNameFor(model => model.BookingGoodsDetail)*@
+                            </th>
+                            <th scope="col">
+                                Quantity
+                                @*@Html.DisplayNameFor(model => model.BookingQunatity)*@
+                            </th>
+                            <th scope="col">
+                                Weight
+                                @*@Html.DisplayNameFor(model => model.BookingWeight)*@
+                            </th>
+                            <th scope="col">
+                                Fare
+                                @*@Html.DisplayNameFor(model => model.BookingFare)*@
+                            </th>
+                            <th scope="col">
+                                Booking Date
+                                @*@Html.DisplayNameFor(model => model.BookingDate)*@
+                            </th>
+                            <th scope="col">
+                                Request Date
+                                @*@Html.DisplayNameFor(model => model.BookingRequestDate)*@
+                            </th>
+                            <th scope="col">
+                                Arrival Time
+                                @*@Html.DisplayNameFor(model => model.BookingTimeArrival)*@
+                            </th>
+                            <th scope="col">
+                                Customer Id
+                                @*@Html.DisplayNameFor(model => model.BookingCustomerId)*@
+                            </th>
+                            <th scope="col">
+                                Phone #
+                                @*@Html.DisplayNameFor(model => model.BookingPhoneNumber)*@
+                            </th>
+                            <th scope="col">
+                                Status
+                                @*@Html.DisplayNameFor(model => model.BookingStatus)*@
+                            </th>
+                            <th scope="col">
+                                Service type
+                                @*@Html.DisplayNameFor(model => model.BookingServiceType)*@
+                            </th>
+                            <th scope="col">
+                                Material Type
+                                @*@Html.DisplayNameFor(model => model.BookingMaterialType)*@
+                            </th>
+                            <th scope="col">
+                                Veh Type
+                                @*@Html.DisplayNameFor(model => model.BookingVehicleType)*@
+                            </th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+                    <tfoot>
+                        <tr class="text-info">
+                            <th scope="col">
+                                Booking Id
+                                @*@Html.DisplayNameFor(model => model.BookingId)*@
+                            </th>
+                            <th scope="col">
+                                Source
+                                @*@Html.DisplayNameFor(model => model.BookingSource)*@
+                            </th>
+                            <th scope="col">
+                                Destination
+                                @*@Html.DisplayNameFor(model => model.BookingDestination)*@
+                            </th>
+                            <th scope="col">
+                                Goods Detail
+                                @*@Html.DisplayNameFor(model => model.BookingGoodsDetail)*@
+                            </th>
+                            <th scope="col">
+                                Quantity
+                                @*@Html.DisplayNameFor(model => model.BookingQunatity)*@
+                            </th>
+                            <th scope="col">
+                                Weight
+                                @*@Html.DisplayNameFor(model => model.BookingWeight)*@
+                            </th>
+                            <th scope="col">
+                                Fare
+                                @*@Html.DisplayNameFor(model => model.BookingFare)*@
+                            </th>
+                            <th scope="col">
+                                Booking Date
+                                @*@Html.DisplayNameFor(model => model.BookingDate)*@
+                            </th>
+                            <th scope="col">
+                                Request Date
+                                @*@Html.DisplayNameFor(model => model.BookingRequestDate)*@
+                            </th>
+                            <th scope="col">
+                                Arrival Time
+                                @*@Html.DisplayNameFor(model => model.BookingTimeArrival)*@
+                            </th>
+                            <th scope="col">
+                                Customer Id
+                                @*@Html.DisplayNameFor(model => model.BookingCustomerId)*@
+                            </th>
+                            <th scope="col">
+                                Phone #
+                                @*@Html.DisplayNameFor(model => model.BookingPhoneNumber)*@
+                            </th>
+                            <th scope="col">
+                                Status
+                                @*@Html.DisplayNameFor(model => model.BookingStatus)*@
+                            </th>
+                            <th scope="col">
+                                Service type
+                                @*@Html.DisplayNameFor(model => model.BookingServiceType)*@
+                            </th>
+                            <th scope="col">
+                                Material Type
+                                @*@Html.DisplayNameFor(model => model.BookingMaterialType)*@
+                            </th>
+                            <th scope="col">
+                                Veh Type
+                                @*@Html.DisplayNameFor(model => model.BookingVehicleType)*@
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingSource)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingDestination)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingGoodsDetail)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingQunatity)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingWeight)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingFare)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingDate)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingRequestDate)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingTimeArrival)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingCustomerId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingPhoneNumber)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingStatus)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingServiceType)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingMaterialType)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.BookingVehicleType)
+                                </td>
+                                @if(item.BookingStatus=="")
+                                {
+                                <td scope="row">
+                                    @Html.ActionLink("Edit", "CustomerTruckBooking", new { @Class = "btn btn-info", id = item.BookingId })
+                                </td>   
+                                }
+                                else
+                                {
+                                <td scope="row">
+                                    @Html.ActionLink("Detail", "PrimaryBookingDetail", new { id = item.BookingId }, new { @Class = "btn btn-info" })
+                                </td>
+                                }
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

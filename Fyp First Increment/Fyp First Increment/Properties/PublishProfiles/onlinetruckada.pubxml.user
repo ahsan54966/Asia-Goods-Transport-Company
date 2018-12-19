@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAd2EdfDalqEW0fHGznk/6/wAAAAACAAAAAAAQZgAAAAEAACAAAABTWBuQ+XARH+k1tnS/Q1sl9Fusv8QyhqBfsHJenp/w9wAAAAAOgAAAAAIAACAAAAB2MdpRB44lQthwMocjvCqZ5q95k4VsaKB4A1X3wZUUMSAAAACJByd/qfcKT44mKbfrBHhZ3WwZPrsoC+/xWwcn2L16VkAAAACmwHojccgXR/6OQgJvA44kAp++JT0XT+jM1iff9F7pElqaIMlzJTzXthXnbzWuh1bmNTWgy3w5DCYo5aCC6itO</EncryptedPassword>
+    <_PublishTargetUrl>ftp://199.168.188.194/http://onlinetruckada.com/</_PublishTargetUrl>
+  </PropertyGroup>
+</Project>

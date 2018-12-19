@@ -1,0 +1,97 @@
+﻿@model Fyp_First_Increment.Models.Ride
+
+@{
+    ViewBag.Title = "AdmintruckrideDetail";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Truck Ride Detail</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Truck Ride Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Ride Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideId)</dd>
+                        <dt class="col-5">Vehicle Number</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideVehicleNumber)</dd>
+                        <dt class="col-5">Source</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideSource)</dd>
+                        <dt class="col-5">Destination</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDestination)</dd>
+                        <dt class="col-5">Driver Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDriverId)</dd>
+                        <dt class="col-5">Seller</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideSeller)</dd>
+                        <dt class="col-5">Buyer</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideBuyer)</dd>
+                        <dt class="col-5">Ride Date</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDate)</dd>
+                        <dt class="col-5">Detail</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDetail)</dd>
+                        <dt class="col-5">Company Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompanyId)</dd>
+                        <dt class="col-5">Type</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideType)</dd>
+                        <dt class="col-5">Diesesl Quanitity</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDieselQuantity)</dd>
+
+                    </dl>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+
+
+                        <dt class="col-5">Diesel Expenses</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDieselExpense)</dd>
+                        <dt class="col-5">Maintainace Expenses</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideMaintainanceExpense)</dd>
+                        <dt class="col-5">FoodExpenses</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideFoodExpense)</dd>
+                        <dt class="col-5">Mobile Expenses</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideMobileExpense)</dd>
+                        <dt class="col-5">Tax Expenses</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideTaxExpense)</dd>
+                        <dt class="col-5">Driver Charges</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideDriverCharge)</dd>
+                        <dt class="col-5">Comission Charegs</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideCommisionCharge)</dd>
+                        <dt class="col-5">Total Fare</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideFare)</dd>
+                        <dt class="col-5">Ride Profit</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RideProdit)</dd>
+
+
+
+                    </dl>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

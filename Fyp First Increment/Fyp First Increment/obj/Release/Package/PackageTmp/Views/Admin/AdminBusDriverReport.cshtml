@@ -1,0 +1,49 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Reports.ReportsViewModel
+@{
+    ViewBag.Title = "AdminBusDriverReport";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Bus Driver Report</li>
+</ol>
+<div class="container">
+    <hr />
+    <p class="text-danger">@TempData["Message"]</p>
+    <div class="row">
+        <div class="card mx-auto mt-5 col-6">
+            <div class="card-header bg-info text-white">
+                Generate BusDriverReport
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("AdminBusDriverReport", "Admin", FormMethod.Post, new { }))
+                {
+                    <div class="form-group">
+                        <label for="DriverCategory">Enter Driver Categrory</label>
+                        @Html.DropDownListFor(m => m.DriverCat, new SelectList(Model.DriverCatagory, "DriverPostion", "DriverPostion"), "Select Driver Type", new { @Class = "form-control", @id = "DriverCategory" })
+                        <p class="text-danger">@Html.ValidationMessageFor(m => m.DriverCat)</p>
+                    </div>
+                    @Html.HiddenFor(m => m.AreaType, new { @Value = "Bus" })
+                    @Html.HiddenFor(m => m.ReportDurationType, new { @Value = "custom" })
+                    @Html.HiddenFor(m => m.DriverCat, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.ReportProfit, new { @Value = "0" })
+                    @Html.HiddenFor(m => m.VehicleType, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.VehicleManufacture, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.ReportDateFrom, DateTime.Now.ToString())
+                    @Html.HiddenFor(m => m.ReportDateTo, DateTime.Now.ToString())
+                    @Html.HiddenFor(m => m.ReportVehicleNumber, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.CompanyId, new { @Value = Session["user_Id"] })
+                    @Html.AntiForgeryToken()
+                    <input type="submit" class="btn btn-info btn-block" value="Generate" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

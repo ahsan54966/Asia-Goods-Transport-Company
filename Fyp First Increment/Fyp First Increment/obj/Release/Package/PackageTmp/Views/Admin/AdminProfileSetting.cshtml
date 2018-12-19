@@ -1,0 +1,69 @@
+﻿@model Fyp_First_Increment.Models.Users
+@{
+    ViewBag.Title = "AdminProfileSetting";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Profile Setting</li>
+</ol>
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="card col-10 offset-1">
+            <div class="card-header bg-info font-weight-bold text-white">
+                Profile Setting @TempData["message"]
+            </div>
+            <div class="card-body">
+                <div class="col-12 col-lg-12 col-md-12">
+                    @using (Html.BeginForm("AdminProfileSetting", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserFirstName, "First Name")
+                            @Html.TextBoxFor(model => model.UserFirstName, new { @class = "form-control", placeholder = "Enter name", type = "text" })
+                            @Html.ValidationMessageFor(model => model.UserFirstName)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserLastName, "Last Name")
+                            @Html.TextBoxFor(model => model.UserLastName, new { @class = "form-control", placeholder = "Enter Last name", type = "text" })
+                            @Html.ValidationMessageFor(model => model.UserLastName)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserAddress, "Adress")
+
+                            @Html.TextAreaFor(model => model.UserAddress, new { @class = "form-control", placeholder = "Enter name" })
+
+                            @Html.ValidationMessageFor(model => model.UserAddress)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Password, "Password")
+                            @Html.TextBoxFor(model => model.User_Password, new { @class = "form-control", placeholder = "Enter Password", type = "Password", @minlength = "6" })
+                            @Html.ValidationMessageFor(model => model.User_Password)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ConfirmPassowrd, "Confirm Password")
+                            @Html.TextBoxFor(model => model.ConfirmPassowrd, new { @class = "form-control", placeholder = "Retype Password", type = "Password", @minlength = "6" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassowrd)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.image_file, "Choose Image")
+                            @*<input type="file" class="form-control-file" id="ImageUrl" name="ImageFile" />*@
+                            @Html.TextBoxFor(m => m.image_file, new { @type = "file", @Class = "form-control-file", @id = "image_file" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.image_file)</p>
+                        </div>
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Image)
+                        @Html.HiddenFor(m => m.UserId)
+                        <input class=" btn btn-info text-white  font-weight-bold" type="submit" value="Update" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

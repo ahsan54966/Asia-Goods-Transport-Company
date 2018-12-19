@@ -1,0 +1,227 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Booking.AdminPrimaryViewModel
+@{
+    ViewBag.Title = "AdminBookingApprove";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+    }
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+</li>
+    <li class="breadcrumb-item active text-info">Booking Approval</li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            @TempData["message"]
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center">Booking Panel</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("AdminBookingApprove", "Admin", FormMethod.Post))
+            {
+
+                <div class="form-group">
+
+                    <h3>Booking Service Detail</h3>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="ServiceType">Service Type</label>
+                            @Html.DropDownListFor(m => m.BookingServiceType, new SelectList(Model.ServiceTypeList, "BookingServiceType", "BookingServiceType"), "Choose Service", new { @class = "form-control", @id = "ServiceType", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingServiceType)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingVehicleType">Choose Truck Type</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.BookingVehicleType, new SelectList(Model.VehicleTypeList, "BookingVehicleType", "BookingVehicleType"), "Choose Truck Type", new { @class = "form-control", @id = "BookingVehicleType", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingVehicleType)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingTimeArrival">Choose Delivery Hours</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.BookingTimeArrival, new { @id = "BookingTimeArrival", @Class = "form-control", @type = "Number", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingTimeArrival)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <h3>Booking Goods Detail</h3>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="BookingGoodsDetail">Product Name</label>
+                            @Html.TextBoxFor(m => m.BookingGoodsDetail, new { @id = "BookingGoodsDetail", @Class = "form-control", @Placeholder = "Banana", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingGoodsDetail)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingQunatity"> Quantity</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.BookingQunatity, new { @id = "BookingQunatity", @Class = "form-control", @Placeholder = "ie. 300 Bags", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingQunatity)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingWeight">Enter Weight</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.BookingWeight, new { @id = "BookingWeight", @Class = "form-control", @Placeholder = "ie. 30 Ton", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingWeight)</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="BookingFare">Enter Budget in PKR</label>
+                            @Html.TextBoxFor(m => m.BookingFare, new { @id = "BookingFare", @Class = "form-control", @Placeholder = "ie. 50000", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingFare)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingMaterialType">Choose Material Type</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.BookingMaterialType, new SelectList(Model.MaterialTypeList, "BookingMaterialType", "BookingMaterialType"), "Choose Material Type", new { @class = "form-control", @id = "BookingMaterialType", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingMaterialType)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BookingPhoneNumber">Enter Mobile Number</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.BookingPhoneNumber, new { @id = "BookingPhoneNumber", @Class = "form-control", @Placeholder = "ie. 03064446673", @readonly = "readonly" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingPhoneNumber)</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <label for="BookingRequestDate">Choose Date</label>
+                            <br />
+                            @Html.EditorFor(m => m.BookingRequestDate, new { htmlAttributes = new { @Value = Model.BookingRequestDate, @id = "BookingRequestDate", @Class = "form-control", @readonly = "readonly" } })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(m => m.BookingDate, new { @Value = Model.BookingDate})
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(m => m.BookingCustomerId, new { @Value = Model.BookingCustomerId })
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h4>LOCATION</h4>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+    <div class="form-group">
+        <div class="form-row">
+            <div class="col-md-4">
+                <label for="BookingSource">Choose Source Location</label>
+                <br />
+                @*@Html.DropDownListFor(m=>m.BookingSource,new SelectList(Model.CityList, "CityName", "CityName"), "Choose Source Location", new { @class = "form-control",@id="BookingSource"})*@
+                @Html.TextBoxFor(m => m.BookingSource, new { @id = "BookingSource", @Class = "form-control", @readonly = "readonly" })
+                <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingSource)</p>
+            </div>
+            <div class="col-md-1">
+              
+            </div>
+            <div class="col-md-3">
+                <h5>TO</h5>
+
+            </div>
+            <div class="col-md-4">
+                <label for="BookingDestination">Choose Destination</label>
+                <br />
+                @*@Html.DropDownListFor(m=>m.BookingDestination,new SelectList(Model.CityList, "CityName", "CityName"), "Choose Destination", new { @class = "form-control",@id="BookingDestination"})*@
+                @Html.TextBoxFor(m => m.BookingDestination, new { @id = "BookingDestination", @Class = "form-control", @readonly = "readonly" })
+                <p class="text-danger">@Html.ValidationMessageFor(m => m.BookingDestination)</p>
+            </div>
+        </div>
+    </div>
+                <br />
+                <div class="form-group">
+                    <h3>Company Area</h3>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="LiveVehicleNumber">Choose Vehicle</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.LiveBooking.LiveVehicleNumber, new SelectList(Model.BookingVehiclList, "VehicleNumber", "VehicleNumber"), "Choose Vehicle", new { @class = "form-control", @id = "LiveVehicleNumber" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.LiveBooking.LiveVehicleNumber)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="LiveDriverName">Choose Driver Name</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.LiveBooking.LiveDriverId, new SelectList(Model.DriverList, "UserId", "UserFirstName"), "Choose Driver", new { @class = "form-control", @id = "LiveVehicleNumber" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.LiveBooking.LiveDriverId)</p>
+                        </div>
+                        <div class="col-md-3">
+                            @Html.HiddenFor(m => m.LiveBooking.LiveCompanyId, new { @Value = Session["user_Id"] })
+                            @Html.HiddenFor(m => m.LiveBooking.LiveCustomerId, new { @Value = Model.BookingCustomerId })
+                            @Html.HiddenFor(m => m.LiveBooking.LivePrimaryBookingId, new { @Value = Model.BookingId})
+                            @Html.AntiForgeryToken()
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <br />
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+
+                            <input class="btn btn-info btn-block" type="submit" value="Submit" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&sensor=false&libraries=places"></script>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function () {
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: { country: "pak" }
+        };
+
+        var destination = document.getElementById('BookingDestination');
+        var place1 = new google.maps.places.Autocomplete(destination, options);
+        var source = document.getElementById('BookingSource');
+        var place2 = new google.maps.places.Autocomplete(source, options);
+
+    });
+</script>

@@ -1,0 +1,63 @@
+﻿@model Fyp_First_Increment.Models.Payment
+@{
+    ViewBag.Title = "CustomerBookingPayment";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Booking Payments</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <p class="text-danger">@TempData["message"]</p>
+        <div class="card col-8 offset-sm-2">
+            <div class="card-header bg-info text-white font-weight-bold">
+                Payment Info
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("CustomerBookingPayment", "Customer", FormMethod.Post, new { }))
+                {
+
+                    <div class="form-group">
+                        <label class="col-form-label" for="PaymentTotal">Total Fare</label>
+                        @Html.TextBoxFor(m => m.PaymentTotal, new { @Class = "form-control", @Id = "PaymentTotal", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.PaymentTotal)
+                    </div>
+                    <div class="radio radio-inline form-group">
+                        <label class="col-form-label" for="PaymentMethod">Choose Payment Method</label>
+                        @Html.RadioButtonFor(m => m.PaymentMethod, "JazzCash", new { @Class = "col-1" }) JazzCash
+                        @Html.RadioButtonFor(m => m.PaymentMethod, "EasyPaisa", new { @Class = "col-1" }) EasyPaisa
+                        @Html.ValidationMessageFor(model => model.PaymentMethod)
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="PhoneNumber">Enter 11 Digits of Number</label>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @Class = "form-control", @Id = "PhoneNumber", @Placeholder = "Ie. 03064446673", @minlength = "11", @maxlength = "11" })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber)
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="SecurityCode">Enter Security Code</label>
+                        @Html.TextBoxFor(m => m.PinCode, new { @Class = "form-control", @Id = "SecurityCode", @Placeholder = "Ie. 310 on back silver strip", @minlength = "6", @maxlength = "6" })
+                        @Html.ValidationMessageFor(model => model.PinCode)
+
+                    </div>
+                    <div class="checkbox form-group">
+                        @Html.CheckBox("Remarks", false, new { }) I am paying this on my behalf.
+                    </div>
+                    @Html.HiddenFor(m => m.PaymentCustomerId)
+                    @Html.HiddenFor(m => m.BookId)
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Payment" class="btn btn-info text-white font-weight-bold" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

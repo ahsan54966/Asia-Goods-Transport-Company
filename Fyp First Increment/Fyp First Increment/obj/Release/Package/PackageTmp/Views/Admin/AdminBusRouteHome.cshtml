@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.BusRoutes>
+
+@{
+    ViewBag.Title = "AdminBusRouteHome";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Bus Route</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+
+    <div class="row">
+        <div class="col-sm-2">
+
+            @Html.ActionLink("Add New Route", "AdminRouteAddNew", "Admin", new { companyid = Session["user_Id"] }, new { @Class = "btn btn-info" })
+        </div>
+        <div class="offset-sm-5 col-sm-5">
+        </div>
+    </div>
+
+    <p class="text-success">@TempData["message"]</p>
+    <div class="card mb-3">
+        <div class="card-header text-info font-weight-bold">
+            <i class="fa fa-table"></i> Route Information
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-sm">
+                <table class="table table-bordered table-hover table-striped table-sm" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-info">
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.RouteId)*@
+                                Route ID
+                            </th>
+                            <th scope="col">
+                                Departure
+                                @*@Html.DisplayNameFor(model => model.RouteDepartrure)*@
+                            </th>
+                            <th scope="col">
+                                Arrival
+                                @*@Html.DisplayNameFor(model => model.RouteArrival)*@
+                            </th>
+                            <th scope="col">
+                                Dep Time
+                                @*@Html.DisplayNameFor(model => model.RouteDepartureTime)*@
+                            </th>
+                            <th scope="col">
+                                Arrival Time
+                                @*@Html.DisplayNameFor(model => model.RouteArrivalTime)*@
+                            </th>
+                            <th scope="col">
+                                Class
+                                @*@Html.DisplayNameFor(model => model.RouteClass)*@
+                            </th>
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.RouteDay)*@
+                                Day
+                            </th>
+                            <th scope="col">Fare</th>
+                            <th scope="col">BusId</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr class="text-info">
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.RouteId)*@
+                                Route ID
+                            </th>
+                            <th scope="col">
+                                Departure
+                                @*@Html.DisplayNameFor(model => model.RouteDepartrure)*@
+                            </th>
+                            <th scope="col">
+                                Arrival
+                                @*@Html.DisplayNameFor(model => model.RouteArrival)*@
+                            </th>
+                            <th scope="col">
+                                Dep Time
+                                @*@Html.DisplayNameFor(model => model.RouteDepartureTime)*@
+                            </th>
+                            <th scope="col">
+                                Arrival Time
+                                @*@Html.DisplayNameFor(model => model.RouteArrivalTime)*@
+                            </th>
+                            <th scope="col">
+                                Class
+                                @*@Html.DisplayNameFor(model => model.RouteClass)*@
+                            </th>
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.RouteDay)*@
+                                Day
+                            </th>
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.RouteDay)*@
+                                Bus Id
+                            </th>
+                            <th scope="col">Fare</th>
+                            <th scope="col">BusId</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteDeparture)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteArrival)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteDepartureTime)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteArrivalTime)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteClass)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteDay)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.Fare)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.RouteBusId)
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Edit", "AdminRouteAddNew", new { id = item.RouteId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-warning" })
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Detail", "AdminRouteDetail", new { id = item.RouteId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-info" })
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Delete", "AdminRouteDelete", new { id = item.RouteId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

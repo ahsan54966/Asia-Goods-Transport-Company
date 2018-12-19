@@ -1,0 +1,391 @@
+﻿@model Fyp_First_Increment.Models.Companydetail
+@{
+    ViewBag.Title = "CustomerRegister";
+    Layout = "~/Views/Shared/Registration_file.cshtml";
+
+}
+@{
+    int LoginData = int.Parse(Session["LoginId"].ToString());
+}
+<div class="container">
+    <div class="card card-register mx-auto mt-5 bg-dark text-white" style="opacity:0.8">
+        <div class="card-header text-center font-weight-bold" style="font-size:20px">Customer Registration</div>
+        <div class="card-body">
+            @*@Html.ValidationSummary()*@
+            @using (Html.BeginForm("CustomerRegister", "Registration", FormMethod.Post, new { enctype = "multipart/form-data", id = "formvalid" }))
+            {
+                <p>@TempData["message"]</p>
+                <p>@ViewBag.message</p>
+                <p>@TempData["extensionerror"]</p>
+                <div class="form-group">
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+
+                                    @Html.LabelFor(model => model.UserFirstName, "First Name")
+                                    @Html.TextBoxFor(model => model.UserFirstName, new { @class = "form-control", placeholder = "Enter name", @minlength = "2", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(model => model.UserFirstName)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.UserLastName, "Last Name")
+                                    @Html.TextBoxFor(model => model.UserLastName, new { @class = "form-control", placeholder = "Enter Last name", @minlength = "2", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(model => model.UserLastName)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div>
+
+                                        <div id="imagepreview" class="thumbnail">
+                                            <img class="img-responsive" id="targetimage" height="100" width="200" />
+
+                                            @*<div class="caption">
+                                                    <a href="#" onclick="clearpreview()"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                                    <p id="descieption"></p>
+                                                </div>*@
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <input type="file" name="image_file" id="show" required />
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.UserEmail, "Email")
+                                    @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control", placeholder = "Enter Email", type = "email" })
+                                    @Html.ValidationMessageFor(model => model.UserEmail)
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.UserCnic, "CNIC No")
+                                    @Html.TextBoxFor(model => model.UserCnic, new { @class = "form-control", placeholder = "CNIC No", @minlength = "13", @maxlength = "13" })
+                                    @Html.ValidationMessageFor(model => model.UserCnic)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.User_PhoneNumber, "Mobile NO")
+                                    @Html.TextBoxFor(model => model.User_PhoneNumber, new { @class = "form-control", placeholder = "Mobile No", @minlength = "11", @maxlength = "11" })
+                                    @Html.ValidationMessageFor(model => model.User_PhoneNumber)
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.user_City, "City")
+                                    @Html.TextBoxFor(model => model.user_City, new { @class = "form-control", placeholder = "Select City", @minlength = "4", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(model => model.user_City)
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.user_comp, "Company Name")
+                                    @Html.TextBoxFor(model => model.user_comp, new { @class = "form-control", placeholder = "Company Name", @minlength = "5", @maxlength = "40" })
+                                    @Html.ValidationMessageFor(model => model.user_comp)
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.user_comp_type, "Company Type")
+                                    @Html.TextBoxFor(model => model.user_comp_type, new { @class = "form-control", placeholder = "Fruite/Goods", @minlength = "2", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(model => model.user_comp_type)
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+                        <br />
+                        <div class="col-md-10">
+
+
+                            @Html.LabelFor(model => model.UserAddress, "Adress")
+
+                            @Html.TextAreaFor(model => model.UserAddress, new { @class = "form-control", placeholder = "Enter name", @minlength = "5", @maxlength = "50" })
+
+                            @Html.ValidationMessageFor(model => model.UserAddress)
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    @Html.LabelFor(model => model.User_Password, "Password")
+                                    @Html.TextBoxFor(model => model.User_Password, new { @class = "form-control", placeholder = "Enter Password", id = "exampleInputPassword1", type = "Password", @minlength = "6", @maxlength = "14" })
+                                    @Html.ValidationMessageFor(model => model.User_Password)
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-1">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.ConfirmPassowrd, "Confirm Password")
+                                    @Html.TextBoxFor(model => model.ConfirmPassowrd, new { @class = "form-control", placeholder = "Retype Password", id = "exampleInputPassword1", type = "Password", @minlength = "6", @maxlength = "14" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassowrd)
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="col-md-4">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    @Html.AntiForgeryToken()
+
+                                    <p></p>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-5">
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+                                    <p>
+
+                                    </p>
+                                    <p>
+
+                                        <input type="submit" id="Customer" value="Sing Up" name="Command" title="Customer" class="btn btn-primary btn-block" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-row">
+                                <div class="col-md-12">
+
+
+                                    <p></p>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+            }
+            <div class="text-center">
+
+
+                <a href="@Url.Action("Login", "Registration", new { id =  Session["LoginId"] } , null)"><span class="text-white font-weight-bold">Login Page</span></a>
+                <br />
+                <a href="@Url.Action(  "ForgetPassword", "Registration",new { id =  Session["LoginId"] })"><span class="text-white font-weight-bold">Forgot Password?</span></a>
+
+
+
+                @*<a class="d-block small mt-3" href="login.html">Login Page</a>
+                    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var Loginuser = function () {
+        debugger
+        var data = $("#formvalid").serialize;
+        if (!$("#formvalid").valid()) {
+            return false;
+        }
+
+
+    }
+
+
+</script>
+<script>
+
+    $(document).ready(function () {
+
+        $("#show").change(function () {
+
+            var File = this.files;
+            if (File && File[0]) {
+
+                ReadImage(File[0]);
+            }
+        })
+
+    })
+
+    var ReadImage = function (file) {
+
+
+        var reader = new FileReader;
+        var image = new Image;
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "Kb";
+                $("#targetimage").attr('src', _file.target.result);
+                $("#descieption").text("size" + size + "," + height + "X" + width + "");
+                $("#imagepreview").show();
+            }
+
+
+
+        }
+
+
+    }
+    var clearpreview = function () {
+
+        $("#show").val('');
+        $("#descieption").text('');
+        $("#imagepreview").hide();
+    }
+
+</script>

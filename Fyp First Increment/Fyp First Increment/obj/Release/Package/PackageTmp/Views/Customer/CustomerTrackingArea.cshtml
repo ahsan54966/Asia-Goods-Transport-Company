@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "CustomerTrackingArea";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Tracking Area</li>
+</ol>
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="card mx-auto mt-5 col-6">
+            <div class="card-header bg-info text-white">
+                Track Vehicles
+            </div>
+            <div class="card-body">
+                <div class="col-12 col-lg-12 col-md-12">
+                    @using (Html.BeginForm("CustomerTrackingArea", "Admin", FormMethod.Get))
+                    {
+                        <div class="form-group">
+                            <label class="col-form-label" for="trackingid"> Enter Vehicle Number</label>
+                            @Html.TextBox("TrackId", "", new { @Class = "form-control", @Id = "trackingid", @Placeholder = "Ie P-1524" })
+                        </div>
+                        <input class="form-control btn btn-outline-info btn-block" type="submit" value="Track" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

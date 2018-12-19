@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetTrucks" targetNamespace="http://tempuri.org/DataSetTrucks.xsd" xmlns:mstns="http://tempuri.org/DataSetTrucks.xsd" xmlns="http://tempuri.org/DataSetTrucks.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetTrucks" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetTrucks" msprop:Generator_UserDSName="DataSetTrucks">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_Vehicle" msprop:Generator_TableClassName="tbl_VehicleDataTable" msprop:Generator_TableVarName="tabletbl_Vehicle" msprop:Generator_TablePropName="tbl_Vehicle" msprop:Generator_RowDeletingName="tbl_VehicleRowDeleting" msprop:Generator_RowChangingName="tbl_VehicleRowChanging" msprop:Generator_RowEvHandlerName="tbl_VehicleRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_VehicleRowDeleted" msprop:Generator_UserTableName="tbl_Vehicle" msprop:Generator_RowChangedName="tbl_VehicleRowChanged" msprop:Generator_RowEvArgName="tbl_VehicleRowChangeEvent" msprop:Generator_RowClassName="tbl_VehicleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Vehicle_Number" msprop:Generator_ColumnVarNameInTable="columnVehicle_Number" msprop:Generator_ColumnPropNameInRow="Vehicle_Number" msprop:Generator_ColumnPropNameInTable="Vehicle_NumberColumn" msprop:Generator_UserColumnName="Vehicle_Number" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle_Catagory" msprop:Generator_ColumnVarNameInTable="columnVehicle_Catagory" msprop:Generator_ColumnPropNameInRow="Vehicle_Catagory" msprop:Generator_ColumnPropNameInTable="Vehicle_CatagoryColumn" msprop:Generator_UserColumnName="Vehicle_Catagory" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle_Size" msprop:Generator_ColumnVarNameInTable="columnVehicle_Size" msprop:Generator_ColumnPropNameInRow="Vehicle_Size" msprop:Generator_ColumnPropNameInTable="Vehicle_SizeColumn" msprop:Generator_UserColumnName="Vehicle_Size" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle_Route" msprop:Generator_ColumnVarNameInTable="columnVehicle_Route" msprop:Generator_ColumnPropNameInRow="Vehicle_Route" msprop:Generator_ColumnPropNameInTable="Vehicle_RouteColumn" msprop:Generator_UserColumnName="Vehicle_Route" type="xs:string" minOccurs="0" />
+              <xs:element name="VehicleCapacity" msprop:Generator_ColumnVarNameInTable="columnVehicleCapacity" msprop:Generator_ColumnPropNameInRow="VehicleCapacity" msprop:Generator_ColumnPropNameInTable="VehicleCapacityColumn" msprop:Generator_UserColumnName="VehicleCapacity" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_Truck" msprop:Generator_TableClassName="tbl_TruckDataTable" msprop:Generator_TableVarName="tabletbl_Truck" msprop:Generator_TablePropName="tbl_Truck" msprop:Generator_RowDeletingName="tbl_TruckRowDeleting" msprop:Generator_RowChangingName="tbl_TruckRowChanging" msprop:Generator_RowEvHandlerName="tbl_TruckRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_TruckRowDeleted" msprop:Generator_UserTableName="tbl_Truck" msprop:Generator_RowChangedName="tbl_TruckRowChanged" msprop:Generator_RowEvArgName="tbl_TruckRowChangeEvent" msprop:Generator_RowClassName="tbl_TruckRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PinCode" msprop:Generator_ColumnVarNameInTable="columnPinCode" msprop:Generator_ColumnPropNameInRow="PinCode" msprop:Generator_ColumnPropNameInTable="PinCodeColumn" msprop:Generator_UserColumnName="PinCode" type="xs:string" minOccurs="0" />
+              <xs:element name="TruckCatagory" msprop:Generator_ColumnVarNameInTable="columnTruckCatagory" msprop:Generator_ColumnPropNameInRow="TruckCatagory" msprop:Generator_ColumnPropNameInTable="TruckCatagoryColumn" msprop:Generator_UserColumnName="TruckCatagory" type="xs:string" minOccurs="0" />
+              <xs:element name="TruckRating" msprop:Generator_ColumnVarNameInTable="columnTruckRating" msprop:Generator_ColumnPropNameInRow="TruckRating" msprop:Generator_ColumnPropNameInTable="TruckRatingColumn" msprop:Generator_UserColumnName="TruckRating" type="xs:string" minOccurs="0" />
+              <xs:element name="TruckType" msprop:Generator_ColumnVarNameInTable="columnTruckType" msprop:Generator_ColumnPropNameInRow="TruckType" msprop:Generator_ColumnPropNameInTable="TruckTypeColumn" msprop:Generator_UserColumnName="TruckType" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

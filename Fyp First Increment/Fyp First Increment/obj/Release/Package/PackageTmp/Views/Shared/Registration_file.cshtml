@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Registration_file";
+    
+<link href="~/Assets/css/sb-admin.css" rel="stylesheet" />
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Online Truck Ada</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/Assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    @*//<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
+    <!-- Custom fonts for this template-->
+
+    <link href="~/Assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/Assets/css/sb-admin.css" rel="stylesheet">
+    <style>
+        .input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+                .field-validation-error{
+            color:red;
+        }
+                .BackgroundImage{
+                    background-image:url('../../Assets/images/Bus/4truck.jpg')
+                }
+        </style>
+</head>
+<body class="BackgroundImage">
+
+        @RenderBody()
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="~/Assets/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="~/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+

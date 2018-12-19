@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetVehicleProfit" targetNamespace="http://tempuri.org/DataSetVehicleProfit.xsd" xmlns:mstns="http://tempuri.org/DataSetVehicleProfit.xsd" xmlns="http://tempuri.org/DataSetVehicleProfit.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetVehicleProfit" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetVehicleProfit" msprop:Generator_UserDSName="DataSetVehicleProfit">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_Ride" msprop:Generator_TableClassName="tbl_RideDataTable" msprop:Generator_TableVarName="tabletbl_Ride" msprop:Generator_TablePropName="tbl_Ride" msprop:Generator_RowDeletingName="tbl_RideRowDeleting" msprop:Generator_RowChangingName="tbl_RideRowChanging" msprop:Generator_RowEvHandlerName="tbl_RideRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_RideRowDeleted" msprop:Generator_UserTableName="tbl_Ride" msprop:Generator_RowChangedName="tbl_RideRowChanged" msprop:Generator_RowEvArgName="tbl_RideRowChangeEvent" msprop:Generator_RowClassName="tbl_RideRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Ride_Source" msprop:Generator_ColumnVarNameInTable="columnRide_Source" msprop:Generator_ColumnPropNameInRow="Ride_Source" msprop:Generator_ColumnPropNameInTable="Ride_SourceColumn" msprop:Generator_UserColumnName="Ride_Source" type="xs:string" minOccurs="0" />
+              <xs:element name="Ride_Destination" msprop:Generator_ColumnVarNameInTable="columnRide_Destination" msprop:Generator_ColumnPropNameInRow="Ride_Destination" msprop:Generator_ColumnPropNameInTable="Ride_DestinationColumn" msprop:Generator_UserColumnName="Ride_Destination" type="xs:string" minOccurs="0" />
+              <xs:element name="RideFare" msprop:Generator_ColumnVarNameInTable="columnRideFare" msprop:Generator_ColumnPropNameInRow="RideFare" msprop:Generator_ColumnPropNameInTable="RideFareColumn" msprop:Generator_UserColumnName="RideFare" type="xs:int" minOccurs="0" />
+              <xs:element name="RideDetail" msprop:Generator_ColumnVarNameInTable="columnRideDetail" msprop:Generator_ColumnPropNameInRow="RideDetail" msprop:Generator_ColumnPropNameInTable="RideDetailColumn" msprop:Generator_UserColumnName="RideDetail" type="xs:string" minOccurs="0" />
+              <xs:element name="RideType" msprop:Generator_ColumnVarNameInTable="columnRideType" msprop:Generator_ColumnPropNameInRow="RideType" msprop:Generator_ColumnPropNameInTable="RideTypeColumn" msprop:Generator_UserColumnName="RideType" type="xs:string" minOccurs="0" />
+              <xs:element name="RidePassenger" msprop:Generator_ColumnVarNameInTable="columnRidePassenger" msprop:Generator_ColumnPropNameInRow="RidePassenger" msprop:Generator_ColumnPropNameInTable="RidePassengerColumn" msprop:Generator_UserColumnName="RidePassenger" type="xs:string" minOccurs="0" />
+              <xs:element name="RideDate" msprop:Generator_ColumnVarNameInTable="columnRideDate" msprop:Generator_ColumnPropNameInRow="RideDate" msprop:Generator_ColumnPropNameInTable="RideDateColumn" msprop:Generator_UserColumnName="RideDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RidePassengerFare" msprop:Generator_ColumnVarNameInTable="columnRidePassengerFare" msprop:Generator_ColumnPropNameInRow="RidePassengerFare" msprop:Generator_ColumnPropNameInTable="RidePassengerFareColumn" msprop:Generator_UserColumnName="RidePassengerFare" type="xs:int" minOccurs="0" />
+              <xs:element name="RideSeller" msprop:Generator_ColumnVarNameInTable="columnRideSeller" msprop:Generator_ColumnPropNameInRow="RideSeller" msprop:Generator_ColumnPropNameInTable="RideSellerColumn" msprop:Generator_UserColumnName="RideSeller" type="xs:string" minOccurs="0" />
+              <xs:element name="RideBuyer" msprop:Generator_ColumnVarNameInTable="columnRideBuyer" msprop:Generator_ColumnPropNameInRow="RideBuyer" msprop:Generator_ColumnPropNameInTable="RideBuyerColumn" msprop:Generator_UserColumnName="RideBuyer" type="xs:string" minOccurs="0" />
+              <xs:element name="Ride_VehicleNumber" msprop:Generator_ColumnVarNameInTable="columnRide_VehicleNumber" msprop:Generator_ColumnPropNameInRow="Ride_VehicleNumber" msprop:Generator_ColumnPropNameInTable="Ride_VehicleNumberColumn" msprop:Generator_UserColumnName="Ride_VehicleNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="Ride_DriverId" msprop:Generator_ColumnVarNameInTable="columnRide_DriverId" msprop:Generator_ColumnPropNameInRow="Ride_DriverId" msprop:Generator_ColumnPropNameInTable="Ride_DriverIdColumn" msprop:Generator_UserColumnName="Ride_DriverId" type="xs:int" minOccurs="0" />
+              <xs:element name="ConductorName" msprop:Generator_ColumnVarNameInTable="columnConductorName" msprop:Generator_ColumnPropNameInRow="ConductorName" msprop:Generator_ColumnPropNameInTable="ConductorNameColumn" msprop:Generator_UserColumnName="ConductorName" type="xs:string" minOccurs="0" />
+              <xs:element name="Ride_ProfitLoss" msprop:Generator_ColumnVarNameInTable="columnRide_ProfitLoss" msprop:Generator_ColumnPropNameInRow="Ride_ProfitLoss" msprop:Generator_ColumnPropNameInTable="Ride_ProfitLossColumn" msprop:Generator_UserColumnName="Ride_ProfitLoss" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

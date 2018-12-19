@@ -1,0 +1,102 @@
+﻿@model Fyp_First_Increment.ViewModel.BusCustomers.TickitReservation.TickitPaymentView
+@{
+    ViewBag.Title = "BuyTickit";
+    Layout = "~/Views/Shared/_BusPanel.cshtml";
+}
+
+<div class="container-fluid naab bg-light">
+    <div class="row">
+        <p class="text-danger">@TempData["message"]</p>
+    </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="card mb-3">
+                                <div class="card-header bg-info">
+                                    Tickit Payment Panel
+                                </div>
+                                <div class="card-body px-5">
+                                    <div class="h4 text-left">
+                                        Your Reservation Data @TempData["message"]
+                                    </div>
+                                    <dl class="row text-sm-left">
+
+                                        <dt class="col-4">ReservationNumber</dt>
+                                        <dd class="col-8">@Model.ReservationPhoneNumber</dd>
+                                        <dt class="col-4">Departure / Arrival</dt>
+                                        <dd class="col-8">@Model.Departure / @Model.Arrival</dd>
+                                        <dt class="col-4">Your Reserved Quantity</dt>
+                                        <dd class="col-8">@Model.TickitQuantity</dd>
+                                        <dt class="col-4">Total</dt>
+                                        <dd class="col-8">@Model.TotalPrice</dd>
+                                    </dl>
+                                </div>
+                                <div class="card-footer">
+                                    Your Reservation is will expire after 10 minutes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="col-12">
+                                <figure class="figure">
+                                    <img src="~/Pictures/BusArea/Payments/JazzCash.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
+
+                                </figure>
+                            </div>
+                            <div class="col-12">
+                                @using (Html.BeginForm("BuyTickit", "BusPanel", FormMethod.Post, new { }))
+                                {
+                                    <div class="form-group">
+                                        <label id="ReservationTickitId">Enter Mobile Account</label><br>
+                                        @Html.TextBoxFor(m => m.PaymentPhoneNumber, new { @Class = "form-control", id = "PaymentPhoneNumber", @minlength = "11", @maxlength = "11" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(m => m.PaymentPhoneNumber)</p>
+                                        <label id="ReservationTickitId">Pin</label><br>
+                                        @Html.TextBoxFor(m => m.PaymentCode, new { @Class = "form-control", id = "PaymentCode", @minlength = "6", @maxlength = "6" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(m => m.PaymentPhoneNumber)</p>
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(m => m.ReservationPhoneNumber)
+                                        @Html.HiddenFor(m => m.TotalPrice)
+                                    </div>
+                                    <input type="submit" value="Buy" class="btn btn-success" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<hr style="height: 3px" width="100%" class="bg-primary">
+<div class="container-fluid">
+    <div class="row  bg-light mb-3">
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12">
+                    <img src="~/Assets/images/Bus/android.jpg" alt="" class="img-fluid" height="2500" width="100%">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="font-weight-bold text-black m-3">FARE</h3>
+            <hr style="height: 3px" width="250" class="bg-warning" align="left"><hr>
+            <p>
+                Daewoo Express is a role model and trend setter private transport company in Pakistan with largest infrastructural setup and buses.
+                We are using most modern information technology tools to facilitate the passengers.
+                Now you can Book & Purchase your favorite seat without hassle or visiting our terminal.
+                All you need to download and install our Mobile App that is available for both Android and iOS.
+                The Bookings made using Mobile App will remain available till
+                the departure of the bus and a confirmation SMS will be sent to valued passenger.
+                You can buy the booked seat via Cash, Credit Card, Jazz Cash.
+            </p>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+</script>
+

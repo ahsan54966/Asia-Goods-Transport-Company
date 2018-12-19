@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Fyp_First_Increment.ViewModel.AdminCustomerTraits.AdminCustomerBookingViewModel>
+
+@{
+    ViewBag.Title = "CustomerPendingPayments";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Pending Payments</li>
+
+</ol>
+<div class="container">
+    <div class="row">
+        <p class="text-success">@TempData["message"]</p>
+    </div>
+    <div class="row">
+        <div class="card mb-3">
+            <div class="card-header text-info font-weight-bold">
+                <i class="fa fa-table"></i>
+                Pending Payments
+            </div>
+            <div class="card-body">
+                <div class="col-12 col-lg-12 col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped table-sm" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr class="text-info">
+                                    <th scope="col">Booking Id</th>
+                                    <th scope="col">Company Id</th>
+                                    <th scope="col">Goods</th>
+                                    <th scope="col">Mis</th>
+                                    <th scope="col">Fare</th>
+                                    <th scope="col">Grand Total</th>
+                                    <th scope="col">Method</th>
+                                    <th scope="col">Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="text-info">
+                                    <th scope="col">Booking Id</th>
+                                    <th scope="col">Company Id</th>
+                                    <th scope="col">Goods</th>
+                                    <th scope="col">Mis</th>
+                                    <th scope="col">Fare</th>
+                                    <th scope="col">Grand Total</th>
+                                    <th scope="col">Method</th>
+                                    <th scope="col">Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompleteBookingId)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompleteCompanyId)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.primarybooking.BookingGoodsDetail)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompleteMisExpenses)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompleteFare)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompleteFinalFare)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompletePayMethod)</td>
+                                        <td scope="row">@Html.DisplayFor(modelItem => item.CompleteBooking.CompletePayStatus)</td>
+                                        <td>
+                                            @Html.ActionLink("open", "CustomerBookingPayment", new { id = item.CompleteBooking.CompleteBookingId }, new { @Class = "btn btn-info btn-sm" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

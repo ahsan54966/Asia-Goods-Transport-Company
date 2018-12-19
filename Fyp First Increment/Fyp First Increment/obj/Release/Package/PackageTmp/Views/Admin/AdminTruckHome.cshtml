@@ -1,0 +1,180 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.Truck>
+
+@{
+    ViewBag.Title = "AdminTruckHome";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Truck Home</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+
+    <div class="row">
+        <div class="col-sm-2">
+
+            @Html.ActionLink("Add Truck", "AdminTruckAddNew", "Admin", new { companyid = Session["user_Id"] }, new { @Class = "btn btn-info" })
+        </div>
+        <div class="offset-sm-5 col-sm-5">
+        </div>
+    </div>
+
+    <p class="text-success">@TempData["message"]</p>
+    <div class="card mb-3">
+        <div class="card-header text-info font-weight-bold">
+            <i class="fa fa-table"></i> Truck Information
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-sm">
+                <table class="table table-bordered table-sm table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-info">
+
+                            <th scope="col">
+                                Number
+                                @*@Html.DisplayNameFor(model => model.VehicleNumber)*@
+                            </th>
+                            @*<th scope="col">
+                                    @Html.DisplayNameFor(model => model.VehicleCatagory)
+                                </th>*@
+                            <th scope="col">
+                                Size
+                                @*@Html.DisplayNameFor(model => model.VehicleSize)*@
+                            </th>
+                            <th scope="col">
+                                Cmpny
+                                @*@Html.DisplayNameFor(model => model.VehicleManufacturer)*@
+                            </th>
+                            <th scope="col">
+                                Route
+                                @*@Html.DisplayNameFor(model => model.VehicleRoute)*@
+                            </th>
+                            @*<th scope="col">
+                                    @Html.DisplayNameFor(model => model.VehicleImageUrl)
+                                </th>*@
+                            <th scope="col">
+                                Cap
+                                @*@Html.DisplayNameFor(model => model.VehicleCapacity)*@
+                            </th>
+                            <th scope="col">
+                                Cat
+                                @*@Html.DisplayNameFor(model => model.TruckCatagory)*@
+                            </th>
+                            <th scope="col">
+                                Rating
+                                @*@Html.DisplayNameFor(model => model.TruckRating)*@
+                            </th>
+                            <th scope="col">
+                                Type
+                                @*@Html.DisplayNameFor(model => model.TruckType)*@
+                            </th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr class="text-info">
+
+                            <th scope="col">
+                                Number
+                                @*@Html.DisplayNameFor(model => model.VehicleNumber)*@
+                            </th>
+                            @*<th scope="col">
+                                    @Html.DisplayNameFor(model => model.VehicleCatagory)
+                                </th>*@
+                            <th scope="col">
+                                Size
+                                @*@Html.DisplayNameFor(model => model.VehicleSize)*@
+                            </th>
+                            <th scope="col">
+                                Cmpny
+                                @*@Html.DisplayNameFor(model => model.VehicleManufacturer)*@
+                            </th>
+                            <th scope="col">
+                                Route
+                                @*@Html.DisplayNameFor(model => model.VehicleRoute)*@
+                            </th>
+                            @*<th scope="col">
+                                    @Html.DisplayNameFor(model => model.VehicleImageUrl)
+                                </th>*@
+                            <th scope="col">
+                                Cap
+                                @*@Html.DisplayNameFor(model => model.VehicleCapacity)*@
+                            </th>
+                            <th scope="col">
+                                Cat
+                                @*@Html.DisplayNameFor(model => model.TruckCatagory)*@
+                            </th>
+                            <th scope="col">
+                                Rating
+                                @*@Html.DisplayNameFor(model => model.TruckRating)*@
+                            </th>
+                            <th scope="col">
+                                Type
+                                @*@Html.DisplayNameFor(model => model.TruckType)*@
+                            </th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.VehicleNumber)
+                                </td>
+                                @*<td scope="row">
+                                        @Html.DisplayFor(modelItem => item.VehicleCatagory)
+                                    </td>*@
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.VehicleSize)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.VehicleManufacturer)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.VehicleRoute)
+                                </td>
+                                @*<td scope="row">
+                                        @Html.DisplayFor(modelItem => item.VehicleImageUrl)
+                                    </td>*@
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.VehicleCapacity)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.TruckCatagory)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.TruckRating)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.TruckType)
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Edit", "AdminTruckAddNew", new { id = item.VehicleNumber, idtype = 1, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-warning" })
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Detail", "AdminTruckDetail", new { id = item.VehicleNumber, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-info" })
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Delete", "AdminDeleteTruck", new { id = item.VehicleNumber, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

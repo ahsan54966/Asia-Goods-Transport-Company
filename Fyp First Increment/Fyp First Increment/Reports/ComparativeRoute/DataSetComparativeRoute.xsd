@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetComparativeRoute" targetNamespace="http://tempuri.org/DataSetComparativeRoute.xsd" xmlns:mstns="http://tempuri.org/DataSetComparativeRoute.xsd" xmlns="http://tempuri.org/DataSetComparativeRoute.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetComparativeRoute" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetComparativeRoute" msprop:Generator_UserDSName="DataSetComparativeRoute">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_Ride" msprop:Generator_TableClassName="tbl_RideDataTable" msprop:Generator_TableVarName="tabletbl_Ride" msprop:Generator_TablePropName="tbl_Ride" msprop:Generator_RowDeletingName="tbl_RideRowDeleting" msprop:Generator_RowChangingName="tbl_RideRowChanging" msprop:Generator_RowEvHandlerName="tbl_RideRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_RideRowDeleted" msprop:Generator_UserTableName="tbl_Ride" msprop:Generator_RowChangedName="tbl_RideRowChanged" msprop:Generator_RowEvArgName="tbl_RideRowChangeEvent" msprop:Generator_RowClassName="tbl_RideRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Ride_Source" msprop:Generator_ColumnVarNameInTable="columnRide_Source" msprop:Generator_ColumnPropNameInRow="Ride_Source" msprop:Generator_ColumnPropNameInTable="Ride_SourceColumn" msprop:Generator_UserColumnName="Ride_Source" type="xs:string" minOccurs="0" />
+              <xs:element name="Ride_Destination" msprop:Generator_ColumnVarNameInTable="columnRide_Destination" msprop:Generator_ColumnPropNameInRow="Ride_Destination" msprop:Generator_ColumnPropNameInTable="Ride_DestinationColumn" msprop:Generator_UserColumnName="Ride_Destination" type="xs:string" minOccurs="0" />
+              <xs:element name="NumberOfRide" msprop:Generator_ColumnVarNameInTable="columnNumberOfRide" msprop:Generator_ColumnPropNameInRow="NumberOfRide" msprop:Generator_ColumnPropNameInTable="NumberOfRideColumn" msprop:Generator_UserColumnName="NumberOfRide" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalProfit" msprop:Generator_ColumnVarNameInTable="columnTotalProfit" msprop:Generator_ColumnPropNameInRow="TotalProfit" msprop:Generator_ColumnPropNameInTable="TotalProfitColumn" msprop:Generator_UserColumnName="TotalProfit" type="xs:int" minOccurs="0" />
+              <xs:element name="ProfitAvg" msprop:Generator_ColumnVarNameInTable="columnProfitAvg" msprop:Generator_ColumnPropNameInRow="ProfitAvg" msprop:Generator_ColumnPropNameInTable="ProfitAvgColumn" msprop:Generator_UserColumnName="ProfitAvg" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

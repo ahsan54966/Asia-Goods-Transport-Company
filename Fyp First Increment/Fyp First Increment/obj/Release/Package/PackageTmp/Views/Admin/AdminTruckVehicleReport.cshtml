@@ -1,0 +1,47 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Reports.ReportsViewModel
+@{
+    ViewBag.Title = "AdminTruckVehicleReport";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Truck Search</li>
+</ol>
+<div class="container">
+    <hr />
+    <p class="text-danger">@TempData["Message"]</p>
+    <div class="row">
+        <div class="card mx-auto mt-5 col-6">
+            <div class="card-header bg-info text-white">
+                Generate Truck Vehicle Report
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("AdminTruckVehicleReport", "Admin", FormMethod.Post, new { }))
+                {
+                    <div class="form-group">
+                        <label for="Company">Enter Vehicle Categrory</label>
+                        @Html.DropDownListFor(m => m.VehicleManufacture, new SelectList(Model.VehicleManuFacturerList, "VehicleManufacturer", "VehicleManufacturer"), "Choose Vehicle Company", new { @Class = "form-control", @id = "Company" })
+                        <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleManufacture)</p>
+                    </div>
+                    @Html.HiddenFor(m => m.AreaType, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.ReportDurationType, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.DriverCat, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.ReportProfit, new { @Value = "0" })
+                    @Html.HiddenFor(m => m.VehicleType, new { @Value = "Truck" })
+                    @Html.HiddenFor(m => m.ReportDateFrom, DateTime.Now.ToString())
+                    @Html.HiddenFor(m => m.ReportDateTo, DateTime.Now.ToString())
+                    @Html.HiddenFor(m => m.ReportVehicleNumber, new { @Value = "None" })
+                    @Html.HiddenFor(m => m.CompanyId, new { @Value = Session["user_Id"] })
+                    @Html.AntiForgeryToken()
+                    <input type="submit" class="btn btn-info btn-block" value="Genererate" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

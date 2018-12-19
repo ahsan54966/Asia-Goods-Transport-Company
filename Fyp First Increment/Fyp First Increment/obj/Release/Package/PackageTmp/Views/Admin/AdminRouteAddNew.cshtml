@@ -1,0 +1,145 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.BusArea.Routes.AdminRouteViewModel
+@{
+    ViewBag.Title = "AdminRouteAddNew";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Add Route</li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-info">
+            @TempData["message"]
+        </div>
+    </div>
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center font-weight-bold bg-info text-white">New Route</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("AdminRouteAddNew", "Admin", FormMethod.Post, new { }))
+            {
+                <div class="form-group">
+                    <h5 class="text-info font-weight-bold">Route Terminal Section</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <label for="RouteDeparture">Choose Departure</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.RouteDeparture, new SelectList(Model.TerminalList, "TerminalName", "TerminalName"), "Select Departure Terminal", new { @Class = "form-control terminalselect", @Id = "RouteDeparture" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteDeparture)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RouteArrival">Choose Arrival</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.RouteArrival, new SelectList(Model.TerminalList, "TerminalName", "TerminalName"), "Select Arrival Terminal", new { @Class = "form-control terminalselect", @Id = "RouteArrival" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteArrival)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Fare">Enter Fare</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.Fare, new { @Class = "form-control", @Id = "Fare", type = "number" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.Fare)</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h5 class="text-info font-weight-bold">Route Time and Day</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="RouteDepartureTime">Select Departure Time</label>
+                            @Html.TextBoxFor(m => m.RouteDepartureTime, new { @id = "RouteDepartureTime", @Class = "form-control", type = "time" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteDepartureTime)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RouteArrivalTime">Select Arrival Time</label>
+                            @Html.TextBoxFor(m => m.RouteArrivalTime, new { @id = "RouteArrivalTime", @Class = "form-control", type = "time" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteArrivalTime)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RouteDay">Choose Route Day</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.RouteDay, new SelectList(Model.DaysList, "RouteDay", "RouteDay"), "Select Day", new { @Class = "form-control", @Id = "RouteDay" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteDay)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Choose Route Class and Vehicle</h5>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="RouteClass">Choose Route Class</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.RouteClass, new SelectList(Model.RouteClassList, "RouteClass", "RouteClass"), "Choose Class", new { @Class = "form-control", @Id = "RouteClass" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteClass)</p>
+                        </div>
+                        <div class="col-md-4">
+
+                            <label for="RouteBusId">Choose Route Bus</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.RouteBusId, new SelectList(Model.RouteBusList, "BusId", "BusId"), "Choose Bus", new { @Class = "form-control", @Id = "RouteBusId" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.RouteBusId)</p>
+
+                        </div>
+                        <div class="col-md-2">
+                            @Html.HiddenFor(m => m.CompanyId, new { @Value = Session["user_Id"] })
+                            @Html.HiddenFor(m => m.RouteId)
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                       
+                            @Html.AntiForgeryToken()
+
+                        
+                        <div class="col-md-3">
+
+                            <input type="submit" value="Submit" class="btn btn-info" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".terminalselect").change(function () {
+            // Get the selected value
+            var selected = $("option:selected", $(this)).val();
+            // Get the ID of this element
+            var thisID = $(this).prop("id");
+            // Reset so all values are showing:
+            $(".terminalselect option").each(function () {
+                $(this).prop("disabled", false);
+            });
+            $(".terminalselect").each(function () {
+                if ($(this).prop("id") != thisID) {
+                    $("option[value='" + selected + "']", $(this)).prop("disabled", true);
+                }
+            });
+
+        });
+    });
+</script>

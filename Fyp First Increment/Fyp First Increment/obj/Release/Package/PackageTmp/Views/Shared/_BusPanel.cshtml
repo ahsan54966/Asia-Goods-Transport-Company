@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sindhu Bus Company</title>
+    <link href="~/Assets/bootstrap/css/glyphicon.css" rel="stylesheet">
+    <link href="~/Assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/bootstrap/css/stylesheet.css" rel="stylesheet">
+    <link href="~/Assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+         .fa {
+             padding: 20px;
+             font-size: 20px;
+             width: 25px;
+             color: #d6d8d9;
+             text-align: center;
+             text-decoration: none;
+             border-radius: 50%;
+         }
+         /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+         #map {
+             height: 500px;
+             width: 100%;
+         }
+                 .field-validation-error{
+            color:red;
+        }
+                         .input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+                .field-validation-error{
+            color:red;
+        }
+         /* Optional: Makes the sample page fill the window. */
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row bg-light">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 m-4">
+                        <span class="glyphicon glyphicon-earphone text-white-50 font-weight-bold "></span>
+                        <span class="font-weight-normal">UAN: 111-005-006,   00333-009-003</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 d-none d-sm-block" align="right">
+                        <a href="https://www.facebook.com/Online-Truck-Ada-502214740190652/?ref=br_rs" target="_blank" class="fa fa-facebook"></a>
+                        <a href="#" target="_blank" class="fa fa-google"></a>
+                        <a href="#" target="_blank" class="fa fa-youtube"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><hr style="height: 3px" width="100%" class="bg-warning">
+    <div class="container-fluid bg-light">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-5">
+            <a class="navbar-brand text-info font-weight-bold" href="#">SINDHU BUS COMPANY</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcolapmenu" aria-controls="navbarcolapmenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarcolapmenu">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-5">
+                    <li class="nav-item active flex-sm-fill text-sm-center ml-5">
+                        <a class="nav-link" href="/BusPanel/Index">HOME <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item flex-sm-fill text-sm-center ml-5">
+                        @Html.ActionLink("FARE", "BusFare", "BusPanel", new { @Class = "nav-link flex-sm-fill text-sm-center" })
+                        
+                    </li>
+                    <li class="nav-item flex-sm-fill text-sm-center ml-5">
+                        @Html.ActionLink("TERMINALS", "BusTerminals", "BusPanel", new { @Class = "nav-link flex-sm-fill text-sm-center" })
+                        
+                    </li>
+                    <li class="nav-item flex-sm-fill text-sm-center ml-5">
+                        @Html.ActionLink("ABOUT US", "AboutUs", "BusPanel", new { @Class = "nav-link flex-sm-fill text-sm-center" })
+                    </li>
+                    <li class="nav-item flex-sm-fill text-sm-center ml-5">
+                        @Html.ActionLink("SCHEDUAL", "Schedules", "BusPanel", new { @Class = "nav-link flex-sm-fill text-sm-center" })
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+
+    <hr style="height: 3px" width="100%" class="bg-primary">
+    @RenderBody()
+     <hr style="height: 3px" width="100%" class="bg-warning">
+    <div class="container-fluid">
+        <div class="row bg-secondary">
+            <div class="col-3">
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 m-4">
+                        <span class="font-weight-bold text-white" style="font-size:11px">CopyRight &copy;-Sindhu Bus Company / Developed by ZAAN Tech / All Right Reserved</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <div class="col-12 m-2" align="right">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-google"></a>
+                        <a href="#" class="fa fa-yahoo"></a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="~/Assets/Table/jquery.doubleScroll.js"></script>
+    <script src="~/Assets/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Assets/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/Assets/js/sb-admin-datatables.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.BusTerminal>
+
+@{
+    ViewBag.Title = "BusTerminals";
+    Layout = "~/Views/Shared/_BusPanel.cshtml";
+}
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="font-weight-bold text-black text-left">SINDHU TERMINALS</h3>
+            <hr style="height: 3px" width="100" class="bg-info" align="left">
+        </div>
+    </div>
+    <br><br><br>
+    <br>
+    <div class="row">
+@foreach (var item in Model)
+{
+    <div class="col-lg-3 offset-lg-1">
+        <figure class="figure">
+            <img src="@Url.Content("~/Pictures/BusArea/Terminals/" + @Path.GetFileName(item.ImageUrl))" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
+            <figcaption class="figure-caption">@item.TerminalName</figcaption>
+        </figure>
+    </div>
+   
+}
+    </div>
+    <br><br><br>
+</div>
+<br>
+<br>

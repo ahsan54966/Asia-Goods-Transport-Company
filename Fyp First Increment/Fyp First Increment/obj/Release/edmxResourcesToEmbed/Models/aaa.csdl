@@ -1,0 +1,2222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="temp_transportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_BusReservation">
+    <Key>
+      <PropertyRef Name="ReservationId" />
+    </Key>
+    <Property Name="ReservationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReservationPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReservationCustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReservationTickitId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookedAt" Type="Time" Precision="7" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LiveStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_BusTickit" Relationship="Self.FK_tbl_BusReservation_tbl_BusTickit" FromRole="tbl_BusReservation" ToRole="tbl_BusTickit" />
+  </EntityType>
+  <EntityType Name="tbl_BusRoute">
+    <Key>
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RouteDepartureTime" Type="Time" Precision="7" />
+    <Property Name="RouteArrivalTime" Type="Time" Precision="7" />
+    <Property Name="RouteClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RouteDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RouteBusId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RouteDeparture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RouteArrival" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_BusRoute_tbl_User" FromRole="tbl_BusRoute" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_Vehicle" Relationship="Self.FK_tbl_BusRoute_tbl_Vehicle" FromRole="tbl_BusRoute" ToRole="tbl_Vehicle" />
+    <NavigationProperty Name="tbl_BusTickit" Relationship="Self.FK_tbl_BusTickit_tbl_BusRoute" FromRole="tbl_BusRoute" ToRole="tbl_BusTickit" />
+  </EntityType>
+  <EntityType Name="tbl_BusTerminal">
+    <Key>
+      <PropertyRef Name="TerminalId" />
+    </Key>
+    <Property Name="TerminalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TerminalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TerminalAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="TerminalCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_BusTerminal_tbl_User" FromRole="tbl_BusTerminal" ToRole="tbl_User" />
+  </EntityType>
+  <EntityType Name="tbl_BusTickit">
+    <Key>
+      <PropertyRef Name="TickitId" />
+    </Key>
+    <Property Name="TickitId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SeatNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SeatFare" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SeatStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TickitRouteId" Type="Int32" />
+    <NavigationProperty Name="tbl_BusReservation" Relationship="Self.FK_tbl_BusReservation_tbl_BusTickit" FromRole="tbl_BusTickit" ToRole="tbl_BusReservation" />
+    <NavigationProperty Name="tbl_BusRoute" Relationship="Self.FK_tbl_BusTickit_tbl_BusRoute" FromRole="tbl_BusTickit" ToRole="tbl_BusRoute" />
+  </EntityType>
+  <EntityType Name="tbl_City">
+    <Key>
+      <PropertyRef Name="CityZipCode" />
+    </Key>
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityDistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityDivision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_CompleteBooking">
+    <Key>
+      <PropertyRef Name="CompleteBookingId" />
+    </Key>
+    <Property Name="CompleteBookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompleteCustomerId" Type="Int32" />
+    <Property Name="CompleteCompanyId" Type="Int32" />
+    <Property Name="CompleteVehicleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompleteFare" Type="Int32" />
+    <Property Name="CompleteMisExpenses" Type="Int32" />
+    <Property Name="CompletePayMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompletePayStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompleteSuccessStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompleteFinalFare" Type="Int32" />
+    <Property Name="CompleteDate" Type="DateTime" Precision="0" />
+    <Property Name="CompletePrimaryTableId" Type="Int32" />
+    <NavigationProperty Name="tbl_PrimaryBooking" Relationship="Self.FK_tbl_CompleteBooking_tbl_PrimaryBooking" FromRole="tbl_CompleteBooking" ToRole="tbl_PrimaryBooking" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_CompleteBooking_tbl_User" FromRole="tbl_CompleteBooking" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_User1" Relationship="Self.FK_tbl_CompleteBooking_tbl_User1" FromRole="tbl_CompleteBooking" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_Vehicle" Relationship="Self.FK_tbl_CompleteBooking_tbl_Vehicle" FromRole="tbl_CompleteBooking" ToRole="tbl_Vehicle" />
+  </EntityType>
+  <EntityType Name="tbl_JazzCashPayment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentPhoneCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentRemainingBalance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_LiveBooking">
+    <Key>
+      <PropertyRef Name="LiveBookingId" />
+    </Key>
+    <Property Name="LiveBookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LiveCompanyId" Type="Int32" />
+    <Property Name="LiveCustomerId" Type="Int32" />
+    <Property Name="LiveStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LiveVehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LivePrimaryBookingId" Type="Int32" />
+    <Property Name="LiveApprovedDate" Type="DateTime" Precision="0" />
+    <Property Name="LiveDriverId" Type="Int32" />
+    <NavigationProperty Name="tbl_PrimaryBooking" Relationship="Self.FK_tbl_LiveBooking_tbl_PrimaryBooking" FromRole="tbl_LiveBooking" ToRole="tbl_PrimaryBooking" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_LiveBooking_tbl_User" FromRole="tbl_LiveBooking" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_User1" Relationship="Self.FK_tbl_LiveBooking_tbl_User1" FromRole="tbl_LiveBooking" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_User2" Relationship="Self.FK_tbl_LiveBooking_tbl_User2" FromRole="tbl_LiveBooking" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_Vehicle" Relationship="Self.FK_tbl_LiveBooking_tbl_Vehicle" FromRole="tbl_LiveBooking" ToRole="tbl_Vehicle" />
+  </EntityType>
+  <EntityType Name="tbl_Location">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationLat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationVehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Vehicle" Relationship="Self.FK_tbl_Location_tbl_Vehicle" FromRole="tbl_Location" ToRole="tbl_Vehicle" />
+  </EntityType>
+  <EntityType Name="tbl_Payments">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentCustomerId" Type="Int32" />
+    <Property Name="PaymentTotal" Type="Int32" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Payments_tbl_User" FromRole="tbl_Payments" ToRole="tbl_User" />
+  </EntityType>
+  <EntityType Name="tbl_PrimaryBooking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookingSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingDestination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingGoodsDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingQunatity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingFare" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingDate" Type="DateTime" Precision="0" />
+    <Property Name="BookingRequestDate" Type="DateTime" Precision="0" />
+    <Property Name="BookingTimeArrival" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingCustomerId" Type="Int32" />
+    <Property Name="BookingPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingServiceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingMaterialType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingVehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingSourceLat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingSourceLon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingDestinationLat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingDestinationLon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_CompleteBooking" Relationship="Self.FK_tbl_CompleteBooking_tbl_PrimaryBooking" FromRole="tbl_PrimaryBooking" ToRole="tbl_CompleteBooking" />
+    <NavigationProperty Name="tbl_LiveBooking" Relationship="Self.FK_tbl_LiveBooking_tbl_PrimaryBooking" FromRole="tbl_PrimaryBooking" ToRole="tbl_LiveBooking" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_PrimaryBooking_tbl_User" FromRole="tbl_PrimaryBooking" ToRole="tbl_User" />
+  </EntityType>
+  <EntityType Name="tbl_Ride">
+    <Key>
+      <PropertyRef Name="Ride_Id" />
+    </Key>
+    <Property Name="Ride_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ride_Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ride_Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ride_DieselExpenses" Type="Int32" />
+    <Property Name="Ride_MaintainanceExpenses" Type="Int32" />
+    <Property Name="Ride_FoodExpenses" Type="Int32" />
+    <Property Name="Ride_MobileExpenses" Type="Int32" />
+    <Property Name="Ride_TaxExpenses" Type="Int32" />
+    <Property Name="Ride_DriverCharges" Type="Int32" />
+    <Property Name="Ride_CommisionCharges" Type="Int32" />
+    <Property Name="Ride_DieselQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ride_DriverId" Type="Int32" />
+    <Property Name="Ride_VehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ride_ProfitLoss" Type="Int32" />
+    <Property Name="RideSeller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RideBuyer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RideFare" Type="Int32" />
+    <Property Name="RideDate" Type="DateTime" Precision="0" />
+    <Property Name="RideDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RidePassenger" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConductorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RidePassengerFare" Type="Int32" />
+    <Property Name="RideType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RideCompanyId" Type="Int32" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Ride_tbl_User" FromRole="tbl_Ride" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_User1" Relationship="Self.FK_tbl_Ride_tbl_User1" FromRole="tbl_Ride" ToRole="tbl_User" />
+    <NavigationProperty Name="tbl_Vehicle" Relationship="Self.FK_tbl_Ride_tbl_Vehicle" FromRole="tbl_Ride" ToRole="tbl_Vehicle" />
+  </EntityType>
+  <EntityType Name="tbl_Roles">
+    <Key>
+      <PropertyRef Name="Role_Id" />
+    </Key>
+    <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role_Salary" Type="Int32" />
+    <Property Name="Role_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_User_tbl_Roles" FromRole="tbl_Roles" ToRole="tbl_User" />
+  </EntityType>
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="User_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Cnic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Role_Id" Type="Int32" Nullable="false" />
+    <Property Name="User_Image" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="tbl_BusRoute" Relationship="Self.FK_tbl_BusRoute_tbl_User" FromRole="tbl_User" ToRole="tbl_BusRoute" />
+    <NavigationProperty Name="tbl_BusTerminal" Relationship="Self.FK_tbl_BusTerminal_tbl_User" FromRole="tbl_User" ToRole="tbl_BusTerminal" />
+    <NavigationProperty Name="tbl_CompleteBooking" Relationship="Self.FK_tbl_CompleteBooking_tbl_User" FromRole="tbl_User" ToRole="tbl_CompleteBooking" />
+    <NavigationProperty Name="tbl_CompleteBooking1" Relationship="Self.FK_tbl_CompleteBooking_tbl_User1" FromRole="tbl_User" ToRole="tbl_CompleteBooking" />
+    <NavigationProperty Name="tbl_LiveBooking" Relationship="Self.FK_tbl_LiveBooking_tbl_User" FromRole="tbl_User" ToRole="tbl_LiveBooking" />
+    <NavigationProperty Name="tbl_LiveBooking1" Relationship="Self.FK_tbl_LiveBooking_tbl_User1" FromRole="tbl_User" ToRole="tbl_LiveBooking" />
+    <NavigationProperty Name="tbl_LiveBooking2" Relationship="Self.FK_tbl_LiveBooking_tbl_User2" FromRole="tbl_User" ToRole="tbl_LiveBooking" />
+    <NavigationProperty Name="tbl_Payments" Relationship="Self.FK_tbl_Payments_tbl_User" FromRole="tbl_User" ToRole="tbl_Payments" />
+    <NavigationProperty Name="tbl_PrimaryBooking" Relationship="Self.FK_tbl_PrimaryBooking_tbl_User" FromRole="tbl_User" ToRole="tbl_PrimaryBooking" />
+    <NavigationProperty Name="tbl_Ride" Relationship="Self.FK_tbl_Ride_tbl_User" FromRole="tbl_User" ToRole="tbl_Ride" />
+    <NavigationProperty Name="tbl_Ride1" Relationship="Self.FK_tbl_Ride_tbl_User1" FromRole="tbl_User" ToRole="tbl_Ride" />
+    <NavigationProperty Name="tbl_Roles" Relationship="Self.FK_tbl_User_tbl_Roles" FromRole="tbl_User" ToRole="tbl_Roles" />
+    <NavigationProperty Name="tbl_Vehicle" Relationship="Self.FK_tbl_Vehicle_tbl_User" FromRole="tbl_User" ToRole="tbl_Vehicle" />
+  </EntityType>
+  <EntityType Name="tbl_Vehicle">
+    <Key>
+      <PropertyRef Name="Vehicle_Number" />
+    </Key>
+    <Property Name="Vehicle_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vehicle_Catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vehicle_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Vehicle_Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Vehicle_Route" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Vehicle_ImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleCapacity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleCompanyId" Type="Int32" />
+    <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_BusRoute" Relationship="Self.FK_tbl_BusRoute_tbl_Vehicle" FromRole="tbl_Vehicle" ToRole="tbl_BusRoute" />
+    <NavigationProperty Name="tbl_CompleteBooking" Relationship="Self.FK_tbl_CompleteBooking_tbl_Vehicle" FromRole="tbl_Vehicle" ToRole="tbl_CompleteBooking" />
+    <NavigationProperty Name="tbl_LiveBooking" Relationship="Self.FK_tbl_LiveBooking_tbl_Vehicle" FromRole="tbl_Vehicle" ToRole="tbl_LiveBooking" />
+    <NavigationProperty Name="tbl_Location" Relationship="Self.FK_tbl_Location_tbl_Vehicle" FromRole="tbl_Vehicle" ToRole="tbl_Location" />
+    <NavigationProperty Name="tbl_Ride" Relationship="Self.FK_tbl_Ride_tbl_Vehicle" FromRole="tbl_Vehicle" ToRole="tbl_Ride" />
+    <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Vehicle_tbl_User" FromRole="tbl_Vehicle" ToRole="tbl_User" />
+  </EntityType>
+  <Association Name="FK_tbl_BusReservation_tbl_BusTickit">
+    <End Role="tbl_BusTickit" Type="Self.tbl_BusTickit" Multiplicity="0..1" />
+    <End Role="tbl_BusReservation" Type="Self.tbl_BusReservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_BusTickit">
+        <PropertyRef Name="TickitId" />
+      </Principal>
+      <Dependent Role="tbl_BusReservation">
+        <PropertyRef Name="ReservationTickitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusRoute_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_BusRoute" Type="Self.tbl_BusRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_BusRoute">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusRoute_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_BusRoute" Type="Self.tbl_BusRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_BusRoute">
+        <PropertyRef Name="RouteBusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusTickit_tbl_BusRoute">
+    <End Role="tbl_BusRoute" Type="Self.tbl_BusRoute" Multiplicity="0..1" />
+    <End Role="tbl_BusTickit" Type="Self.tbl_BusTickit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_BusRoute">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="tbl_BusTickit">
+        <PropertyRef Name="TickitRouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusTerminal_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_BusTerminal" Type="Self.tbl_BusTerminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_BusTerminal">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_PrimaryBooking">
+    <End Role="tbl_PrimaryBooking" Type="Self.tbl_PrimaryBooking" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PrimaryBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompletePrimaryTableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompleteCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompleteCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompleteVehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_PrimaryBooking">
+    <End Role="tbl_PrimaryBooking" Type="Self.tbl_PrimaryBooking" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PrimaryBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LivePrimaryBookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_User2">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveDriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveVehicleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Location_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_Location">
+        <PropertyRef Name="LocationVehicleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Payments_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Payments" Type="Self.tbl_Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Payments">
+        <PropertyRef Name="PaymentCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PrimaryBooking_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_PrimaryBooking" Type="Self.tbl_PrimaryBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_PrimaryBooking">
+        <PropertyRef Name="BookingCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Ride_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Ride" Type="Self.tbl_Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Ride">
+        <PropertyRef Name="Ride_DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Ride_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Ride" Type="Self.tbl_Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Ride">
+        <PropertyRef Name="RideCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Ride_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_Ride" Type="Self.tbl_Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_Ride">
+        <PropertyRef Name="Ride_VehicleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_User_tbl_Roles">
+    <End Role="tbl_Roles" Type="Self.tbl_Roles" Multiplicity="1" />
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Roles">
+        <PropertyRef Name="Role_Id" />
+      </Principal>
+      <Dependent Role="tbl_User">
+        <PropertyRef Name="User_Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Vehicle_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Vehicle">
+        <PropertyRef Name="VehicleCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="temp_transportEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_BusReservation" EntityType="Self.tbl_BusReservation" />
+    <EntitySet Name="tbl_BusRoute" EntityType="Self.tbl_BusRoute" />
+    <EntitySet Name="tbl_BusTerminal" EntityType="Self.tbl_BusTerminal" />
+    <EntitySet Name="tbl_BusTickit" EntityType="Self.tbl_BusTickit" />
+    <EntitySet Name="tbl_City" EntityType="Self.tbl_City" />
+    <EntitySet Name="tbl_CompleteBooking" EntityType="Self.tbl_CompleteBooking" />
+    <EntitySet Name="tbl_JazzCashPayment" EntityType="Self.tbl_JazzCashPayment" />
+    <EntitySet Name="tbl_LiveBooking" EntityType="Self.tbl_LiveBooking" />
+    <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" />
+    <EntitySet Name="tbl_Payments" EntityType="Self.tbl_Payments" />
+    <EntitySet Name="tbl_PrimaryBooking" EntityType="Self.tbl_PrimaryBooking" />
+    <EntitySet Name="tbl_Ride" EntityType="Self.tbl_Ride" />
+    <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+    <EntitySet Name="tbl_Vehicle" EntityType="Self.tbl_Vehicle" />
+    <AssociationSet Name="FK_tbl_BusReservation_tbl_BusTickit" Association="Self.FK_tbl_BusReservation_tbl_BusTickit">
+      <End Role="tbl_BusTickit" EntitySet="tbl_BusTickit" />
+      <End Role="tbl_BusReservation" EntitySet="tbl_BusReservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusRoute_tbl_User" Association="Self.FK_tbl_BusRoute_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_BusRoute" EntitySet="tbl_BusRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusRoute_tbl_Vehicle" Association="Self.FK_tbl_BusRoute_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_BusRoute" EntitySet="tbl_BusRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusTickit_tbl_BusRoute" Association="Self.FK_tbl_BusTickit_tbl_BusRoute">
+      <End Role="tbl_BusRoute" EntitySet="tbl_BusRoute" />
+      <End Role="tbl_BusTickit" EntitySet="tbl_BusTickit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusTerminal_tbl_User" Association="Self.FK_tbl_BusTerminal_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_BusTerminal" EntitySet="tbl_BusTerminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_PrimaryBooking" Association="Self.FK_tbl_CompleteBooking_tbl_PrimaryBooking">
+      <End Role="tbl_PrimaryBooking" EntitySet="tbl_PrimaryBooking" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_User" Association="Self.FK_tbl_CompleteBooking_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_User1" Association="Self.FK_tbl_CompleteBooking_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_Vehicle" Association="Self.FK_tbl_CompleteBooking_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_PrimaryBooking" Association="Self.FK_tbl_LiveBooking_tbl_PrimaryBooking">
+      <End Role="tbl_PrimaryBooking" EntitySet="tbl_PrimaryBooking" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_User" Association="Self.FK_tbl_LiveBooking_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_User1" Association="Self.FK_tbl_LiveBooking_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_User2" Association="Self.FK_tbl_LiveBooking_tbl_User2">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_Vehicle" Association="Self.FK_tbl_LiveBooking_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Location_tbl_Vehicle" Association="Self.FK_tbl_Location_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Payments_tbl_User" Association="Self.FK_tbl_Payments_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Payments" EntitySet="tbl_Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PrimaryBooking_tbl_User" Association="Self.FK_tbl_PrimaryBooking_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_PrimaryBooking" EntitySet="tbl_PrimaryBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Ride_tbl_User" Association="Self.FK_tbl_Ride_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Ride" EntitySet="tbl_Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Ride_tbl_User1" Association="Self.FK_tbl_Ride_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Ride" EntitySet="tbl_Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Ride_tbl_Vehicle" Association="Self.FK_tbl_Ride_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_Ride" EntitySet="tbl_Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_User_tbl_Roles" Association="Self.FK_tbl_User_tbl_Roles">
+      <End Role="tbl_Roles" EntitySet="tbl_Roles" />
+      <End Role="tbl_User" EntitySet="tbl_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Vehicle_tbl_User" Association="Self.FK_tbl_Vehicle_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+    </AssociationSet>
+    <FunctionImport Name="Admin_Registration" ReturnType="Collection(Int32)">
+      <Parameter Name="User_FirstName" Mode="In" Type="String" />
+      <Parameter Name="User_LastName" Mode="In" Type="String" />
+      <Parameter Name="User_PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="User_Address" Mode="In" Type="String" />
+      <Parameter Name="User_Cnic" Mode="In" Type="String" />
+      <Parameter Name="User_Email" Mode="In" Type="String" />
+      <Parameter Name="User_Password" Mode="In" Type="String" />
+      <Parameter Name="User_Role_Id" Mode="In" Type="Int32" />
+      <Parameter Name="User_Image" Mode="In" Type="String" />
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="CompanyType" Mode="In" Type="String" />
+      <Parameter Name="UserCity" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Company_info">
+      <Parameter Name="CompanyRegNum" Mode="In" Type="String" />
+      <Parameter Name="CompanyOwner" Mode="In" Type="String" />
+      <Parameter Name="CompanyVehicleQuanitity" Mode="In" Type="String" />
+      <Parameter Name="CompanyWorth" Mode="In" Type="String" />
+      <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+      <Parameter Name="CompanyPhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="CompanyUserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Driver_info">
+      <Parameter Name="DriverSalary" Mode="In" Type="String" />
+      <Parameter Name="DriverExperience" Mode="In" Type="String" />
+      <Parameter Name="DriverType" Mode="In" Type="String" />
+      <Parameter Name="DriverPosition" Mode="In" Type="String" />
+      <Parameter Name="DriverRouteCharge" Mode="In" Type="String" />
+      <Parameter Name="DriverUserId" Mode="In" Type="Int32" />
+      <Parameter Name="DriverCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="forgetpassword" ReturnType="Collection(temp_transportModel.forgetpassword_Result)">
+      <Parameter Name="User_Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LiveRide" ReturnType="Collection(temp_transportModel.LiveRide_Result)">
+      <Parameter Name="User_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LiveRideAdmin_Customer" ReturnType="Collection(temp_transportModel.LiveRideAdmin_Customer_Result)">
+      <Parameter Name="VehicleNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Login" ReturnType="Collection(temp_transportModel.Login_Result)">
+      <Parameter Name="User_Password" Mode="In" Type="String" />
+      <Parameter Name="User_PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="f_key" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusReservation_DeAllocateTickits" ReturnType="Collection(temp_transportModel.sp_BusReservation_DeAllocateTickits_Result)">
+      <Parameter Name="CurrentTime" Mode="In" Type="Time" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusReservation_FreeRoute" ReturnType="Collection(temp_transportModel.sp_BusReservation_FreeRoute_Result)">
+      <Parameter Name="CurrentTime" Mode="In" Type="Time" />
+      <Parameter Name="Today" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRide_Create">
+      <Parameter Name="Ride_Source" Mode="In" Type="String" />
+      <Parameter Name="Ride_Destination" Mode="In" Type="String" />
+      <Parameter Name="Ride_DieselExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MaintainanceExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_FoodExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MobileExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_TaxExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DriverCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_CommisionCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DieselQuantity" Mode="In" Type="String" />
+      <Parameter Name="Ride_DriverId" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="Ride_ProfitLoss" Mode="In" Type="Int32" />
+      <Parameter Name="RideFare" Mode="In" Type="Int32" />
+      <Parameter Name="RideDate" Mode="In" Type="String" />
+      <Parameter Name="RidePassenger" Mode="In" Type="String" />
+      <Parameter Name="ConductorName" Mode="In" Type="String" />
+      <Parameter Name="RidePassengerFare" Mode="In" Type="Int32" />
+      <Parameter Name="RideType" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRide_update">
+      <Parameter Name="RideId" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_Source" Mode="In" Type="String" />
+      <Parameter Name="Ride_Destination" Mode="In" Type="String" />
+      <Parameter Name="Ride_DieselExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MaintainanceExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_FoodExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MobileExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_TaxExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DriverCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_CommisionCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DieselQuantity" Mode="In" Type="String" />
+      <Parameter Name="Ride_DriverId" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="Ride_ProfitLoss" Mode="In" Type="Int32" />
+      <Parameter Name="RideFare" Mode="In" Type="Int32" />
+      <Parameter Name="RideDate" Mode="In" Type="String" />
+      <Parameter Name="RidePassenger" Mode="In" Type="String" />
+      <Parameter Name="ConductorName" Mode="In" Type="String" />
+      <Parameter Name="RidePassengerFare" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_CheckRouteExist" ReturnType="Collection(temp_transportModel.sp_BusRoute_CheckRouteExist_Result)">
+      <Parameter Name="RouteDepartureTime" Mode="In" Type="Time" />
+      <Parameter Name="RouteClass" Mode="In" Type="String" />
+      <Parameter Name="RouteDay" Mode="In" Type="String" />
+      <Parameter Name="RouteDeparture" Mode="In" Type="String" />
+      <Parameter Name="RouteArrival" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_CreateRoute">
+      <Parameter Name="RouteDepartureTime" Mode="In" Type="Time" />
+      <Parameter Name="RouteArrivalTime" Mode="In" Type="Time" />
+      <Parameter Name="RouteClass" Mode="In" Type="String" />
+      <Parameter Name="RouteDay" Mode="In" Type="String" />
+      <Parameter Name="RouteBusId" Mode="In" Type="String" />
+      <Parameter Name="RouteDeparture" Mode="In" Type="String" />
+      <Parameter Name="RouteArrival" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_DeleteRoute">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="RouteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_DeleteTerminal">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_GetAllRoutes" ReturnType="Collection(temp_transportModel.sp_BusRoute_GetAllRoutes_Result)">
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_GetDataFoRTickitInsert" ReturnType="Collection(temp_transportModel.sp_BusRoute_GetDataFoRTickitInsert_Result)">
+      <Parameter Name="RouteBusId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_GetSingleRoute" ReturnType="Collection(temp_transportModel.sp_BusRoute_GetSingleRoute_Result)">
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+      <Parameter Name="RouteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_GetSingleTerminal" ReturnType="Collection(temp_transportModel.sp_BusRoute_GetSingleTerminal_Result)">
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+      <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_TerminalListForBusCustomers" ReturnType="Collection(String)">
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_UpdateRoute">
+      <Parameter Name="RouteId" Mode="In" Type="Int32" />
+      <Parameter Name="RouteDepartureTime" Mode="In" Type="Time" />
+      <Parameter Name="RouteArrivalTime" Mode="In" Type="Time" />
+      <Parameter Name="RouteClass" Mode="In" Type="String" />
+      <Parameter Name="RouteDay" Mode="In" Type="String" />
+      <Parameter Name="RouteBusId" Mode="In" Type="String" />
+      <Parameter Name="RouteDeparture" Mode="In" Type="String" />
+      <Parameter Name="RouteArrival" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="SeatFare" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRoute_UpdateTerminal">
+      <Parameter Name="TerminalName" Mode="In" Type="String" />
+      <Parameter Name="TerminalAddress" Mode="In" Type="String" />
+      <Parameter Name="TerminalCity" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+      <Parameter Name="OldTerminal" Mode="In" Type="String" />
+      <Parameter Name="ImageUrl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRouteFare_CalculateSeats" ReturnType="Collection(Int32)">
+      <Parameter Name="Route" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRouteFare_GetBusSchedules" ReturnType="Collection(temp_transportModel.sp_BusRouteFare_GetBusSchedules_Result)">
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+      <Parameter Name="Departure" Mode="In" Type="String" />
+      <Parameter Name="Arrival" Mode="In" Type="String" />
+      <Parameter Name="Day" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusRouteFare_GetFare" ReturnType="Collection(temp_transportModel.sp_BusRouteFare_GetFare_Result)">
+      <Parameter Name="CityName" Mode="In" Type="String" />
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTerminal_CreateTerminal">
+      <Parameter Name="TerminalName" Mode="In" Type="String" />
+      <Parameter Name="TerminalAddress" Mode="In" Type="String" />
+      <Parameter Name="TerminalCity" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="ImageUrl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTerminal_GetAllTerminals" ReturnType="Collection(temp_transportModel.sp_BusTerminal_GetAllTerminals_Result)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTerminal_TerminalExistOrNot" ReturnType="Collection(temp_transportModel.sp_BusTerminal_TerminalExistOrNot_Result)">
+      <Parameter Name="TerminalName" Mode="In" Type="String" />
+      <Parameter Name="TerminalCity" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickit_ClearBusTickitStatus">
+      <Parameter Name="TickitId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickit_CreateRouteTickit">
+      <Parameter Name="TickitId" Mode="In" Type="String" />
+      <Parameter Name="SeatNumber" Mode="In" Type="String" />
+      <Parameter Name="SeatFare" Mode="In" Type="String" />
+      <Parameter Name="SeatStatus" Mode="In" Type="String" />
+      <Parameter Name="RouteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickit_GetAllTickits" ReturnType="Collection(temp_transportModel.sp_BusTickit_GetAllTickits_Result)">
+      <Parameter Name="Route" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickit_GetFare" ReturnType="Collection(temp_transportModel.sp_BusTickit_GetFare_Result)">
+      <Parameter Name="RouteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickit_GetTikitsForReservation" ReturnType="Collection(temp_transportModel.sp_BusTickit_GetTikitsForReservation_Result)">
+      <Parameter Name="TickitRouteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickitReservation_ClearRouteTickits">
+      <Parameter Name="TickitId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickitReservation_FinalReservationConfirm">
+      <Parameter Name="LiveStatus" Mode="In" Type="String" />
+      <Parameter Name="PaymentStatus" Mode="In" Type="String" />
+      <Parameter Name="ReservationPhoneNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BusTickitReservation_ReserveTickit">
+      <Parameter Name="ReservationPhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="ReservationCustomerName" Mode="In" Type="String" />
+      <Parameter Name="ReservationTickitId" Mode="In" Type="String" />
+      <Parameter Name="BookedAt" Mode="In" Type="Time" />
+      <Parameter Name="LiveStatus" Mode="In" Type="String" />
+      <Parameter Name="PaymentStatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CompleteBooking_Completed" ReturnType="Collection(temp_transportModel.sp_CompleteBooking_Completed_Result)">
+      <Parameter Name="CompanyBookingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CompleteBooking_CompleteDetail" ReturnType="Collection(temp_transportModel.sp_CompleteBooking_CompleteDetail_Result)">
+      <Parameter Name="CompleteBookingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CompleteBooking_Completeed">
+      <Parameter Name="CompleteCustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="CompleteCompanyId" Mode="In" Type="String" />
+      <Parameter Name="CompleteVehicleId" Mode="In" Type="String" />
+      <Parameter Name="CompleteFare" Mode="In" Type="Int32" />
+      <Parameter Name="CompleteMisExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="CompletePayMethod" Mode="In" Type="String" />
+      <Parameter Name="CompletePayStatus" Mode="In" Type="String" />
+      <Parameter Name="CompleteSuccessStatus" Mode="In" Type="String" />
+      <Parameter Name="CompleteFinalFare" Mode="In" Type="Int32" />
+      <Parameter Name="CompleteDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CompletePrimaryId" Mode="In" Type="Int32" />
+      <Parameter Name="CompletePrimaryStatus" Mode="In" Type="String" />
+      <Parameter Name="CompleteLiveId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CompleteBooking_GetAll" ReturnType="Collection(temp_transportModel.sp_CompleteBooking_GetAll_Result)">
+      <Parameter Name="CompanyBookingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CompleteBooking_GetUnPaidCompleteBookings" ReturnType="Collection(temp_transportModel.sp_CompleteBooking_GetUnPaidCompleteBookings_Result)">
+      <Parameter Name="CustomerBookingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Driver_GetAllDrivers" ReturnType="Collection(temp_transportModel.sp_Driver_GetAllDrivers_Result)">
+      <Parameter Name="CompanyName" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Driver_SelectExistOrNot" ReturnType="Collection(temp_transportModel.sp_Driver_SelectExistOrNot_Result)">
+      <Parameter Name="DriverId" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DriverUser_update">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="User_FirstName" Mode="In" Type="String" />
+      <Parameter Name="User_LastName" Mode="In" Type="String" />
+      <Parameter Name="User_PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="User_Address" Mode="In" Type="String" />
+      <Parameter Name="User_Cnic" Mode="In" Type="String" />
+      <Parameter Name="User_Email" Mode="In" Type="String" />
+      <Parameter Name="User_Password" Mode="In" Type="String" />
+      <Parameter Name="User_Role_Id" Mode="In" Type="Int32" />
+      <Parameter Name="User_Image" Mode="In" Type="String" />
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="CompanyType" Mode="In" Type="String" />
+      <Parameter Name="UserCity" Mode="In" Type="String" />
+      <Parameter Name="DriverSalary" Mode="In" Type="String" />
+      <Parameter Name="DriverExperience" Mode="In" Type="String" />
+      <Parameter Name="DriverType" Mode="In" Type="String" />
+      <Parameter Name="DriverPosition" Mode="In" Type="String" />
+      <Parameter Name="DriverRouteCharge" Mode="In" Type="String" />
+      <Parameter Name="DriverUserId" Mode="In" Type="Int32" />
+      <Parameter Name="DriverCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_JazzCashPayments_Verify" ReturnType="Collection(temp_transportModel.sp_JazzCashPayments_Verify_Result)">
+      <Parameter Name="PaymentPhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="PaymentPhoneCode" Mode="In" Type="String" />
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LiveBooking_Create">
+      <Parameter Name="LiveCompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="LiveCustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="LiveStatus" Mode="In" Type="String" />
+      <Parameter Name="LiveVehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="LivePrimaryBookingId" Mode="In" Type="Int32" />
+      <Parameter Name="LiveApprovedDate" Mode="In" Type="DateTime" />
+      <Parameter Name="BookingQunatity" Mode="In" Type="String" />
+      <Parameter Name="BookingWeight" Mode="In" Type="String" />
+      <Parameter Name="BookingFare" Mode="In" Type="String" />
+      <Parameter Name="BookingStatus" Mode="In" Type="String" />
+      <Parameter Name="LiveDriverId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LiveBooking_DetailBooking" ReturnType="Collection(temp_transportModel.sp_LiveBooking_DetailBooking_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LiveBooking_GetAll" ReturnType="Collection(temp_transportModel.sp_LiveBooking_GetAll_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LiveBooking_GetAllCustomerBooking" ReturnType="Collection(temp_transportModel.sp_LiveBooking_GetAllCustomerBooking_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LiveBookingBooking_CancelBooking">
+      <Parameter Name="LiveBookingId" Mode="In" Type="Int32" />
+      <Parameter Name="LivePrimaryId" Mode="In" Type="Int32" />
+      <Parameter Name="PrimarybookingStatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Location_GetLiveLocation" ReturnType="Collection(temp_transportModel.sp_Location_GetLiveLocation_Result)">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Payments_GetAllPayments" ReturnType="Collection(temp_transportModel.sp_Payments_GetAllPayments_Result)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Payments_Pay">
+      <Parameter Name="PaymentCustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentTotal" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentMethod" Mode="In" Type="String" />
+      <Parameter Name="Remarks" Mode="In" Type="String" />
+      <Parameter Name="CompleteBookingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Payments_sp_Payments_Pay">
+      <Parameter Name="PaymentCustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentTotal" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentMethod" Mode="In" Type="String" />
+      <Parameter Name="Remarks" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_PrimaryBooking_Create">
+      <Parameter Name="BookingSource" Mode="In" Type="String" />
+      <Parameter Name="BookingDestination" Mode="In" Type="String" />
+      <Parameter Name="BookingGoodsDetail" Mode="In" Type="String" />
+      <Parameter Name="BookingQunatity" Mode="In" Type="String" />
+      <Parameter Name="BookingWeight" Mode="In" Type="String" />
+      <Parameter Name="BookingFare" Mode="In" Type="String" />
+      <Parameter Name="BookingDate" Mode="In" Type="DateTime" />
+      <Parameter Name="BookingRequestDate" Mode="In" Type="DateTime" />
+      <Parameter Name="BookingTimeArrival" Mode="In" Type="String" />
+      <Parameter Name="BookingCustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="BookingPhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="BookingStatus" Mode="In" Type="String" />
+      <Parameter Name="BookingServiceType" Mode="In" Type="String" />
+      <Parameter Name="BookingMaterialType" Mode="In" Type="String" />
+      <Parameter Name="BookingVehicleType" Mode="In" Type="String" />
+      <Parameter Name="BookingSourceLat" Mode="In" Type="String" />
+      <Parameter Name="BookingSourceLon" Mode="In" Type="String" />
+      <Parameter Name="BookingDestinationLat" Mode="In" Type="String" />
+      <Parameter Name="BookingDestinationLon" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_PrimaryBooking_CustomerBookingUpdate">
+      <Parameter Name="BookingId" Mode="In" Type="Int32" />
+      <Parameter Name="BookingSource" Mode="In" Type="String" />
+      <Parameter Name="BookingDestination" Mode="In" Type="String" />
+      <Parameter Name="BookingGoodsDetail" Mode="In" Type="String" />
+      <Parameter Name="BookingQunatity" Mode="In" Type="String" />
+      <Parameter Name="BookingWeight" Mode="In" Type="String" />
+      <Parameter Name="BookingFare" Mode="In" Type="String" />
+      <Parameter Name="BookingRequestDate" Mode="In" Type="DateTime" />
+      <Parameter Name="BookingTimeArrival" Mode="In" Type="String" />
+      <Parameter Name="BookingPhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="BookingServiceType" Mode="In" Type="String" />
+      <Parameter Name="BookingMaterialType" Mode="In" Type="String" />
+      <Parameter Name="BookingVehicleType" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_PrimaryBooking_GetAdminRequestBooking" ReturnType="Collection(temp_transportModel.sp_PrimaryBooking_GetAdminRequestBooking_Result)">
+      <Parameter Name="PrimaryBookingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_PrimaryBooking_GetAdminSide" ReturnType="Collection(temp_transportModel.sp_PrimaryBooking_GetAdminSide_Result)" />
+    <FunctionImport Name="sp_PrimaryBooking_GetAll" ReturnType="Collection(temp_transportModel.sp_PrimaryBooking_GetAll_Result)">
+      <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Reservation_GetDataForReservationConfirmation" ReturnType="Collection(temp_transportModel.sp_Reservation_GetDataForReservationConfirmation_Result)">
+      <Parameter Name="ReservationPhoneNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_create">
+      <Parameter Name="Ride_Source" Mode="In" Type="String" />
+      <Parameter Name="Ride_Destination" Mode="In" Type="String" />
+      <Parameter Name="Ride_DieselExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MaintainanceExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_FoodExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MobileExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_TaxExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DriverCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_CommisionCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DieselQuantity" Mode="In" Type="String" />
+      <Parameter Name="Ride_DriverId" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="Ride_ProfitLoss" Mode="In" Type="Int32" />
+      <Parameter Name="RideSeller" Mode="In" Type="String" />
+      <Parameter Name="RideBuyer" Mode="In" Type="String" />
+      <Parameter Name="RideFare" Mode="In" Type="Int32" />
+      <Parameter Name="RideDate" Mode="In" Type="String" />
+      <Parameter Name="RideDetail" Mode="In" Type="String" />
+      <Parameter Name="RideType" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_delete">
+      <Parameter Name="RideId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_GetAllBusRides" ReturnType="Collection(temp_transportModel.sp_Ride_GetAllBusRides_Result)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_GetAllTruckRides" ReturnType="Collection(temp_transportModel.sp_Ride_GetAllTruckRides_Result)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_RideReportProfit" ReturnType="Collection(temp_transportModel.sp_Ride_RideReportProfit_Result)">
+      <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+      <Parameter Name="AreaType" Mode="In" Type="String" />
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_RideReportProfitLastFifteenDays" ReturnType="Collection(temp_transportModel.sp_Ride_RideReportProfitLastFifteenDays_Result)">
+      <Parameter Name="Date1" Mode="In" Type="DateTime" />
+      <Parameter Name="Date2" Mode="In" Type="DateTime" />
+      <Parameter Name="AreaType" Mode="In" Type="String" />
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_RideReportProfitSpecificDate" ReturnType="Collection(temp_transportModel.sp_Ride_RideReportProfitSpecificDate_Result)">
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="AreaType" Mode="In" Type="String" />
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_RideReportProfitYear" ReturnType="Collection(temp_transportModel.sp_Ride_RideReportProfitYear_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="AreaType" Mode="In" Type="String" />
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_RideReportProfitYearandMonth" ReturnType="Collection(temp_transportModel.sp_Ride_RideReportProfitYearandMonth_Result)">
+      <Parameter Name="Month" Mode="In" Type="Int32" />
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="AreaType" Mode="In" Type="String" />
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_select" ReturnType="Collection(temp_transportModel.sp_Ride_select_Result)">
+      <Parameter Name="RideId" Mode="In" Type="Int32" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Ride_update">
+      <Parameter Name="RideId" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_Source" Mode="In" Type="String" />
+      <Parameter Name="Ride_Destination" Mode="In" Type="String" />
+      <Parameter Name="Ride_DieselExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MaintainanceExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_FoodExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_MobileExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_TaxExpenses" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DriverCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_CommisionCharges" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_DieselQuantity" Mode="In" Type="String" />
+      <Parameter Name="Ride_DriverId" Mode="In" Type="Int32" />
+      <Parameter Name="Ride_VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="Ride_ProfitLoss" Mode="In" Type="Int32" />
+      <Parameter Name="RideSeller" Mode="In" Type="String" />
+      <Parameter Name="RideBuyer" Mode="In" Type="String" />
+      <Parameter Name="RideFare" Mode="In" Type="Int32" />
+      <Parameter Name="RideDate" Mode="In" Type="String" />
+      <Parameter Name="RideDetail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_User_Busdrivers" ReturnType="Collection(temp_transportModel.sp_User_Busdrivers_Result)" />
+    <FunctionImport Name="sp_User_EditUser" ReturnType="Collection(temp_transportModel.sp_User_EditUser_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_User_ReportALLDrivers" ReturnType="Collection(temp_transportModel.sp_User_ReportALLDrivers_Result)">
+      <Parameter Name="DriverType" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_User_ReportDrivers" ReturnType="Collection(temp_transportModel.sp_User_ReportDrivers_Result)">
+      <Parameter Name="DriverType" Mode="In" Type="String" />
+      <Parameter Name="DriverPosition" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_User_ReportTruckVehicles" ReturnType="Collection(temp_transportModel.sp_User_ReportTruckVehicles_Result)">
+      <Parameter Name="VehicleType" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_User_ReportVehicles">
+      <Parameter Name="VehicleType" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_User_Truckdrivers" ReturnType="Collection(temp_transportModel.sp_User_Truckdrivers_Result)" />
+    <FunctionImport Name="sp_User_UpdateUser">
+      <Parameter Name="User_FirstName" Mode="In" Type="String" />
+      <Parameter Name="User_LastName" Mode="In" Type="String" />
+      <Parameter Name="User_Address" Mode="In" Type="String" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+      <Parameter Name="User_Password" Mode="In" Type="String" />
+      <Parameter Name="User_Image" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UserDriver_Delete">
+      <Parameter Name="DriverId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UserDriver_Edit" ReturnType="Collection(temp_transportModel.sp_UserDriver_Edit_Result)">
+      <Parameter Name="DriverId" Mode="In" Type="String" />
+      <Parameter Name="DriverCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Users_GetDriverDetail" ReturnType="Collection(temp_transportModel.sp_Users_GetDriverDetail_Result)">
+      <Parameter Name="Driverid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Users_GetFreeDrivers" ReturnType="Collection(temp_transportModel.sp_Users_GetFreeDrivers_Result)" />
+    <FunctionImport Name="sp_Vehicle_GetFreeVehicles" ReturnType="Collection(temp_transportModel.sp_Vehicle_GetFreeVehicles_Result)" />
+    <FunctionImport Name="sp_Vehicle_VehicleLogin" ReturnType="Collection(temp_transportModel.sp_Vehicle_VehicleLogin_Result)">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="PinCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleBus_Create">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCatagory" Mode="In" Type="String" />
+      <Parameter Name="VehicleSize" Mode="In" Type="String" />
+      <Parameter Name="VehicleManufacturer" Mode="In" Type="String" />
+      <Parameter Name="VehicleRoute" Mode="In" Type="String" />
+      <Parameter Name="VehicleImageUrl" Mode="In" Type="String" />
+      <Parameter Name="VehicleCapacity" Mode="In" Type="String" />
+      <Parameter Name="BusModel" Mode="In" Type="String" />
+      <Parameter Name="BusId" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="PinCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleBus_Edit">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleBus_GetAllBuses">
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleBus_SelectExistOrNot" ReturnType="Collection(temp_transportModel.sp_VehicleBus_SelectExistOrNot_Result)">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleBus_sp_VehicleBus_Delete">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleBus_update">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCatagory" Mode="In" Type="String" />
+      <Parameter Name="VehicleSize" Mode="In" Type="String" />
+      <Parameter Name="VehicleManufacturer" Mode="In" Type="String" />
+      <Parameter Name="VehicleRoute" Mode="In" Type="String" />
+      <Parameter Name="VehicleImageUrl" Mode="In" Type="String" />
+      <Parameter Name="VehicleCapacity" Mode="In" Type="String" />
+      <Parameter Name="BusModel" Mode="In" Type="String" />
+      <Parameter Name="BusId" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="PinCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleTruck_Create">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCatagory" Mode="In" Type="String" />
+      <Parameter Name="VehicleSize" Mode="In" Type="String" />
+      <Parameter Name="VehicleManufacturer" Mode="In" Type="String" />
+      <Parameter Name="VehicleRoute" Mode="In" Type="String" />
+      <Parameter Name="VehicleImageUrl" Mode="In" Type="String" />
+      <Parameter Name="VehicleCapacity" Mode="In" Type="String" />
+      <Parameter Name="TruckCatagory" Mode="In" Type="String" />
+      <Parameter Name="TruckRating" Mode="In" Type="String" />
+      <Parameter Name="TruckType" Mode="In" Type="String" />
+      <Parameter Name="TruckId" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="PinCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleTruck_Delete">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleTruck_Edit" ReturnType="Collection(temp_transportModel.sp_VehicleTruck_Edit_Result)">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleTruck_GetAllTrucks" ReturnType="Collection(temp_transportModel.sp_VehicleTruck_GetAllTrucks_Result)">
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VehicleTruck_update">
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="VehicleCatagory" Mode="In" Type="String" />
+      <Parameter Name="VehicleSize" Mode="In" Type="String" />
+      <Parameter Name="VehicleManufacturer" Mode="In" Type="String" />
+      <Parameter Name="VehicleRoute" Mode="In" Type="String" />
+      <Parameter Name="VehicleImageUrl" Mode="In" Type="String" />
+      <Parameter Name="VehicleCapacity" Mode="In" Type="String" />
+      <Parameter Name="TruckCatagory" Mode="In" Type="String" />
+      <Parameter Name="TruckRating" Mode="In" Type="String" />
+      <Parameter Name="TruckType" Mode="In" Type="String" />
+      <Parameter Name="TruckId" Mode="In" Type="String" />
+      <Parameter Name="VehicleCompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="PinCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateCurentLocation">
+      <Parameter Name="vehicleno" Mode="In" Type="String" />
+      <Parameter Name="latitude" Mode="In" Type="String" />
+      <Parameter Name="logitude" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdatePassword">
+      <Parameter Name="User_Password" Mode="In" Type="String" />
+      <Parameter Name="User_PhoneNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="User_Registration">
+      <Parameter Name="User_FirstName" Mode="In" Type="String" />
+      <Parameter Name="User_LastName" Mode="In" Type="String" />
+      <Parameter Name="User_PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="User_Address" Mode="In" Type="String" />
+      <Parameter Name="User_Cnic" Mode="In" Type="String" />
+      <Parameter Name="User_Email" Mode="In" Type="String" />
+      <Parameter Name="User_Password" Mode="In" Type="String" />
+      <Parameter Name="User_Role_Id" Mode="In" Type="Int32" />
+      <Parameter Name="User_Image" Mode="In" Type="String" />
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="CompanyType" Mode="In" Type="String" />
+      <Parameter Name="UserCity" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="validuser" ReturnType="Collection(temp_transportModel.validuser_Result)">
+      <Parameter Name="User_PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="User_Email" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="forgetpassword_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="LiveRide_Result">
+    <Property Type="String" Name="allvehicle" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="livevehicleno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sorce" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="destiation" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="LiveRideAdmin_Customer_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyOwner" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationLong" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationVehicleNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Login_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_BusReservation_DeAllocateTickits_Result">
+    <Property Type="Int32" Name="ReservationId" Nullable="false" />
+    <Property Type="String" Name="ReservationPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReservationCustomerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReservationTickitId" Nullable="true" MaxLength="50" />
+    <Property Type="Time" Name="BookedAt" Nullable="true" />
+    <Property Type="String" Name="PaymentStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_BusReservation_FreeRoute_Result">
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+    <Property Type="String" Name="TickitId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SeatNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TickitRouteId" Nullable="true" />
+    <Property Type="Int32" Name="ReservationId" Nullable="false" />
+    <Property Type="String" Name="ReservationPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReservationCustomerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReservationTickitId" Nullable="true" MaxLength="50" />
+    <Property Type="Time" Name="BookedAt" Nullable="true" />
+    <Property Type="String" Name="PaymentStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRoute_CheckRouteExist_Result">
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRoute_GetAllRoutes_Result">
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRoute_GetDataFoRTickitInsert_Result">
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRoute_GetSingleRoute_Result">
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRoute_GetSingleTerminal_Result">
+    <Property Type="Int32" Name="TerminalId" Nullable="false" />
+    <Property Type="String" Name="TerminalName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TerminalAddress" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+    <Property Type="String" Name="TerminalCity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRouteFare_GetBusSchedules_Result">
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusRouteFare_GetFare_Result">
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RouteId" Nullable="false" />
+    <Property Type="Time" Name="RouteDepartureTime" Nullable="true" />
+    <Property Type="Time" Name="RouteArrivalTime" Nullable="true" />
+    <Property Type="String" Name="RouteClass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteBusId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusTerminal_GetAllTerminals_Result">
+    <Property Type="Int32" Name="TerminalId" Nullable="false" />
+    <Property Type="String" Name="TerminalName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TerminalAddress" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+    <Property Type="String" Name="TerminalCity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_BusTerminal_TerminalExistOrNot_Result">
+    <Property Type="Int32" Name="TerminalId" Nullable="false" />
+    <Property Type="String" Name="TerminalName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TerminalAddress" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+    <Property Type="String" Name="TerminalCity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_BusTickit_GetAllTickits_Result">
+    <Property Type="String" Name="TickitId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SeatNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TickitRouteId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusTickit_GetFare_Result">
+    <Property Type="String" Name="TickitId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SeatNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TickitRouteId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_BusTickit_GetTikitsForReservation_Result">
+    <Property Type="String" Name="TickitId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SeatNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TickitRouteId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CompleteBooking_Completed_Result">
+    <Property Type="Int32" Name="CompleteBookingId" Nullable="false" />
+    <Property Type="Int32" Name="CompleteCustomerId" Nullable="true" />
+    <Property Type="Int32" Name="CompleteCompanyId" Nullable="true" />
+    <Property Type="String" Name="CompleteVehicleId" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFare" Nullable="true" />
+    <Property Type="Int32" Name="CompleteMisExpenses" Nullable="true" />
+    <Property Type="String" Name="CompletePayMethod" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompletePayStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompleteSuccessStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFinalFare" Nullable="true" />
+    <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
+    <Property Type="Int32" Name="CompletePrimaryTableId" Nullable="true" />
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="BookingSource" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestination" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingGoodsDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingQunatity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingWeight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingFare" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BookingDate" Nullable="true" />
+    <Property Type="DateTime" Name="BookingRequestDate" Nullable="true" />
+    <Property Type="String" Name="BookingTimeArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookingCustomerId" Nullable="true" />
+    <Property Type="String" Name="BookingPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingServiceType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingMaterialType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingVehicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_CompleteBooking_CompleteDetail_Result">
+    <Property Type="Int32" Name="CompleteBookingId" Nullable="false" />
+    <Property Type="Int32" Name="CompleteCustomerId" Nullable="true" />
+    <Property Type="Int32" Name="CompleteCompanyId" Nullable="true" />
+    <Property Type="String" Name="CompleteVehicleId" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFare" Nullable="true" />
+    <Property Type="Int32" Name="CompleteMisExpenses" Nullable="true" />
+    <Property Type="String" Name="CompletePayMethod" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompletePayStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompleteSuccessStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFinalFare" Nullable="true" />
+    <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
+    <Property Type="Int32" Name="CompletePrimaryTableId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CompleteBooking_GetAll_Result">
+    <Property Type="Int32" Name="CompleteBookingId" Nullable="false" />
+    <Property Type="Int32" Name="CompleteCustomerId" Nullable="true" />
+    <Property Type="Int32" Name="CompleteCompanyId" Nullable="true" />
+    <Property Type="String" Name="CompleteVehicleId" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFare" Nullable="true" />
+    <Property Type="Int32" Name="CompleteMisExpenses" Nullable="true" />
+    <Property Type="String" Name="CompletePayMethod" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompletePayStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompleteSuccessStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFinalFare" Nullable="true" />
+    <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
+    <Property Type="Int32" Name="CompletePrimaryTableId" Nullable="true" />
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="BookingSource" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestination" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingGoodsDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingQunatity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingWeight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingFare" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BookingDate" Nullable="true" />
+    <Property Type="DateTime" Name="BookingRequestDate" Nullable="true" />
+    <Property Type="String" Name="BookingTimeArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookingCustomerId" Nullable="true" />
+    <Property Type="String" Name="BookingPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingServiceType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingMaterialType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingVehicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_CompleteBooking_GetUnPaidCompleteBookings_Result">
+    <Property Type="Int32" Name="CompleteBookingId" Nullable="false" />
+    <Property Type="Int32" Name="CompleteCustomerId" Nullable="true" />
+    <Property Type="Int32" Name="CompleteCompanyId" Nullable="true" />
+    <Property Type="String" Name="CompleteVehicleId" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFare" Nullable="true" />
+    <Property Type="Int32" Name="CompleteMisExpenses" Nullable="true" />
+    <Property Type="String" Name="CompletePayMethod" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompletePayStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompleteSuccessStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompleteFinalFare" Nullable="true" />
+    <Property Type="DateTime" Name="CompleteDate" Nullable="true" />
+    <Property Type="Int32" Name="CompletePrimaryTableId" Nullable="true" />
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="BookingSource" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestination" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingGoodsDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingQunatity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingWeight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingFare" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BookingDate" Nullable="true" />
+    <Property Type="DateTime" Name="BookingRequestDate" Nullable="true" />
+    <Property Type="String" Name="BookingTimeArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookingCustomerId" Nullable="true" />
+    <Property Type="String" Name="BookingPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingServiceType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingMaterialType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingVehicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_Driver_GetAllDrivers_Result">
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_Driver_SelectExistOrNot_Result">
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_JazzCashPayments_Verify_Result">
+    <Property Type="Int32" Name="PaymentId" Nullable="false" />
+    <Property Type="String" Name="PaymentPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaymentPhoneCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaymentRemainingBalance" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_LiveBooking_DetailBooking_Result">
+    <Property Type="Int32" Name="LiveBookingId" Nullable="false" />
+    <Property Type="Int32" Name="LiveCompanyId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCustomerId" Nullable="true" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveVehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LivePrimaryBookingId" Nullable="true" />
+    <Property Type="DateTime" Name="LiveApprovedDate" Nullable="true" />
+    <Property Type="Int32" Name="LiveDriverId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_LiveBooking_GetAll_Result">
+    <Property Type="Int32" Name="LiveBookingId" Nullable="false" />
+    <Property Type="Int32" Name="LiveCompanyId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCustomerId" Nullable="true" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveVehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LivePrimaryBookingId" Nullable="true" />
+    <Property Type="DateTime" Name="LiveApprovedDate" Nullable="true" />
+    <Property Type="Int32" Name="LiveDriverId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_LiveBooking_GetAllCustomerBooking_Result">
+    <Property Type="Int32" Name="LiveBookingId" Nullable="false" />
+    <Property Type="Int32" Name="LiveCompanyId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCustomerId" Nullable="true" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveVehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LivePrimaryBookingId" Nullable="true" />
+    <Property Type="DateTime" Name="LiveApprovedDate" Nullable="true" />
+    <Property Type="Int32" Name="LiveDriverId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Location_GetLiveLocation_Result">
+    <Property Type="Int32" Name="LocationId" Nullable="false" />
+    <Property Type="String" Name="LocationLong" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationVehicleNumber" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_Payments_GetAllPayments_Result">
+    <Property Type="Int32" Name="PaymentId" Nullable="false" />
+    <Property Type="Int32" Name="PaymentCustomerId" Nullable="true" />
+    <Property Type="Int32" Name="PaymentTotal" Nullable="true" />
+    <Property Type="String" Name="PaymentMethod" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Remarks" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_PrimaryBooking_GetAdminRequestBooking_Result">
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="BookingSource" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestination" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingGoodsDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingQunatity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingWeight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingFare" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BookingDate" Nullable="true" />
+    <Property Type="DateTime" Name="BookingRequestDate" Nullable="true" />
+    <Property Type="String" Name="BookingTimeArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookingCustomerId" Nullable="true" />
+    <Property Type="String" Name="BookingPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingServiceType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingMaterialType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingVehicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_PrimaryBooking_GetAdminSide_Result">
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="BookingSource" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestination" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingGoodsDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingQunatity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingWeight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingFare" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BookingDate" Nullable="true" />
+    <Property Type="DateTime" Name="BookingRequestDate" Nullable="true" />
+    <Property Type="String" Name="BookingTimeArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookingCustomerId" Nullable="true" />
+    <Property Type="String" Name="BookingPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingServiceType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingMaterialType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingVehicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_PrimaryBooking_GetAll_Result">
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="BookingSource" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestination" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingGoodsDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingQunatity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingWeight" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingFare" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="BookingDate" Nullable="true" />
+    <Property Type="DateTime" Name="BookingRequestDate" Nullable="true" />
+    <Property Type="String" Name="BookingTimeArrival" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BookingCustomerId" Nullable="true" />
+    <Property Type="String" Name="BookingPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingServiceType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingMaterialType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingVehicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingSourceLon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BookingDestinationLon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_Reservation_GetDataForReservationConfirmation_Result">
+    <Property Type="Int32" Name="ReservationId" Nullable="false" />
+    <Property Type="String" Name="ReservationCustomerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReservationPhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeatFare" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteDeparture" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RouteArrival" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_GetAllBusRides_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_GetAllTruckRides_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_RideReportProfit_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_RideReportProfitLastFifteenDays_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_RideReportProfitSpecificDate_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_RideReportProfitYear_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_RideReportProfitYearandMonth_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Ride_select_Result">
+    <Property Type="Int32" Name="Ride_Id" Nullable="false" />
+    <Property Type="String" Name="Ride_Source" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ride_Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DieselExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MaintainanceExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_FoodExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_MobileExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_TaxExpenses" Nullable="true" />
+    <Property Type="Int32" Name="Ride_DriverCharges" Nullable="true" />
+    <Property Type="Int32" Name="Ride_CommisionCharges" Nullable="true" />
+    <Property Type="String" Name="Ride_DieselQuantity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_DriverId" Nullable="true" />
+    <Property Type="String" Name="Ride_VehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Ride_ProfitLoss" Nullable="true" />
+    <Property Type="String" Name="RideSeller" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RideBuyer" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="RideFare" Nullable="true" />
+    <Property Type="DateTime" Name="RideDate" Nullable="true" />
+    <Property Type="String" Name="RideDetail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RidePassenger" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConductorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RidePassengerFare" Nullable="true" />
+    <Property Type="String" Name="RideType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RideCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_User_Busdrivers_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_User_EditUser_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_User_ReportALLDrivers_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_User_ReportDrivers_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_User_ReportTruckVehicles_Result">
+    <Property Type="String" Name="Vehicle_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Catagory" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Size" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Route" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_ImageUrl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VehicleCapacity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="VehicleCompanyId" Nullable="true" />
+    <Property Type="String" Name="PinCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckCatagory" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckRating" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_User_Truckdrivers_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_UserDriver_Edit_Result">
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_Users_GetDriverDetail_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="LiveBookingId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCompanyId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCustomerId" Nullable="true" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveVehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LivePrimaryBookingId" Nullable="true" />
+    <Property Type="DateTime" Name="LiveApprovedDate" Nullable="true" />
+    <Property Type="Int32" Name="LiveDriverId" Nullable="true" />
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Users_GetFreeDrivers_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="LiveBookingId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCompanyId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCustomerId" Nullable="true" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveVehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LivePrimaryBookingId" Nullable="true" />
+    <Property Type="DateTime" Name="LiveApprovedDate" Nullable="true" />
+    <Property Type="Int32" Name="LiveDriverId" Nullable="true" />
+    <Property Type="Int32" Name="DriverSalary" Nullable="true" />
+    <Property Type="String" Name="DriverExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverPosition" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DriverRouteCharge" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriverUserId" Nullable="true" />
+    <Property Type="Int32" Name="DriverCompanyId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Vehicle_GetFreeVehicles_Result">
+    <Property Type="String" Name="Vehicle_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Catagory" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Size" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Route" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_ImageUrl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VehicleCapacity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="VehicleCompanyId" Nullable="true" />
+    <Property Type="String" Name="PinCode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LiveBookingId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCompanyId" Nullable="true" />
+    <Property Type="Int32" Name="LiveCustomerId" Nullable="true" />
+    <Property Type="String" Name="LiveStatus" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LiveVehicleNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LivePrimaryBookingId" Nullable="true" />
+    <Property Type="DateTime" Name="LiveApprovedDate" Nullable="true" />
+    <Property Type="Int32" Name="LiveDriverId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Vehicle_VehicleLogin_Result">
+    <Property Type="String" Name="Vehicle_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Catagory" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Size" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Route" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_ImageUrl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VehicleCapacity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="VehicleCompanyId" Nullable="true" />
+    <Property Type="String" Name="PinCode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_VehicleBus_SelectExistOrNot_Result">
+    <Property Type="String" Name="Vehicle_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Catagory" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Size" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Route" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_ImageUrl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VehicleCapacity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="VehicleCompanyId" Nullable="true" />
+    <Property Type="String" Name="PinCode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_VehicleTruck_Edit_Result">
+    <Property Type="String" Name="Vehicle_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Catagory" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Size" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Route" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_ImageUrl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VehicleCapacity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="VehicleCompanyId" Nullable="true" />
+    <Property Type="String" Name="PinCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckCatagory" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckRating" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_VehicleTruck_GetAllTrucks_Result">
+    <Property Type="String" Name="Vehicle_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Catagory" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Size" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_Route" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehicle_ImageUrl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VehicleCapacity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="VehicleCompanyId" Nullable="true" />
+    <Property Type="String" Name="PinCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckCatagory" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckRating" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TruckId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="validuser_Result">
+    <Property Type="String" Name="User_FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Cnic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User_Password" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="User_Role_Id" Nullable="false" />
+    <Property Type="String" Name="User_Image" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserCity" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </ComplexType>
+</Schema>

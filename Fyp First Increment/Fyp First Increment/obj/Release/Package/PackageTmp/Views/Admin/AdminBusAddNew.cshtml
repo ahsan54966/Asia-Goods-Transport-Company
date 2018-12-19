@@ -1,0 +1,151 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Vehicles.Buses.BusesViewModel
+@{
+    ViewBag.Title = "AdminBusAddNew";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Add Bus</li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <p class="text-info">@TempData["message"]</p>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center text-white font-weight-bold bg-info">Add New Bus</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("AdminBusAddNew", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Bus Information</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <label for="VehicleNumber">Bus No</label>
+                            @Html.TextBoxFor(m => m.VehicleNumber, new { @Class = "form-control", placeholder = "LES-5702", id = "VehicleNumber", @minlength = "3", @maxlength = "8" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="PinCode">Pin Code</label>
+                            @Html.TextBoxFor(m => m.PinCode, new { @Class = "form-control", placeholder = "ie. 0302", id = "PinCode", @minlength = "6", @maxlength = "11" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.PinCode)</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="BusCapacity">Bus Capacity</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleCapacity, new SelectList(Model.VehCapacityList, "VehicleCapacity", "VehicleCapacity"), "Choose Capacity", new { @id = "BusCapacity", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleCapacity)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="CompanyMan">Comp Manufacturer</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleManufacturer, new SelectList(Model.VehManufacturerList, "VehicleManufacturer", "VehicleManufacturer"), "Choose Manufacturer", new { @id = "CompanyMan", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleManufacturer)</p>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="VehicleSize">Enter Vehicle Size</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleSize, new SelectList(Model.VehSizeList, "VehicleSize", "VehicleSize"), "Choose Size", new { @id = "VehicleSize", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleSize)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="VehicleModel">Choose Model</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.BusModel, new { @id = "VehicleModel", @Class = "form-control", @Placeholder = "ie 1976", @minlength = "4", @maxlength = "4" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BusModel)</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <br />
+                <div class="form-group">
+                    <h5 class="text-info font-weight-bold">Bus Route</h5>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="VehicleRoute">Vehicle Route</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleRoute, new SelectList(Model.VehRouteList, "VehicleRoute", "VehicleRoute"), "Choose Route", new { @id = "VehicleRoute", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleRoute)</p>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(m => m.type)
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <h5 class="text-info font-weight-bold">Select Image</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ImageUrl">Choose Image</label>
+                            @*<input type="file" class="form-control-file" id="ImageUrl" name="ImageFile" />*@
+                            @Html.TextBoxFor(m => m.ImageFile, new { @type = "file", @Class = "form-control-file", @id = "ImageUrl" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.ImageFile)</p>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+
+                    <div class="form-row">
+                        
+                            @Html.HiddenFor(m => m.VehicleCatagory, new { @Value = "Bus" })
+                            @Html.HiddenFor(m => m.VehicleCompanyId, new { @Value = Session["user_Id"] })
+                            @Html.AntiForgeryToken()
+                        
+                        <div class="col-md-3">
+
+                            <input type="submit" class="btn btn-info font-weight-bold" value="Submit" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

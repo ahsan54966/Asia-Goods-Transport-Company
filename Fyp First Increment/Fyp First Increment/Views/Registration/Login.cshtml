@@ -1,0 +1,91 @@
+﻿ @model Fyp_First_Increment.Models.Companydetail
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Registration_file.cshtml";
+}
+
+@{
+    int LoginData=int.Parse(Session["LoginId"].ToString());
+}
+    <div class="container">
+        <p></p>
+        <div class="card card-login mx-auto mt-5 bg-dark text-white" style="opacity:0.8">
+            <div class="card-header">Login</div>
+            <div class="card-body">
+
+                @using (Html.BeginForm())
+                {
+                    if (LoginData == 2)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.VehicleNumber, "Vehicle Number")
+                            @Html.TextBoxFor(model => model.VehicleNumber, new { @class = "form-control", placeholder = "I.E P-1524" })
+                            @Html.ValidationMessageFor(model => model.VehicleNumber)
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_PhoneNumber, "Mobile NO")
+                            @Html.TextBoxFor(model => model.User_PhoneNumber, new { @class = "form-control", placeholder = "Mobile No", @minlength = "11", @maxlength = "11" })
+                            @Html.ValidationMessageFor(model => model.User_PhoneNumber)
+
+
+                        </div>
+                    }
+                    if (LoginData == 2)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PinCode, "Pin Code")
+                            @Html.TextBoxFor(model => model.PinCode, new { @class = "form-control", placeholder = "Enter Pin Code", id = "exampleInputPassword1", type = "Password" })
+                            @Html.ValidationMessageFor(model => model.PinCode)
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Password, "Password")
+                            @Html.TextBoxFor(model => model.User_Password, new { @class = "form-control", placeholder = "Enter Password", id = "exampleInputPassword1", type = "Password", @minlength = "6" })
+                            @Html.ValidationMessageFor(model => model.User_Password)
+                        </div>
+
+                    }
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox"> Remember Password
+                            </label>
+                        </div>
+                    </div>
+                    @Html.AntiForgeryToken()
+                    <input id="Submit1" type="submit" value="Login" />
+                    if (TempData["message"] != null)
+                    {
+                        <p class="alert alert-danger">@TempData["message"]</p>
+                    }
+
+                    @*<a class="btn btn-primary btn-block">Login</a>*@
+                }
+                <div class="text-center">
+                    @if (LoginData != 1)
+                    {
+                        <a href="@Url.Action("CustomerRegister", "Registration", new { Id = Session["LoginId"] })"><i class='fa fa-user'></i><span class="text-white font-weight-bold">Register an Account</span></a>
+                        @*<a class="d-block small mt-3" href="register.html">Register an Account</a>*@
+                        <br />
+                    }
+                    <a href="@Url.Action("ForgetPassword", "Registration", new { Id =Session["LoginId"] })"><span class="text-white font-weight-bold">Forgot Password?</span></a>
+                    @*<a class="d-block small" href="forgot-password.html">Forgot Password?</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

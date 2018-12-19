@@ -1,0 +1,164 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.Vehicles.Trucks.TrucksViewModel
+@{
+    ViewBag.Title = "AdminTruckAddNew";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Add Terminal</li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <p class="text-info">@TempData["message"]</p>
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center bg-info text-white font-weight-bold  ">Add New Truck</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("AdminTruckAddNew", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <br />
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Truck Information</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3 col-12">
+                            <label for="VehicleNumber">Vehicle No</label>
+                            @Html.TextBoxFor(m => m.VehicleNumber, new { @Class = "form-control", placeholder = "LMO-1541", id = "VehicleNumber", @minlength = "3", @maxlength = "8" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleNumber)</p>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <label for="PinCode">Pin Code</label>
+                            @Html.TextBoxFor(m => m.PinCode, new { @Class = "form-control", placeholder = "ie. 0302", id = "PinCode", @minlength = "6", @maxlength = "11" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.PinCode)</p>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <label for="TruckCapacity">Truck Capacity</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleCapacity, new SelectList(Model.TruckCapacityList, "VehicleCapacity", "VehicleCapacity"), "Choose Capacity", new { @id = "TruckCapacity", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleCapacity)</p>
+
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <label for="CompanyMan">Comp Manufacturer</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleManufacturer, new SelectList(Model.VehManufacturerList, "VehicleManufacturer", "VehicleManufacturer"), "Choose Manufacturer", new { @id = "CompanyMan", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleManufacturer)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4 col-12">
+                            <label for="VehicleSize">Enter Truck Size</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleSize, new SelectList(Model.TruckSizeList, "VehicleSize", "VehicleSize"), "Choose Size", new { @id = "VehicleSize", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleSize)</p>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <label for="VehicleRoute">Enter Vehicle Route</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.VehicleRoute, new SelectList(Model.TruckRouteList, "VehicleRoute", "VehicleRoute"), "Choose Route", new { @id = "VehicleRoute", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleRoute)</p>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <label for="TruckType">Choose Truck Type</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.TruckType, new SelectList(Model.TruckTypeList, "TruckType", "TruckType"), "Choose Type", new { @id = "TruckType", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.TruckType)</p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h5 class="text-info font-weight-bold">Truck Information</h5>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="VehicleRating">Choose Rating</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.TruckRating, new SelectList(Model.TruckRatingList, "TruckRating", "TruckRating"), "Select Rating", new { @id = "VehicleRating", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.TruckRating)</p>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(m => m.type)
+                        </div>
+                        <div class="col-md-4">
+                            <label for="TruckCatagory">Select Catagory</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.TruckCatagory, new SelectList(Model.TruckCatagoryList, "TruckCatagory", "TruckCatagory"), "Select truck Catagory", new { @id = "TruckCatagory", @Class = "form-control" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.TruckRating)</p>
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <h5 class="text-info font-weight-bold">Select Image</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ImageUrl">Choose Image</label>
+                            @*<input type="file" class="form-control-file" id="ImageUrl" name="ImageFile" />*@
+                            @Html.TextBoxFor(m => m.ImageFile, new { @type = "file", @Class = "form-control-file", @id = "ImageUrl" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.ImageFile)</p>
+                        </div>
+                        <div class="col-md-3">
+                            @Html.AntiForgeryToken()
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+
+                    <div class="form-row">
+                       
+                            @Html.HiddenFor(m => m.VehicleCatagory, new { @Value = "Truck" })
+                            @Html.HiddenFor(m => m.VehicleCompanyId, new { @Value = Session["user_Id"] })
+                        
+                        <div class="col-md-3">
+
+                            <input type="submit" class="btn btn-info" value="Submit" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

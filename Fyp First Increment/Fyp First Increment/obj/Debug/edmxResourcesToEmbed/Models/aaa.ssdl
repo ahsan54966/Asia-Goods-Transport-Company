@@ -1,0 +1,1243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="temp_transportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_BusReservation">
+    <Key>
+      <PropertyRef Name="ReservationId" />
+    </Key>
+    <Property Name="ReservationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReservationPhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReservationCustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReservationTickitId" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookedAt" Type="time" Precision="7" />
+    <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="LiveStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_BusRoute">
+    <Key>
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteDepartureTime" Type="time" Precision="7" />
+    <Property Name="RouteArrivalTime" Type="time" Precision="7" />
+    <Property Name="RouteClass" Type="nvarchar" MaxLength="50" />
+    <Property Name="RouteDay" Type="nvarchar" MaxLength="50" />
+    <Property Name="RouteBusId" Type="nvarchar" MaxLength="50" />
+    <Property Name="RouteDeparture" Type="nvarchar" MaxLength="50" />
+    <Property Name="RouteArrival" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_BusTerminal">
+    <Key>
+      <PropertyRef Name="TerminalId" />
+    </Key>
+    <Property Name="TerminalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerminalName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TerminalAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="TerminalCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbl_BusTickit">
+    <Key>
+      <PropertyRef Name="TickitId" />
+    </Key>
+    <Property Name="TickitId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SeatNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="SeatFare" Type="nvarchar" MaxLength="50" />
+    <Property Name="SeatStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="TickitRouteId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_City">
+    <Key>
+      <PropertyRef Name="CityZipCode" />
+    </Key>
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityZipCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CityCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityDistrict" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityDivision" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'temp_transport.dbo.tbl_CompanyDetail' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_CompanyDetail">
+          <Property Name="CompanyRegNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyOwner" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyVehicleQuanitity" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyWorth" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyUserId" Type="int" />
+          <Property Name="CompanyPhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="tbl_CompleteBooking">
+    <Key>
+      <PropertyRef Name="CompleteBookingId" />
+    </Key>
+    <Property Name="CompleteBookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompleteCustomerId" Type="int" />
+    <Property Name="CompleteCompanyId" Type="int" />
+    <Property Name="CompleteVehicleId" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompleteFare" Type="int" />
+    <Property Name="CompleteMisExpenses" Type="int" />
+    <Property Name="CompletePayMethod" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompletePayStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompleteSuccessStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompleteFinalFare" Type="int" />
+    <Property Name="CompleteDate" Type="date" />
+    <Property Name="CompletePrimaryTableId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'temp_transport.dbo.tbl_Deiver' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_Deiver">
+          <Property Name="DriverSalary" Type="int" />
+          <Property Name="DriverExperience" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverPosition" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverRouteCharge" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverUserId" Type="int" />
+          <Property Name="DriverCompanyId" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tbl_JazzCashPayment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentPhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentPhoneCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentRemainingBalance" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_LiveBooking">
+    <Key>
+      <PropertyRef Name="LiveBookingId" />
+    </Key>
+    <Property Name="LiveBookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LiveCompanyId" Type="int" />
+    <Property Name="LiveCustomerId" Type="int" />
+    <Property Name="LiveStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="LiveVehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="LivePrimaryBookingId" Type="int" />
+    <Property Name="LiveApprovedDate" Type="date" />
+    <Property Name="LiveDriverId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Location">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationLong" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationLat" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationVehicleNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Payments">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentCustomerId" Type="int" />
+    <Property Name="PaymentTotal" Type="int" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_PrimaryBooking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookingSource" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingDestination" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingGoodsDetail" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingQunatity" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingWeight" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingFare" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingDate" Type="date" />
+    <Property Name="BookingRequestDate" Type="date" />
+    <Property Name="BookingTimeArrival" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingCustomerId" Type="int" />
+    <Property Name="BookingPhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingServiceType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingMaterialType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingVehicleType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingSourceLat" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingSourceLon" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingDestinationLat" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingDestinationLon" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Ride">
+    <Key>
+      <PropertyRef Name="Ride_Id" />
+    </Key>
+    <Property Name="Ride_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ride_Source" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ride_Destination" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ride_DieselExpenses" Type="int" />
+    <Property Name="Ride_MaintainanceExpenses" Type="int" />
+    <Property Name="Ride_FoodExpenses" Type="int" />
+    <Property Name="Ride_MobileExpenses" Type="int" />
+    <Property Name="Ride_TaxExpenses" Type="int" />
+    <Property Name="Ride_DriverCharges" Type="int" />
+    <Property Name="Ride_CommisionCharges" Type="int" />
+    <Property Name="Ride_DieselQuantity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ride_DriverId" Type="int" />
+    <Property Name="Ride_VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ride_ProfitLoss" Type="int" />
+    <Property Name="RideSeller" Type="nvarchar" MaxLength="50" />
+    <Property Name="RideBuyer" Type="nchar" MaxLength="10" />
+    <Property Name="RideFare" Type="int" />
+    <Property Name="RideDate" Type="date" />
+    <Property Name="RideDetail" Type="nvarchar" MaxLength="50" />
+    <Property Name="RidePassenger" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConductorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RidePassengerFare" Type="int" />
+    <Property Name="RideType" Type="nvarchar" MaxLength="50" />
+    <Property Name="RideCompanyId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Roles">
+    <Key>
+      <PropertyRef Name="Role_Id" />
+    </Key>
+    <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role_Salary" Type="int" />
+    <Property Name="Role_Company" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'temp_transport.dbo.tbl_Truck' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_Truck">
+          <Property Name="TruckCatagory" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckRating" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckType" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckId" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="User_FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_Cnic" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="User_Role_Id" Type="int" Nullable="false" />
+    <Property Name="User_Image" Type="nvarchar" MaxLength="250" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyType" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Vehicle">
+    <Key>
+      <PropertyRef Name="Vehicle_Number" />
+    </Key>
+    <Property Name="Vehicle_Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vehicle_Catagory" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vehicle_Size" Type="nvarchar" MaxLength="50" />
+    <Property Name="Vehicle_Manufacturer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Vehicle_Route" Type="nvarchar" MaxLength="50" />
+    <Property Name="Vehicle_ImageUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="VehicleCapacity" Type="nvarchar" MaxLength="50" />
+    <Property Name="VehicleCompanyId" Type="int" />
+    <Property Name="PinCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_tbl_BusReservation_tbl_BusTickit">
+    <End Role="tbl_BusTickit" Type="Self.tbl_BusTickit" Multiplicity="0..1" />
+    <End Role="tbl_BusReservation" Type="Self.tbl_BusReservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_BusTickit">
+        <PropertyRef Name="TickitId" />
+      </Principal>
+      <Dependent Role="tbl_BusReservation">
+        <PropertyRef Name="ReservationTickitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusRoute_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_BusRoute" Type="Self.tbl_BusRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_BusRoute">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusRoute_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_BusRoute" Type="Self.tbl_BusRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_BusRoute">
+        <PropertyRef Name="RouteBusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusTerminal_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_BusTerminal" Type="Self.tbl_BusTerminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_BusTerminal">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_BusTickit_tbl_BusRoute">
+    <End Role="tbl_BusRoute" Type="Self.tbl_BusRoute" Multiplicity="0..1" />
+    <End Role="tbl_BusTickit" Type="Self.tbl_BusTickit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_BusRoute">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="tbl_BusTickit">
+        <PropertyRef Name="TickitRouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'temp_transport.dbo.tbl_CompanyDetail' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_CompanyDetail_tbl_User" />-->
+  <Association Name="FK_tbl_CompleteBooking_tbl_PrimaryBooking">
+    <End Role="tbl_PrimaryBooking" Type="Self.tbl_PrimaryBooking" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PrimaryBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompletePrimaryTableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompleteCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompleteCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_CompleteBooking_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_CompleteBooking" Type="Self.tbl_CompleteBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_CompleteBooking">
+        <PropertyRef Name="CompleteVehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'temp_transport.dbo.tbl_Deiver' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_Deiver_tbl_User" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'temp_transport.dbo.tbl_Deiver' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_Deiver_tbl_User1" />-->
+  <Association Name="FK_tbl_LiveBooking_tbl_PrimaryBooking">
+    <End Role="tbl_PrimaryBooking" Type="Self.tbl_PrimaryBooking" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PrimaryBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LivePrimaryBookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_User2">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveDriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LiveBooking_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_LiveBooking" Type="Self.tbl_LiveBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_LiveBooking">
+        <PropertyRef Name="LiveVehicleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Location_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_Location">
+        <PropertyRef Name="LocationVehicleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Payments_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Payments" Type="Self.tbl_Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Payments">
+        <PropertyRef Name="PaymentCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PrimaryBooking_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_PrimaryBooking" Type="Self.tbl_PrimaryBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_PrimaryBooking">
+        <PropertyRef Name="BookingCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Ride_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Ride" Type="Self.tbl_Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Ride">
+        <PropertyRef Name="Ride_DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Ride_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Ride" Type="Self.tbl_Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Ride">
+        <PropertyRef Name="RideCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Ride_tbl_Vehicle">
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="0..1" />
+    <End Role="tbl_Ride" Type="Self.tbl_Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vehicle">
+        <PropertyRef Name="Vehicle_Number" />
+      </Principal>
+      <Dependent Role="tbl_Ride">
+        <PropertyRef Name="Ride_VehicleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'temp_transport.dbo.tbl_Truck' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_Truck_tbl_Vehicle" />-->
+  <Association Name="FK_tbl_User_tbl_Roles">
+    <End Role="tbl_Roles" Type="Self.tbl_Roles" Multiplicity="1" />
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Roles">
+        <PropertyRef Name="Role_Id" />
+      </Principal>
+      <Dependent Role="tbl_User">
+        <PropertyRef Name="User_Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Vehicle_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Vehicle" Type="Self.tbl_Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_Vehicle">
+        <PropertyRef Name="VehicleCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Admin_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Cnic" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Role_Id" Type="int" Mode="In" />
+    <Parameter Name="User_Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyType" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserCity" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Company_info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyRegNum" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyOwner" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyVehicleQuanitity" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyWorth" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyPhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyUserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Driver_info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DriverSalary" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverExperience" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverType" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverPosition" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverRouteCharge" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverUserId" Type="int" Mode="In" />
+    <Parameter Name="DriverCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="forgetpassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="LiveRide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="LiveRideAdmin_Customer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="f_key" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusReservation_DeAllocateTickits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentTime" Type="time" Mode="In" />
+  </Function>
+  <Function Name="sp_BusReservation_FreeRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentTime" Type="time" Mode="In" />
+    <Parameter Name="Today" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRide_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ride_Source" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_Destination" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DieselExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MaintainanceExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_FoodExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MobileExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_TaxExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_DriverCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_CommisionCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_DieselQuantity" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DriverId" Type="int" Mode="In" />
+    <Parameter Name="Ride_VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_ProfitLoss" Type="int" Mode="In" />
+    <Parameter Name="RideFare" Type="int" Mode="In" />
+    <Parameter Name="RideDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="RidePassenger" Type="nvarchar" Mode="In" />
+    <Parameter Name="ConductorName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RidePassengerFare" Type="int" Mode="In" />
+    <Parameter Name="RideType" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRide_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RideId" Type="int" Mode="In" />
+    <Parameter Name="Ride_Source" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_Destination" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DieselExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MaintainanceExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_FoodExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MobileExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_TaxExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_DriverCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_CommisionCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_DieselQuantity" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DriverId" Type="int" Mode="In" />
+    <Parameter Name="Ride_VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_ProfitLoss" Type="int" Mode="In" />
+    <Parameter Name="RideFare" Type="int" Mode="In" />
+    <Parameter Name="RideDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="RidePassenger" Type="nvarchar" Mode="In" />
+    <Parameter Name="ConductorName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RidePassengerFare" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_CheckRouteExist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RouteDepartureTime" Type="time" Mode="In" />
+    <Parameter Name="RouteClass" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteDay" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteDeparture" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteArrival" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_CreateRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RouteDepartureTime" Type="time" Mode="In" />
+    <Parameter Name="RouteArrivalTime" Type="time" Mode="In" />
+    <Parameter Name="RouteClass" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteDay" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteBusId" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteDeparture" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteArrival" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_DeleteRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="RouteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_DeleteTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="TerminalId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_GetAllRoutes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_GetDataFoRTickitInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RouteBusId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_GetSingleRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+    <Parameter Name="RouteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_GetSingleTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+    <Parameter Name="TerminalId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_TerminalListForBusCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_UpdateRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RouteId" Type="int" Mode="In" />
+    <Parameter Name="RouteDepartureTime" Type="time" Mode="In" />
+    <Parameter Name="RouteArrivalTime" Type="time" Mode="In" />
+    <Parameter Name="RouteClass" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteDay" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteBusId" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteDeparture" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteArrival" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="SeatFare" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRoute_UpdateTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TerminalName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TerminalAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="TerminalCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="TerminalId" Type="int" Mode="In" />
+    <Parameter Name="OldTerminal" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageUrl" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRouteFare_CalculateSeats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Route" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRouteFare_GetBusSchedules" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+    <Parameter Name="Departure" Type="nvarchar" Mode="In" />
+    <Parameter Name="Arrival" Type="nvarchar" Mode="In" />
+    <Parameter Name="Day" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusRouteFare_GetFare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CityName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTerminal_CreateTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TerminalName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TerminalAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="TerminalCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="ImageUrl" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTerminal_GetAllTerminals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTerminal_TerminalExistOrNot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TerminalName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TerminalCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickit_ClearBusTickitStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TickitId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickit_CreateRouteTickit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TickitId" Type="nvarchar" Mode="In" />
+    <Parameter Name="SeatNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="SeatFare" Type="nvarchar" Mode="In" />
+    <Parameter Name="SeatStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="RouteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickit_GetAllTickits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Route" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickit_GetFare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RouteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickit_GetTikitsForReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TickitRouteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickitReservation_ClearRouteTickits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TickitId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickitReservation_FinalReservationConfirm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LiveStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReservationPhoneNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_BusTickitReservation_ReserveTickit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReservationPhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReservationCustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReservationTickitId" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookedAt" Type="time" Mode="In" />
+    <Parameter Name="LiveStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentStatus" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CompleteBooking_Completed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyBookingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompleteBooking_CompleteDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompleteBookingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompleteBooking_Completeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompleteCustomerId" Type="int" Mode="In" />
+    <Parameter Name="CompleteCompanyId" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteVehicleId" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteFare" Type="int" Mode="In" />
+    <Parameter Name="CompleteMisExpenses" Type="int" Mode="In" />
+    <Parameter Name="CompletePayMethod" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompletePayStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteSuccessStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteFinalFare" Type="int" Mode="In" />
+    <Parameter Name="CompleteDate" Type="date" Mode="In" />
+    <Parameter Name="CompletePrimaryId" Type="int" Mode="In" />
+    <Parameter Name="CompletePrimaryStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteLiveId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompleteBooking_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyBookingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompleteBooking_GetUnPaidCompleteBookings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerBookingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Driver_GetAllDrivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Driver_SelectExistOrNot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DriverId" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DriverUser_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="User_FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Cnic" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Role_Id" Type="int" Mode="In" />
+    <Parameter Name="User_Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyType" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverSalary" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverExperience" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverType" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverPosition" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverRouteCharge" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverUserId" Type="int" Mode="In" />
+    <Parameter Name="DriverCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_JazzCashPayments_Verify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PaymentPhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentPhoneCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Total" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_LiveBooking_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LiveCompanyId" Type="int" Mode="In" />
+    <Parameter Name="LiveCustomerId" Type="int" Mode="In" />
+    <Parameter Name="LiveStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="LiveVehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="LivePrimaryBookingId" Type="int" Mode="In" />
+    <Parameter Name="LiveApprovedDate" Type="date" Mode="In" />
+    <Parameter Name="BookingQunatity" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingWeight" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingFare" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="LiveDriverId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_LiveBooking_DetailBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_LiveBooking_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_LiveBooking_GetAllCustomerBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_LiveBookingBooking_CancelBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LiveBookingId" Type="int" Mode="In" />
+    <Parameter Name="LivePrimaryId" Type="int" Mode="In" />
+    <Parameter Name="PrimarybookingStatus" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Location_GetLiveLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Payments_GetAllPayments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Payments_Pay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PaymentCustomerId" Type="int" Mode="In" />
+    <Parameter Name="PaymentTotal" Type="int" Mode="In" />
+    <Parameter Name="PaymentMethod" Type="nvarchar" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompleteBookingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Payments_sp_Payments_Pay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PaymentCustomerId" Type="int" Mode="In" />
+    <Parameter Name="PaymentTotal" Type="int" Mode="In" />
+    <Parameter Name="PaymentMethod" Type="nvarchar" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PrimaryBooking_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BookingSource" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingDestination" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingGoodsDetail" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingQunatity" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingWeight" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingFare" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingDate" Type="date" Mode="In" />
+    <Parameter Name="BookingRequestDate" Type="date" Mode="In" />
+    <Parameter Name="BookingTimeArrival" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingCustomerId" Type="int" Mode="In" />
+    <Parameter Name="BookingPhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingServiceType" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingMaterialType" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingVehicleType" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingSourceLat" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingSourceLon" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingDestinationLat" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingDestinationLon" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PrimaryBooking_CustomerBookingUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BookingId" Type="int" Mode="In" />
+    <Parameter Name="BookingSource" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingDestination" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingGoodsDetail" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingQunatity" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingWeight" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingFare" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingRequestDate" Type="date" Mode="In" />
+    <Parameter Name="BookingTimeArrival" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingPhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingServiceType" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingMaterialType" Type="nvarchar" Mode="In" />
+    <Parameter Name="BookingVehicleType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PrimaryBooking_GetAdminRequestBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PrimaryBookingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_PrimaryBooking_GetAdminSide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_PrimaryBooking_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Reservation_GetDataForReservationConfirmation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReservationPhoneNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ride_Source" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_Destination" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DieselExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MaintainanceExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_FoodExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MobileExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_TaxExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_DriverCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_CommisionCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_DieselQuantity" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DriverId" Type="int" Mode="In" />
+    <Parameter Name="Ride_VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_ProfitLoss" Type="int" Mode="In" />
+    <Parameter Name="RideSeller" Type="nvarchar" Mode="In" />
+    <Parameter Name="RideBuyer" Type="nchar" Mode="In" />
+    <Parameter Name="RideFare" Type="int" Mode="In" />
+    <Parameter Name="RideDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="RideDetail" Type="nvarchar" Mode="In" />
+    <Parameter Name="RideType" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RideId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_GetAllBusRides" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_GetAllTruckRides" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_RideReportProfit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="date" Mode="In" />
+    <Parameter Name="DateTo" Type="date" Mode="In" />
+    <Parameter Name="AreaType" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_RideReportProfitLastFifteenDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date1" Type="date" Mode="In" />
+    <Parameter Name="Date2" Type="date" Mode="In" />
+    <Parameter Name="AreaType" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_RideReportProfitSpecificDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="AreaType" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_RideReportProfitYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="AreaType" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_RideReportProfitYearandMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Month" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="AreaType" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RideId" Type="int" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Ride_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RideId" Type="int" Mode="In" />
+    <Parameter Name="Ride_Source" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_Destination" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DieselExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MaintainanceExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_FoodExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_MobileExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_TaxExpenses" Type="int" Mode="In" />
+    <Parameter Name="Ride_DriverCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_CommisionCharges" Type="int" Mode="In" />
+    <Parameter Name="Ride_DieselQuantity" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_DriverId" Type="int" Mode="In" />
+    <Parameter Name="Ride_VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ride_ProfitLoss" Type="int" Mode="In" />
+    <Parameter Name="RideSeller" Type="nvarchar" Mode="In" />
+    <Parameter Name="RideBuyer" Type="nchar" Mode="In" />
+    <Parameter Name="RideFare" Type="int" Mode="In" />
+    <Parameter Name="RideDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="RideDetail" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_User_Busdrivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_User_EditUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_User_ReportALLDrivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DriverType" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_User_ReportDrivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DriverType" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverPosition" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_User_ReportTruckVehicles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleType" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_User_ReportVehicles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleType" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_User_Truckdrivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_User_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="User_Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Image" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UserDriver_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DriverId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UserDriver_Edit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DriverId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Users_GetDriverDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Driverid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Users_GetFreeDrivers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Vehicle_GetFreeVehicles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Vehicle_VehicleLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="PinCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleBus_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCatagory" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleSize" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleManufacturer" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleRoute" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleImageUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCapacity" Type="nvarchar" Mode="In" />
+    <Parameter Name="BusModel" Type="nvarchar" Mode="In" />
+    <Parameter Name="BusId" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+    <Parameter Name="PinCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleBus_Edit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleBus_GetAllBuses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleBus_SelectExistOrNot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleBus_sp_VehicleBus_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleBus_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCatagory" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleSize" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleManufacturer" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleRoute" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleImageUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCapacity" Type="nvarchar" Mode="In" />
+    <Parameter Name="BusModel" Type="nvarchar" Mode="In" />
+    <Parameter Name="BusId" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+    <Parameter Name="PinCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleTruck_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCatagory" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleSize" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleManufacturer" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleRoute" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleImageUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCapacity" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckCatagory" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckRating" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckType" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckId" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+    <Parameter Name="PinCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleTruck_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleTruck_Edit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleTruck_GetAllTrucks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VehicleTruck_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCatagory" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleSize" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleManufacturer" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleRoute" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleImageUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCapacity" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckCatagory" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckRating" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckType" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckId" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleCompanyId" Type="int" Mode="In" />
+    <Parameter Name="PinCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateCurentLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vehicleno" Type="varchar" Mode="In" />
+    <Parameter Name="latitude" Type="varchar" Mode="In" />
+    <Parameter Name="logitude" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UpdatePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_PhoneNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="User_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Cnic" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Role_Id" Type="int" Mode="In" />
+    <Parameter Name="User_Image" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyType" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserCity" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="validuser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User_PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="User_Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="temp_transportModelStoreContainer">
+    <EntitySet Name="tbl_BusReservation" EntityType="Self.tbl_BusReservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BusRoute" EntityType="Self.tbl_BusRoute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BusTerminal" EntityType="Self.tbl_BusTerminal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BusTickit" EntityType="Self.tbl_BusTickit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_City" EntityType="Self.tbl_City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CompleteBooking" EntityType="Self.tbl_CompleteBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_JazzCashPayment" EntityType="Self.tbl_JazzCashPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_LiveBooking" EntityType="Self.tbl_LiveBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Payments" EntityType="Self.tbl_Payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PrimaryBooking" EntityType="Self.tbl_PrimaryBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Ride" EntityType="Self.tbl_Ride" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Vehicle" EntityType="Self.tbl_Vehicle" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_BusReservation_tbl_BusTickit" Association="Self.FK_tbl_BusReservation_tbl_BusTickit">
+      <End Role="tbl_BusTickit" EntitySet="tbl_BusTickit" />
+      <End Role="tbl_BusReservation" EntitySet="tbl_BusReservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusRoute_tbl_User" Association="Self.FK_tbl_BusRoute_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_BusRoute" EntitySet="tbl_BusRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusRoute_tbl_Vehicle" Association="Self.FK_tbl_BusRoute_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_BusRoute" EntitySet="tbl_BusRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusTerminal_tbl_User" Association="Self.FK_tbl_BusTerminal_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_BusTerminal" EntitySet="tbl_BusTerminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_BusTickit_tbl_BusRoute" Association="Self.FK_tbl_BusTickit_tbl_BusRoute">
+      <End Role="tbl_BusRoute" EntitySet="tbl_BusRoute" />
+      <End Role="tbl_BusTickit" EntitySet="tbl_BusTickit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_PrimaryBooking" Association="Self.FK_tbl_CompleteBooking_tbl_PrimaryBooking">
+      <End Role="tbl_PrimaryBooking" EntitySet="tbl_PrimaryBooking" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_User" Association="Self.FK_tbl_CompleteBooking_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_User1" Association="Self.FK_tbl_CompleteBooking_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_CompleteBooking_tbl_Vehicle" Association="Self.FK_tbl_CompleteBooking_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_CompleteBooking" EntitySet="tbl_CompleteBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_PrimaryBooking" Association="Self.FK_tbl_LiveBooking_tbl_PrimaryBooking">
+      <End Role="tbl_PrimaryBooking" EntitySet="tbl_PrimaryBooking" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_User" Association="Self.FK_tbl_LiveBooking_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_User1" Association="Self.FK_tbl_LiveBooking_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_User2" Association="Self.FK_tbl_LiveBooking_tbl_User2">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LiveBooking_tbl_Vehicle" Association="Self.FK_tbl_LiveBooking_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_LiveBooking" EntitySet="tbl_LiveBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Location_tbl_Vehicle" Association="Self.FK_tbl_Location_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Payments_tbl_User" Association="Self.FK_tbl_Payments_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Payments" EntitySet="tbl_Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PrimaryBooking_tbl_User" Association="Self.FK_tbl_PrimaryBooking_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_PrimaryBooking" EntitySet="tbl_PrimaryBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Ride_tbl_User" Association="Self.FK_tbl_Ride_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Ride" EntitySet="tbl_Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Ride_tbl_User1" Association="Self.FK_tbl_Ride_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Ride" EntitySet="tbl_Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Ride_tbl_Vehicle" Association="Self.FK_tbl_Ride_tbl_Vehicle">
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+      <End Role="tbl_Ride" EntitySet="tbl_Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_User_tbl_Roles" Association="Self.FK_tbl_User_tbl_Roles">
+      <End Role="tbl_Roles" EntitySet="tbl_Roles" />
+      <End Role="tbl_User" EntitySet="tbl_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Vehicle_tbl_User" Association="Self.FK_tbl_Vehicle_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Vehicle" EntitySet="tbl_Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

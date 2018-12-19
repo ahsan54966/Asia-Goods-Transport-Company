@@ -1,0 +1,99 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.BusArea.Terminals.AdminTerminalViewModel
+@{
+    ViewBag.Title = "AdminTerminalAddNew";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info" >Add Terminal</li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            @TempData["message"]
+        </div>
+        <div class="col-md-4">
+            @if (Model.Terminal.TerminalId != 0)
+            {
+                <p class="text-danger">Please Change City in other Fields Respect to Change in City</p>
+            }
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="card mx-auto mt-3 col-6">
+            <div class="card-header text-center text-white font-weight-bold bg-info">Terminal Registeration</div>
+            <div class="card-body ">
+                @using (Html.BeginForm("AdminTerminalAddNew", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="form-group">
+
+                        <label for="TerminalName">Enter Terminal Name</label>
+                        <br />
+                        @Html.TextBoxFor(m => m.Terminal.TerminalName, new { @Class = "form-control", @Id = "TerminalName", @minlength = "5", @maxlength = "50" })
+                        <p class="text-danger">@Html.ValidationMessageFor(m => m.Terminal.TerminalName)</p>
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="TerminalAddress">Enter Terminal Address</label>
+                        <br />
+                        @Html.TextBoxFor(m => m.Terminal.TerminalAddress, new { @Class = "form-control", @Id = "TerminalAddress", @minlength = "5", @maxlength = "50" })
+                        <p class="text-danger">@Html.ValidationMessageFor(m => m.Terminal.TerminalAddress)</p>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="TerminalCity">City Name</label>
+                        <br />
+                        @Html.TextBoxFor(m => m.Terminal.TerminalCity, new { @Class = "form-control", @Id = "TerminalCity" })
+                        <p class="text-danger">@Html.ValidationMessageFor(m => m.Terminal.TerminalCity)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="TerminalImage">Choose Image</label>
+                        @*<input type="file" class="form-control-file" id="ImageUrl" name="ImageFile" />*@
+                        @Html.TextBoxFor(m => m.Terminal.TerminalImage, new { @type = "file", @Class = "form-control-file", @id = "TerminalImage" })
+                        <p class="text-danger">@Html.ValidationMessageFor(m => m.Terminal.TerminalImage)</p>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Terminal.TerminalId)
+                        @Html.HiddenFor(m => m.Terminal.ImageUrl)
+                        @Html.HiddenFor(m => m.Terminal.CompanyId, new { @Value = Session["user_Id"] })
+
+                        <input type="submit" value="Submit" class="btn btn-info" />
+
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&sensor=false&libraries=places"></script>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function () {
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: { country: "pak" }
+        };
+        var source = document.getElementById('TerminalCity');
+        var place2 = new google.maps.places.Autocomplete(source, options);
+
+    });
+</script>
+
+
+
+

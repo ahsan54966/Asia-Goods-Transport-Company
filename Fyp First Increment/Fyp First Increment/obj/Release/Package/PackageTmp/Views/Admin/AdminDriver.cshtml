@@ -1,0 +1,186 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.Driver>
+
+@{
+    ViewBag.Title = "AdminDriver";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    <li class="breadcrumb-item active text-info">Add Driver</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+    <div class="row">
+        <div class="col-sm-2">
+            @Html.ActionLink("Add Driver", "AdminAddDriver", "Admin", new { companyid = Session["user_Id"] }, new { @Class = "btn btn-info" })
+        </div>
+        <div class="offset-sm-5 col-sm-5">
+
+            <br />
+
+        </div>
+    </div>
+
+    <p class="text-success">@TempData["message"]</p>
+    <div class="card mb-3">
+        <div class="card-header text-info font-weight-bold">
+            <i class="fa fa-table"></i> Driver Information
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-sm">
+                <table class="table table-bordered table-sm table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-info">
+                            <th scope="col">
+                                Id
+                                @*@Html.DisplayNameFor(model => model.UserId)*@
+                            </th>
+                            <th scope="col">
+                                Name
+                                @*@Html.DisplayNameFor(model => model.UserFirstName)*@
+                            </th>
+                            <th scope="col">
+                                Ph#
+                                @*@Html.DisplayNameFor(model => model.User_PhoneNumber)*@
+                            </th>
+                            <th scope="col">
+                                Address
+                                @*@Html.DisplayNameFor(model => model.UserAddress)*@
+                            </th>
+                            <th scope="col">
+                                CNIC
+                                @*@Html.DisplayNameFor(model => model.UserCnic)*@
+                            </th>
+                            <th scope="col">
+                                Salary
+                                @*@Html.DisplayNameFor(model => model.DriverSalary)*@
+                            </th>
+                            <th scope="col">
+                                Exp
+                                @*@Html.DisplayNameFor(model => model.DriverExperience)*@
+                            </th>
+                            <th scope="col">
+                                Type
+                                @*@Html.DisplayNameFor(model => model.DriverType)*@
+                            </th>
+                            <th scope="col">
+                                Position
+                                @*@Html.DisplayNameFor(model => model.DriverPostion)*@
+                            </th>
+                            <th scope="col">
+                                Route Charge
+                                @*@Html.DisplayNameFor(model => model.DriverRouteCharge)*@
+                            </th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr class="text-info">
+                            <th scope="col">
+                                Id
+                                @*@Html.DisplayNameFor(model => model.UserId)*@
+                            </th>
+                            <th scope="col">
+                                Name
+                                @*@Html.DisplayNameFor(model => model.UserFirstName)*@
+                            </th>
+                            <th scope="col">
+                                Ph#
+                                @*@Html.DisplayNameFor(model => model.User_PhoneNumber)*@
+                            </th>
+                            <th scope="col">
+                                Address
+                                @*@Html.DisplayNameFor(model => model.UserAddress)*@
+                            </th>
+                            <th scope="col">
+                                CNIC
+                                @*@Html.DisplayNameFor(model => model.UserCnic)*@
+                            </th>
+                            <th scope="col">
+                                Salary
+                                @*@Html.DisplayNameFor(model => model.DriverSalary)*@
+                            </th>
+                            <th scope="col">
+                                Exp
+                                @*@Html.DisplayNameFor(model => model.DriverExperience)*@
+                            </th>
+                            <th scope="col">
+                                Type
+                                @*@Html.DisplayNameFor(model => model.DriverType)*@
+                            </th>
+                            <th scope="col">
+                                Position
+                                @*@Html.DisplayNameFor(model => model.DriverPostion)*@
+                            </th>
+                            <th scope="col">
+                                Route Charge
+                                @*@Html.DisplayNameFor(model => model.DriverRouteCharge)*@
+                            </th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.UserId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.UserFirstName)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.User_PhoneNumber)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.UserAddress)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.UserCnic)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.DriverSalary)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.DriverExperience) Years
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.DriverType)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.DriverPostion)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.DriverRouteCharge)
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Edit", "AdminAddDriver", new { id = item.UserId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-warning"})
+                                </td>
+                                <td scope="row">
+                                    @Html.ActionLink("Delete", "AdminDriverDelete", new { id = item.UserId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-danger"})
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+                @*@section scripts
+                        {
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $("#dataTable").DataTable();
+                            });
+                        </script>
+                    }*@
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

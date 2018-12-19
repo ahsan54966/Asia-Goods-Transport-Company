@@ -1,0 +1,190 @@
+﻿@model Fyp_First_Increment.ViewModel.BusCustomers.Schedules.BusScheduleViewModel
+@{
+    ViewBag.Title = "Schedules";
+    Layout = "~/Views/Shared/_BusPanel.cshtml";
+}
+
+@*<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="~/Assets/images/Bus/bus3.jpg" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Power</h5>
+                            <p>Name of Excellence</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="~/Assets/images/Bus/bus1.jpg" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Power</h5>
+                            <p>We are always present for you.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="~/Assets/images/Bus/bus2.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Power</h5>
+                            <p>Egility is Priority</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<div class="container-fluid naab bg-light">
+    <div class="row">
+        <div class="col-12" align="center">
+            @using(Html.BeginForm("Schedules","BusPanel",FormMethod.Post,new{}))
+            {
+                <span class="font-weight-bold depsize deps">Select Departure:</span><br>
+                @Html.DropDownListFor(m=>m.DepartureCity, new SelectList(Model.TerminalCityList, "TerminalCity", "TerminalCity"), "Choose Departure", new { @Class = "bg-info dep", id = "TerminalCity" })
+                <br>
+                <span class="font-weight-bold depsize deps">Select Arrival:</span><br>
+                @Html.DropDownListFor(m => m.ArrivalCity, new SelectList(Model.TerminalCityList, "TerminalCity", "TerminalCity"), "Choose Departure", new { @Class = "bg-info dep", id = "TerminalCity" })
+               <br>
+                <span class="font-weight-bold depsize deps">Select Date</span><br>
+                @Html.TextBoxFor(m=>m.Day, new { @class = "form-control bg-info dep", @type = "date", max = DateTime.Now.AddDays(5).ToString("yyyy-MM-dd"), min = DateTime.Now.ToString("yyyy-MM-dd") })
+                <br>@Html.AntiForgeryToken()
+                <input type="submit" value="GET SCHEDUAL" class="btn deps bg-info" />
+            }
+        </div>
+    </div>
+</div>
+
+@{
+    string info = "";
+}
+@if (Model.DepartureCity != null && Model.ArrivalCity!=null && Model.Day!=null)
+{
+
+    if (Model.RouteList.Count() == 0)
+    {
+        <p class="text-danger">Sorry Service Not Available Here</p>
+    }
+    else
+    {
+
+        <div class="card mb-3">
+            <div class="card-header bg-info">
+                <i class="fa fa-table"></i>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Departure Name</th>
+                                <th scope="col">Arrival Name</th>
+                                <th scope="col">Fare</th>
+                                <th scope="col">DepartureTime</th>
+                                <th scope="col">ArrivalTime</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Remaing Seats</th>
+                                <th scope="col">Action</th>
+                            </tr>
+
+                        </thead>
+                        <tfoot>
+                            <tr >
+                                <th scope="col">Departure Name</th>
+                                <th scope="col">Arrival Name</th>
+                                <th scope="col">Fare</th>
+                                <th scope="col">DepartureTime</th>
+                                <th scope="col">ArrivalTime</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Remaing Seats</th>
+                                <th scope="col">Action</th>
+                            </tr>
+
+                        </tfoot>
+                        <tbody>
+
+                @foreach (var a in Model.RouteList)
+                {
+                    if (a.RouteClass == "Luxury")
+                    {
+                        info = "bg-info";
+                    }
+                    else if (a.RouteClass == "Premium")
+                    {
+                        info = "bg-secondary";
+                    }
+                    else if (a.RouteClass == "Gold Class")
+                    {
+                        info = "bg-warning";
+
+                    }
+                    <tr class="@info" onclick="location.href = '@(Url.Action("TickitReservation", "BusPanel", new { RouteId = a.RouteId }))'">
+
+                        <td scope="row">@a.RouteDeparture</td>
+                        <td scope="row">@a.RouteArrival</td>
+                        <td scope="row">@a.Fare Pkr</td>
+                        <td scope="row">@a.RouteDepartureTime</td>
+                        <td scope="row">@a.RouteArrivalTime</td>
+                        <td scope="row">@a.RouteClass</td>
+                        <td scope="row">@a.RemaingSeats</td>
+                        <td scope="row">
+                            @Html.ActionLink("Buy", "TickitReservation", "BusPanel", new { RouteId = @a.RouteId }, new { @Class = "btn-sm btn-success" })
+                        </td>
+                        </tr>
+                }
+</tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    }
+}
+<hr style="height: 3px" width="100%" class="bg-primary">
+<div class="container-fluid">
+    <div class="row  bg-light mb-3">
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12">
+                    <img src="~/Assets/images/Bus/android.jpg" alt="" class="img-fluid" height="2500" width="100%">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="font-weight-bold text-black m-3">FARE</h3>
+            <hr style="height: 3px" width="250" class="bg-warning" align="left"><hr>
+            <p>
+                SINDHU Transport is a role model and trend setter private transport company in Pakistan with larg
+                infrastructural setup of buses and Trucks.
+                We are using most modern information technology tools to facilitate the passengers.
+                Now you can Book & Purchase your favorite seat without hassle or visiting our terminal.
+                SINDHU Transport is entertaining his customer on web. In next future work SINDHU Transport is going to host an application
+                which having all functionalities of web.
+                You can buy the booked seat via Cash, Credit Card, Jazz Cash.
+            </p>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

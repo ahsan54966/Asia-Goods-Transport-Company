@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.LiveBooking>
+
+@{
+    ViewBag.Title = "CustomerBookingLive";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Live Booking</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+        <span class="text-info">
+            @TempData["Data"]
+        </span>
+    </div>
+
+
+    <div class="card mb-3">
+        <div class="card-header text-info font-weight-bold">
+            <i class="fa fa-table"></i>Live Booking
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-info">
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.LiveCompanyId)*@
+                                Com Id
+                            </th>
+                            <th scope="col">
+                                Cus Id
+                                @*@Html.DisplayNameFor(model => model.LiveCustomerId)*@
+                            </th>
+                            <th scope="col">
+                                Status
+                                @*@Html.DisplayNameFor(model => model.LiveStatus)*@
+                            </th>
+                            <th scope="col">
+                                Vehicle #
+                                @*@Html.DisplayNameFor(model => model.LiveVehicleNumber)*@
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.LivePrimaryBookingId)
+                                </th>*@
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+                    <tfoot>
+                        <tr class="text-info">
+                            <th scope="col">
+                                @*@Html.DisplayNameFor(model => model.LiveCompanyId)*@
+                                Com Id
+                            </th>
+                            <th scope="col">
+                                Cus Id
+                                @*@Html.DisplayNameFor(model => model.LiveCustomerId)*@
+                            </th>
+                            <th scope="col">
+                                Status
+                                @*@Html.DisplayNameFor(model => model.LiveStatus)*@
+                            </th>
+                            <th scope="col">
+                                Vehicle #
+                                @*@Html.DisplayNameFor(model => model.LiveVehicleNumber)*@
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.LivePrimaryBookingId)
+                                </th>*@
+                            <th>Action</th>
+                        </tr>
+
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr onclick="location.href = '@(Url.Action("CustomerBookingLivePreview", "Customer", new { id = item.LiveBookingId }))'">
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.LiveCompanyId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.LiveCustomerId)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.LiveStatus)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.LiveVehicleNumber)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.LivePrimaryBookingId)
+                                    </td>*@
+                                <td scope="row">
+                                    @Html.ActionLink("Preview", "CustomerBookingLivePreview", "Customer", new { id = item.LiveBookingId }, new { @class = "btn btn-info" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

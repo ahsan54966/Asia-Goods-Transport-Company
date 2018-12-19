@@ -1,0 +1,326 @@
+﻿@model Fyp_First_Increment.ViewModel.AdminCustomerTraits.AdminCustomerBookingViewModel
+@{
+    ViewBag.Title = "CustomerBookingLivePreview";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Booking Live Preview</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+        <span class="text-danger">
+            @TempData["data"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Live Booking Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">CusId</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.livebooking.LiveCompanyId)</dd>
+                        <dt class="col-5">Bookid</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.livebooking.LiveCustomerId)</dd>
+                        <dt class="col-5">Status</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.livebooking.LiveStatus)</dd>
+                        <dt class="col-5">Vehicle #</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.livebooking.LiveVehicleNumber)</dd>
+                        <dt class="col-5">Approved Date</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.livebooking.LiveApprovedDate)</dd>
+                        <dt class="col-5">CusPh#</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingPhoneNumber)</dd>
+                        <dt class="col-5">Service Type</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingServiceType)</dd>
+                        <dt class="col-5">Material Type</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingMaterialType)</dd>
+                        <dt class="col-5">Drive Name</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.Driver.UserFirstName)</dd>
+                        <dt class="col-5">Driver Phone Number</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.Driver.User_PhoneNumber)</dd>
+
+                    </dl>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">StartLocation</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingSource)</dd>
+                        <dt class="col-5">Destination</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingDestination)</dd>
+                        <dt class="col-5">Goods Detail</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingGoodsDetail)</dd>
+                        <dt class="col-5">Quantity</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingQunatity)</dd>
+                        <dt class="col-5">weight</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingWeight)</dd>
+                        <dt class="col-5">Booking Fare</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingFare)</dd>
+                        <dt class="col-5">Booking Date</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingDate)</dd>
+                        <dt class="col-5">Request Date</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.primarybooking.BookingRequestDate)</dd>
+                        <dt class="col-5">Longitude</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.location.LocationLong)</dd>
+                        <dt class="col-5">Latitude</dt>
+                        <dd class="col-7">@Html.DisplayFor(modelItem => modelItem.location.LocactionLat)</dd>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="row">
+
+
+                <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class=" col-12 col-sm-6">
+                            <div id="map" style="height:300px">
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div id="right-panel" style="height:300px">
+                                <div id="directions-panel"></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <script>
+
+    function initMap() {
+
+
+        var input = document.getElementById('autocomplete');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        @{
+                var loction =(Fyp_First_Increment.Models.Location)ViewBag.Markers;
+                }
+
+        var PointA=new google.maps.LatLng(@Model.primarybooking.BookingDestinationLat,@Model.primarybooking.BookingDestinationLon);
+        var PointB = new google.maps.LatLng(@Model.primarybooking.BookingSourceLat, @Model.primarybooking.BookingSourceLon);
+        //var PointB=new google.maps.LatLng(33.684420, 73.047885);
+        //var PointC=new google.maps.LatLng(31.918067, 73.503028);
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center:PointA
+        });
+
+        //var sourcemarker = new google.maps.Marker({
+        //    position: PointC,
+        //    map: map
+
+        //});
+
+        @*var marker = new google.maps.Marker({
+            position:input,
+            map: map
+
+        });
+        infowin= new google.maps.InfoWindow({ content: '<strong></strong><br>@loction.Name<br> @loction.description<br>' });
+        google.maps.event.addListener(sourcemarker, 'click', function () { infowin.open(map, sourcemarker); });*@
+        //here start geo code
+        var lattt;
+        var laongg;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                lattt=position.coords.latitude;
+                laongg=position.coords.longitude;
+                enableHighAccuracy:true;
+                timeout:Infinity;
+                maximumAge:0;
+
+            });
+        }
+        var a='';
+        var b='';
+        //here starat the marker and and location of driver
+        function myTimer() {
+            var url = "/Admin/CurrentLocation";
+            var name ="@Model.livebooking.LiveVehicleNumber";
+            //var address = "Rao";
+            $.post(url, { vehicleno:name }, function (data) {
+                a=data.Lat;
+                b=data.Lon;
+                console.log(a);
+                console.log(data.Lat);
+                console.log(b);
+                console.log(data.Lon);
+                $("#msg").html(data);
+            });
+
+            var pos=new google.maps.LatLng(a,b);
+            var positio = new google.maps.Marker({
+                position:pos,
+                zoom: 18,
+                map: map
+
+            });
+            @*var url = "/Admin/Index";
+            var name ="@s.VehicleNumber";
+            //var address = "Rao";
+            $.get(url, { vehicleno:name }, function (data) {
+                $("#msg").html(data);
+            });*@
+            //document.getElementById("GFG").innerHTML += "<p>Hi</p>";
+
+                        }
+
+
+                        var myVar = setInterval(myTimer,4000);
+
+
+
+
+
+                        directionsDisplay.setMap(map);
+                        window.onload = function () {
+                            calculateAndDisplayRoute(directionsService, directionsDisplay);
+                        };
+
+                    }
+
+                    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+                        var PointA=new google.maps.LatLng(@Model.primarybooking.BookingDestinationLat,@Model.primarybooking.BookingDestinationLon);
+                        var PointB = new google.maps.LatLng(@Model.primarybooking.BookingSourceLat, @Model.primarybooking.BookingSourceLon);
+
+                        let locations;
+                        //var lat1 = document.getElementById('lat1').value;
+                        //var lng1 = document.getElementById('lng1').value;
+                        var geocoder1 = new google.maps.Geocoder();
+                        var latlng1 = PointA;
+                        geocoder1.geocode({ 'location': latlng1 }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[0]) {
+
+                                    document.cookie = "origin=" + results[0].formatted_address;
+                                }
+                                else {
+                                    alert('no content');
+                                }
+                            }
+                            else {
+                                console.log('Geo Coder fail' + status);
+                            }
+
+                        });
+                        //var lat2 = document.getElementById('lat2').value;
+                        //var lng2 = document.getElementById('lng2').value;
+                        var geocoder2 = new google.maps.Geocoder();
+                        var latlng2 = PointB;
+                        geocoder2.geocode({ 'location': latlng2 }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[0]) {
+
+                                    document.cookie = "destination=" + results[0].formatted_address;
+                                }
+                                else {
+                                    alert('no content');
+                                }
+                            }
+                            else {
+                                console.log('Geo Coder fail' + status);
+                            }
+
+                        });
+
+                        var cookiesArray = document.cookie.split("; ");
+                        var origins = "";
+                        var destinations = "";
+                        for (var i = 0; i < cookiesArray.length; i++) {
+                            var namevaluearray = cookiesArray[i].split("=");
+                            if (namevaluearray[0] == "origin") {
+                                origins = namevaluearray[1];
+                            }
+                            else if (namevaluearray[0] == "destination") {
+
+                                destinations = namevaluearray[1];
+                            }
+                        }
+                        directionsService.route({
+                            origin: origins,
+                            destination: destinations,
+
+                            travelMode: 'DRIVING'
+                        }, function (response, status) {
+                            if (status === 'OK') {
+                                directionsDisplay.setDirections(response);
+                                var route = response.routes[0];
+                                var summaryPanel = document.getElementById('directions-panel');
+                                summaryPanel.innerHTML = '';
+                                // For each route, display summary information.
+                                for (var i = 0; i < route.legs.length; i++) {
+                                    var routeSegment = i + 1;
+                                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                                        '</br>Source</br>';
+                                    summaryPanel.innerHTML += route.legs[i].start_address + '</br><h5>Destination</h5>';
+                                    summaryPanel.innerHTML += route.legs[i].end_address + '</br><h5>Total Distance</h5>';
+                                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                                }
+
+                            } else {
+                                window.alert('Directions request failed due to ' + status);
+                            }
+                        });
+
+                        var distance = google.maps.geometry.spherical.computeDistanceBetween(PointB, PointA);
+                        console.log(distance / 1000);
+                    }
+                </script>
+                <script type="text/javascript">
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2 * 60 * 1000);
+                </script>
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&libraries=places&language=en&callback=initMap">
+                </script>
+
+            </div>
+
+            @if (Model.livebooking.LiveStatus != "Live")
+            {
+                <div class="row">
+                    <div class="col-3">
+                        @Html.ActionLink("Complete", "CustomerCompleteBooking", new { id = Model.livebooking.LiveBookingId }, new { @Class = "btn btn-success" })
+                    </div>
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3">
+                        @Html.ActionLink("Cancel", "", new { id = Model.livebooking.LiveBookingId }, new { @Class = "btn btn-danger" })
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

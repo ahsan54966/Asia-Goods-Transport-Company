@@ -1,0 +1,39 @@
+.jumb
+{
+    background-image: url('../images/tru.jpg');
+    color: white;
+    height: 432px;
+    width: 100%;
+}
+.calll
+{
+    color: #005cbf;
+}
+.size
+{
+    font-size:30px;
+}
+.naab
+{
+    background:#cce5ff;
+}
+.dep
+{
+    border-radius: 10px 10px 10px 10px;
+    height: 40px;
+    width: 250px;
+}
+.depsize
+{
+    font-size: 20px;
+}
+.deps
+{
+    font-family:Georgia;
+    color:#533f03;
+}
+.date
+{
+    width: 250px;
+    align:center;
+}

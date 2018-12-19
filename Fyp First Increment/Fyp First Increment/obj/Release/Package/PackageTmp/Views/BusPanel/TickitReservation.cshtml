@@ -1,0 +1,144 @@
+﻿@model Fyp_First_Increment.ViewModel.BusCustomers.TickitReservation.TickitReservationViewModel
+@{
+    ViewBag.Title = "TickitReservation";
+    Layout = "~/Views/Shared/_BusPanel.cshtml";
+}
+<div class="container-fluid naab bg-light">
+    
+
+
+        @using (Html.BeginForm("TickitReservation", "BusPanel", FormMethod.Post, new { id = "MyForm", name = "MyForm" }))
+        {
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-info">
+                                    Tickits Reservation Panel<Button class="btn-sm btn-danger" disabled>Already Reserved</Button>&nbsp;<button class="btn-sm btn-info" disabled>Available</button>
+                                </div>
+                                <div class="card-body px-5">
+                                    @foreach (var a in Model.TickitAllList)
+                                    {
+                                        if (@a.SeatStatus == "")
+                                        {
+                                            <button class="btn-info btn-sm btn-xs col-3" type="button" id="@a.TickitId" onclick="PushSeat(this.id)">@a.SeatNumber</button>
+                                        }
+                                        
+                                        else if(@a.SeatStatus!="")
+                                        {
+                                            <button class="btn-danger btn-sm col-3" type="button" id="@a.TickitId" disabled>@a.SeatNumber</button>   
+                                        }
+                                        
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label id="ReservationCustomerName">Enter Name</label><br>
+                                @Html.TextBoxFor(m => m.ReservationCustomerName, new { @Class = "form-control", id = "ReservationCustomerName", @minlength = "2", @maxlength = "15" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.ReservationCustomerName)</p>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label id="ReservationPhoneNumber">Enter Phone Number</label><br>
+                                @Html.TextBoxFor(m => m.ReservationPhoneNumber, new { @Class = "form-control", id = "ReservationPhoneNumber", @minlength = "11", @maxlength = "11" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.ReservationPhoneNumber)</p>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label id="ReservationTickitId">Your Tickits </label><br>
+                                @Html.TextBoxFor(m => m.ReservationTickitId, new { @Class = "form-control", id = "ReservationTickitId", @readonly="readonly" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.ReservationTickitId)</p>
+                                <br>@Html.AntiForgeryToken()
+                                @Html.HiddenFor(m=>m.RouteId)
+                            </div>
+                            @*<button type="button" id="DataSubmit" class="btn btn-success">Reserve</button>*@
+                            <input type="submit" value="Reserve" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+
+</div>
+<hr style="height: 3px" width="100%" class="bg-primary">
+<div class="container-fluid">
+    <div class="row  bg-light mb-3">
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12">
+                    <img src="~/Assets/images/Bus/android.jpg" alt="" class="img-fluid" height="2500" width="100%">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="font-weight-bold text-black m-3">FARE</h3>
+            <hr style="height: 3px" width="250" class="bg-warning" align="left"><hr>
+            <p>
+                Daewoo Express is a role model and trend setter private transport company in Pakistan with largest infrastructural setup and buses.
+                We are using most modern information technology tools to facilitate the passengers.
+                Now you can Book & Purchase your favorite seat without hassle or visiting our terminal.
+                All you need to download and install our Mobile App that is available for both Android and iOS.
+                The Bookings made using Mobile App will remain available till
+                the departure of the bus and a confirmation SMS will be sent to valued passenger.
+                You can buy the booked seat via Cash, Credit Card, Jazz Cash.
+            </p>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    var seats = [];
+    function PushSeat(x) {
+        var i = seats.indexOf(x);
+        if (i != -1) {
+            seats.splice(i, 1);
+        }
+        else {
+            seats.push(x);
+        }
+        document.forms['MyForm']['ReservationTickitId'].value = seats;
+
+    }
+    @*$(document).ready(function () {
+         $("#MyForm").on('submit', function (e) {
+            e.preventDefault();
+            var dataToPost = $("#MyForm").serialize();
+            console.log(dataToPost);
+            $.ajax({
+                url: "@Url.Action("TickitReservation", "BusPanel")",
+                type: "POST",
+                //+ "&seats="+seats
+                data: dataToPost,
+                success: function (response) {
+                    if (response.ok)
+                    {
+                        window.location = response.tickiturl;
+                    }
+                    else
+                    {
+                        alert("Encounter a Problem");
+                    }
+                }
+            });
+        });
+    });*@
+</script>
+
+

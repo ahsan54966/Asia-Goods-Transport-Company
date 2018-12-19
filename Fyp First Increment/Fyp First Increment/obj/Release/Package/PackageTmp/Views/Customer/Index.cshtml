@@ -1,0 +1,421 @@
+﻿@model Fyp_First_Increment.Models.FinalLayout
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <link href="~/slick/slick.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="./slick/slick.css">*@
+    <link href="~/slick/slick-theme.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">*@
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .slider {
+            width: 90%;
+            margin-top: 3%;
+            margin-left: 5%;
+        }
+
+        .slick-slide {
+            margin: 0px 5px; /*picture distance in slider*/
+        }
+
+            .slick-slide img {
+                width: 100%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: black;
+            width: 90%;
+            margin-top: 100%;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: .2;
+        }
+
+        .slick-active {
+            opacity: .5;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item text-white">
+            <a href="/Customer/Index" class="text-info">Dashboard</a>
+        </li>
+     </ol>
+    @if (Model.Layout.Count() != 0)
+    {
+        using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        @if (Model.Layout != null)
+                        {
+
+                            <div class="regular slider">
+                                @foreach (var s in Model.Layout)
+                                {
+                                    <div>
+
+
+                                        <a href="@Url.Action("Index", "Admin", new { vehicleno = @s.VehicleNumber }, null)">
+                                            <img src="~/Assets/images/fmhino.jpg" height="100" width="50" />
+                                            <div><span> @Html.ActionLink(@s.VehicleNumber, "Index", "Customer", new { vehicleno = @s.VehicleNumber }, null)</span></div>
+                                            <div>@s.BookingSource _ @s.BookingDestination</div>
+                                        </a>
+                                    </div>
+
+
+                                }
+                                }
+                            </div>
+
+                            @TempData["Errormessage"]
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+            <div class="container-fluid">
+                @foreach (var s in Model.SingleRide)
+                {
+
+                    <div class="row">
+                        <div class="card col-12 col-md-6 mt-3">
+                            <div class="card-header bg-info text-white font-weight-bold">
+                                <h5>Driver Information</h5>
+                            </div>
+                            <div class="card-body">
+                                Name : @s.Usesrs.UserFirstName _ @s.Usesrs.UserLastName <br />
+                                Ph- No: @s.Usesrs.User_PhoneNumber<br />
+                                Adress:@s.Usesrs.UserAddress
+                            </div>
+                        </div>
+                                <div class="card col-12 col-md-6 mt-3">
+                                    <div class="card-header bg-info text-white font-weight-bold">
+                                        <h5>Company Information</h5>
+                                    </div>
+                    <div class="card-body">
+                        
+                        Name : @s.Usesrs.user_comp<br />
+                        Ph- No: @s.Usesrs.owner_ph<br />
+                        Address: @s.Usesrs.comp_adress<br />
+                    </div>
+                </div>
+
+
+                </div>
+                    
+                    <br />
+
+                    @*<h2>Subscription</h2>
+                        <p>I will say hi many times</p>
+
+                        <p id="GFG"></p>
+                        <p>
+
+                            Enter your name
+                            <br />
+                            @Html.TextBox("Name")
+                        </p>
+                        <p>
+                            Enter your address
+                            <br />
+                            @Html.TextBox("Address")
+                        </p>*@
+                    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+                    <hr />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div id="map" style="height:300px">
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div id="right-panel" style="height:300px">
+                                    <div id="directions-panel"></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+
+    function initMap() {
+
+
+        var input = document.getElementById('autocomplete');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        @{
+                    var loction =(Fyp_First_Increment.Models.Location)ViewBag.Markers;
+                }
+
+        var PointA=new google.maps.LatLng(@s.DestinationLatitude,@s.DestinationLongittude);
+        var PointB = new google.maps.LatLng(@s.SourceLatitude, @s.SourceLongitude);
+        //var PointB=new google.maps.LatLng(33.684420, 73.047885);
+        //var PointC=new google.maps.LatLng(31.918067, 73.503028);
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center:PointA
+        });
+
+        //var sourcemarker = new google.maps.Marker({
+        //    position: PointC,
+        //    map: map
+
+        //});
+
+        @*var marker = new google.maps.Marker({
+            position:input,
+            map: map
+
+        });
+        infowin= new google.maps.InfoWindow({ content: '<strong></strong><br>@loction.Name<br> @loction.description<br>' });
+        google.maps.event.addListener(sourcemarker, 'click', function () { infowin.open(map, sourcemarker); });*@
+        //here start geo code
+        var lattt;
+        var laongg;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                lattt=position.coords.latitude;
+                laongg=position.coords.longitude;
+                enableHighAccuracy:true;
+                timeout:Infinity;
+                maximumAge:0;
+
+            });
+        }
+
+        //here starat the marker and and location of driver
+        @*function myTimer() {
+            var pos=new google.maps.LatLng(@s.CurentLatitude,@s.CurentLongittude);
+            var positio = new google.maps.Marker({
+                position:pos,
+                zoom: 18,
+                map: map
+
+            });
+            var url = "/Admin/Index";
+            var name ="@s.VehicleNumber";
+            //var address = "Rao";
+            $.get(url, { vehicleno:name }, function (data) {
+                $("#msg").html(data);
+            });
+            //document.getElementById("GFG").innerHTML += "<p>Hi</p>";
+
+                        }*@
+        var a='';
+        var b='';
+        //here starat the marker and and location of driver
+        function myTimer() {
+            var url = "/Customer/CurrentLocation";
+            var name ="@s.VehicleNumber";
+            //var address = "Rao";
+            $.post(url, { vehicleno:name }, function (data) {
+                a=data.Lat;
+                b=data.Lon;
+                //console.log(a);
+                //console.log(data.Lat);
+                //console.log(b);
+                //console.log(data.Lon);
+            });
+
+            var pos=new google.maps.LatLng(a,b);
+            var positio = new google.maps.Marker({
+                position:pos,
+                zoom: 18,
+                map: map
+
+            });
+            @*var url = "/Admin/Index";
+            var name ="@s.VehicleNumber";
+            //var address = "Rao";
+            $.get(url, { vehicleno:name }, function (data) {
+                $("#msg").html(data);
+            });*@
+            //document.getElementById("GFG").innerHTML += "<p>Hi</p>";
+
+            }
+
+
+
+
+                        var myVar = setInterval(myTimer,4000);
+
+
+
+
+
+                        directionsDisplay.setMap(map);
+                        window.onload = function () {
+                            calculateAndDisplayRoute(directionsService, directionsDisplay);
+                        };
+
+                    }
+
+                    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+                        var PointA=new google.maps.LatLng(@s.DestinationLatitude,@s.DestinationLongittude);
+                        var PointB = new google.maps.LatLng(@s.SourceLatitude, @s.SourceLongitude);
+
+                        let locations;
+                        //var lat1 = document.getElementById('lat1').value;
+                        //var lng1 = document.getElementById('lng1').value;
+                        var geocoder1 = new google.maps.Geocoder();
+                        var latlng1 = PointA;
+                        geocoder1.geocode({ 'location': latlng1 }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[0]) {
+
+                                    document.cookie = "origin=" + results[0].formatted_address;
+                                }
+                                else {
+                                    alert('no content');
+                                }
+                            }
+                            else {
+                                console.log('Geo Coder fail' + status);
+                            }
+
+                        });
+                        //var lat2 = document.getElementById('lat2').value;
+                        //var lng2 = document.getElementById('lng2').value;
+                        var geocoder2 = new google.maps.Geocoder();
+                        var latlng2 = PointB;
+                        geocoder2.geocode({ 'location': latlng2 }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[0]) {
+
+                                    document.cookie = "destination=" + results[0].formatted_address;
+                                }
+                                else {
+                                    alert('no content');
+                                }
+                            }
+                            else {
+                                console.log('Geo Coder fail' + status);
+                            }
+
+                        });
+
+                        var cookiesArray = document.cookie.split("; ");
+                        var origins = "";
+                        var destinations = "";
+                        for (var i = 0; i < cookiesArray.length; i++) {
+                            var namevaluearray = cookiesArray[i].split("=");
+                            if (namevaluearray[0] == "origin") {
+                                origins = namevaluearray[1];
+                            }
+                            else if (namevaluearray[0] == "destination") {
+
+                                destinations = namevaluearray[1];
+                            }
+                        }
+                        directionsService.route({
+                            origin: origins,
+                            destination: destinations,
+
+                            travelMode: 'DRIVING'
+                        }, function (response, status) {
+                            if (status === 'OK') {
+                                directionsDisplay.setDirections(response);
+                                var route = response.routes[0];
+                                var summaryPanel = document.getElementById('directions-panel');
+                                summaryPanel.innerHTML = '';
+                                // For each route, display summary information.
+                                for (var i = 0; i < route.legs.length; i++) {
+                                    var routeSegment = i + 1;
+                                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                                        '</br>Source</br>';
+                                    summaryPanel.innerHTML += route.legs[i].start_address + '</br><h5>Destination</h5>';
+                                    summaryPanel.innerHTML += route.legs[i].end_address + '</br><h5>Total Distance</h5>';
+                                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                                }
+
+                            } else {
+                                window.alert('Directions request failed due to ' + status);
+                            }
+                        });
+
+                        var distance = google.maps.geometry.spherical.computeDistanceBetween(PointB, PointA);
+                        console.log(distance / 1000);
+                    }
+                    </script>
+                    <script type="text/javascript">
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2 * 60 * 1000);
+                    </script>
+                    <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&libraries=places&language=en&callback=initMap">
+                    </script>
+                }
+            </div><br /><br />
+
+
+        }
+    }
+    else
+    {
+        <p class="h3 alert-info font-weight-bold text-info">You need to Book Vehicle First.</p>
+    }
+
+</body>
+</html>
+
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+@*<script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>*@
+
+<script src="~/slick/slick.js"></script>
+
+<script type="text/javascript">
+
+    $(".regular").slick({
+        dots: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3
+    });
+
+</script>
+
+

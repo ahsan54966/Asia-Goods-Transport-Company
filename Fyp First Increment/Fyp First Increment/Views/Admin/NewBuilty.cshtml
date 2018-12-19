@@ -1,0 +1,196 @@
+﻿@model Fyp_First_Increment.Models.Builty
+@{
+    ViewBag.Title = "NewBuilty";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Builty Home</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center bg-info text-white font-weight-bold">New Builty</div>
+        <div class="card-body ">
+            @if (TempData["GenerateBuiltyMessage"] != null)
+            {
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>@TempData["GenerateBuiltyMessage"]</strong>
+                    </div>
+            }
+
+            @using (Html.BeginForm("NewBuilty", "Admin", FormMethod.Post, new { }))
+            {
+                
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Ride Information</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+
+                            <label for="VehicleNumber">Vehicle No</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.BuiltyVehicleNumber, "", new { @Class = "form-control", @Id = "BuiltyVehicleNumber", @Placeholder = "Vehicle Number", @minlength = "4", @maxlength = "15" })
+                                     <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyVehicleNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="DriverName">Driver Name</label>
+                            <br />
+                            @Html.TextBoxFor(m => m.DriverName, "", new { @Class = "form-control", @Id = "DriverName", @Placeholder = "Driver Name", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.DriverName)</p></div>
+                        <div class="col-md-3">
+                            <label for="RideSeller">Phone Number</label>
+                            @Html.TextBoxFor(m => m.DriverPhoneNumber, "", new { @Class = "form-control", @Id = "PhoneNumber", @Placeholder = "Phone Number", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.DriverPhoneNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideBuyer">Vehicle Size</label>
+                            @Html.TextBoxFor(m => m.VehicleSize, "", new { @Class = "form-control", @Id = "VehicleSize", @Placeholder = "Vehicle Size", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.VehicleSize)</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h5 class="text-info font-weight-bold">LOCATION</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <label for="RideSource">start location</label>
+                            @Html.TextBoxFor(m => m.BuiltySource, "", new { @Class = "form-control", @Id = "RideSource", @minlength = "4", @maxlength = "25" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltySource)</p>
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-3">
+                            <h6 class="font-weight-bold">To</h6>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RideDestination">End Location</label>
+                            @Html.TextBoxFor(m => m.BuiltyDestination, "", new { @Class = "form-control", @Id = "RideDestination", @minlength = "4", @maxlength = "25" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyDestination)</p>
+                        </div>
+                    </div>
+                   
+                </div>
+               <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <label for="RideSource">Saler</label>
+                            @Html.TextBoxFor(m => m.BuiltySeller, "", new { @Class = "form-control", @Id = "RideSource", @minlength = "4", @maxlength = "25" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltySeller)</p>
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-3">
+                            <h6 class="font-weight-bold"> </h6>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RideDestination">Buyer</label>
+                            @Html.TextBoxFor(m => m.BuiltyBuyer, "", new { @Class = "form-control", @Id = "RideDestination", @minlength = "4", @maxlength = "25" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyBuyer)</p>
+                        </div>
+                    </div>
+                   
+                </div>
+              
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Ride Charge</h5>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <label for="RideDate">Date</label>
+                            @if (Model.BuiltyId == 0)
+                            {
+                                @Html.TextBoxFor(m => m.BuiltyDate, new { @id = "BookingRequestDate", @Class = "form-control", type = "date" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyDate)</p>
+                            }
+                            else
+                            {
+                                @Html.EditorFor(m => m.BuiltyDate, new { htmlAttributes = new { @id = "BookingRequestDate", @Class = "form-control", @Value = Model.BuiltyDate,type="date" } })
+                                // <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyDate)</p>
+                            }
+
+
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideDetail">Weight</label>
+                            @Html.TextBoxFor(m => m.BuiltyWeight, "", new { @Class = "form-control", @Id = "RideIncom", @Placeholder = "i.e 30ton", @minlength = "1", @maxlength = "6" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyWeight)</p>
+                        </div>
+                        <div class="col-md-3">
+                         
+                            <label for="RideIncom">Builty Detail</label>
+                            @Html.DropDownListFor(m => m.BuiltyDetail, new SelectList(Model.BuiltyDetailList,"",""), "Choose Detail", new { @Class = "form-control" })
+    @*
+        @Html.TextBoxFor(m => m.BuiltyDetail, "", new { @Class = "form-control", @Id = "RideDetail", @Placeholder = "ie- Mango", @minlength = "4", @maxlength = "15" })
+                                                    *@
+
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyDetail)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideDetail">Goods Quantaty</label>
+                            @Html.TextBoxFor(m => m.BuiltyGoodsQuantaty, "", new { @Class = "form-control", @Id = "BuiltyGoodsQuantaty", @Placeholder = "ie- 30 Box", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.BuiltyGoodsQuantaty)</p>
+                        </div>
+
+                    </div>
+                    </div>
+                <br />
+                <div class="form-group">
+                    <div class="form-row">
+
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.CompanyId, new { @Value = Session["user_Id"] })
+                        @Html.HiddenFor(m => m.BuiltyId)
+                       
+
+                        <div class="col-md-3">
+                            <input type="submit" value="Submit" class="btn btn-info text-white font-weight-bold" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function () {
+        var options = {
+            types: ['(regions)'],
+            componentRestrictions: { country: "pak" }
+        };
+
+        var destination = document.getElementById('RideDestination');
+        var place1 = new google.maps.places.Autocomplete(destination, options);
+        var source = document.getElementById('RideSource');
+        var place2 = new google.maps.places.Autocomplete(source, options);
+
+    });
+
+</script>

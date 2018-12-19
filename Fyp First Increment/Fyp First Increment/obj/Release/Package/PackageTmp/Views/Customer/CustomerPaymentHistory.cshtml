@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.Payment>
+
+@{
+    ViewBag.Title = "CustomerPaymentHistory";
+    Layout = "~/Views/Shared/_Customer_Layout.cshtml";
+}
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Customer/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Payment History</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <section class="col-7"></section>
+        <section class="col-5"></section>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="card ml-5">
+            <div class="card-header bg-info text-white font-weight-bold">
+                Pending Payments
+            </div>
+            <div class="card-body">
+                <div class="col-12">
+                    <div class="table-responsive table-responsive-lg">
+                        <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr class="text-info">
+                                    <th scope="col">Customer Id</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Method</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="text-info">
+                                    <th scope="col">Customer Id</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Method</th>
+
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td scope="row">
+                                            @Html.DisplayFor(modelItem => item.PaymentCustomerId)
+                                        </td>
+                                        <td scope="row">
+                                            @Html.DisplayFor(modelItem => item.PaymentTotal)
+                                        </td>
+                                        <td scope="row">
+                                            @Html.DisplayFor(modelItem => item.PaymentMethod)
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

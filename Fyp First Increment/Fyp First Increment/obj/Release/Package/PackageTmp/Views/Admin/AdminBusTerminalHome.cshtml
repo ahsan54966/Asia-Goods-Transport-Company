@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Fyp_First_Increment.Models.BusTerminal>
+
+@{
+    ViewBag.Title = "AdminBusTerminalHome";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+    }
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item text-white">
+            <a href="/Admin/Index" class="text-info">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active text-info">Bus Terminal Home</li>
+    </ol>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.ActionLink("Add New Terminal", "AdminTerminalAddNew", "Admin", new { companyid = Session["user_Id"] }, new { @Class = "btn btn-info" })
+            </div>
+            <div class="offset-sm-5 col-sm-5">
+            </div>
+        </div>
+
+        <p class="text-success">@TempData["message"]</p>
+        <div class="card mb-3">
+            <div class="card-header text-info font-weight-bold">
+                <i class="fa fa-table"></i> Terminal Information
+            </div>
+            <div class="card-body">
+                <div class="table-responsive table-sm">
+                    <table class="table table-bordered table-hover table-striped table-sm" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr class="text-info">
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalId)*@
+                                    ID
+                                </th>
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalName)*@
+                                    Name
+                                </th>
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalAddress)*@
+                                    Address
+                                </th>
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalAddress)*@
+                                    City
+                                </th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Action</th>
+                            </tr>
+
+                        </thead>
+                        <tfoot>
+                            <tr class="text-info">
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalId)*@
+                                    ID
+                                </th>
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalName)*@
+                                    Name
+                                </th>
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalAddress)*@
+                                    Address
+                                </th>
+                                <th scope="col">
+                                    @*@Html.DisplayNameFor(model => model.TerminalAddress)*@
+                                    City
+                                </th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TerminalId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TerminalName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TerminalAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TerminalCity)
+                                    </td>
+                                    <td scope="row">
+                                        @Html.ActionLink("Edit", "AdminTerminalAddNew", new { id = item.TerminalId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-warning" })
+                                    </td>
+                                    <td scope="row">
+                                        @Html.ActionLink("Detail", "AdminTerminalDetail", new { id = item.TerminalId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-info" })
+                                    </td>
+                                    <td scope="row">
+                                        @Html.ActionLink("Delete", "AdminTerminalDelete", new { id = item.TerminalId, companyid = Session["user_Id"] }, new { @Class = "btn-sm btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

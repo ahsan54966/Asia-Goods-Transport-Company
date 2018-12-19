@@ -1,0 +1,73 @@
+﻿@model Fyp_First_Increment.Models.BusRoutes
+
+@{
+    ViewBag.Title = "AdminRouteDetail";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Route Detail</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Route Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Route Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteId)</dd>
+                        <dt class="col-5">Departure</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteDeparture)</dd>
+                        <dt class="col-5">Arrival</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteArrival)</dd>
+                        <dt class="col-5">Departure Time</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteDepartureTime)</dd>
+                        <dt class="col-5">Arrival Time</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteArrivalTime)</dd>
+                        <dt class="col-5">Route Class</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteClass)</dd>
+                    </dl>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Route Day</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteDay)</dd>
+                        <dt class="col-5">Bus Number</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RouteBusId)</dd>
+                        <dt class="col-5">Fare</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.Fare)</dd>
+                        <dt class="col-5">Company Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompanyId)</dd>
+                        <dt class="col-5">Remaining Seats</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.RemaingSeats)</dd>
+                    </dl>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

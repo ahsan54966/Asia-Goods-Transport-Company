@@ -1,0 +1,55 @@
+﻿@model Fyp_First_Increment.Models.BusTerminal
+
+@{
+    ViewBag.Title = "AdminTerminalDetail";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Terminal Detail</li>
+</ol>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="row">
+        <span class="text-danger">
+            @TempData["message"]
+        </span>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-info">
+            <i class="fa fa-table"></i>Terminal Detail
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">Terminal Id</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.TerminalId)</dd>
+                        <dt class="col-5">Terminal Name</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.TerminalName)</dd>
+                        <dt class="col-5">Terminal Address</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.TerminalAddress)</dd>
+
+                    </dl>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <dl class="row">
+                        <dt class="col-5">CompanyId</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.CompanyId)</dd>
+                        <dt class="col-5">Terminal City</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.TerminalCity)</dd>
+                        <dt class="col-5">Image</dt>
+                        <dd class="col-7">@Html.DisplayFor(model => model.ImageUrl)</dd>
+                    </dl>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

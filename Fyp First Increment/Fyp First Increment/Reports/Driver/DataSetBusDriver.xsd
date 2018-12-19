@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetBusDriver" targetNamespace="http://tempuri.org/DataSetBusDriver.xsd" xmlns:mstns="http://tempuri.org/DataSetBusDriver.xsd" xmlns="http://tempuri.org/DataSetBusDriver.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetBusDriver" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetBusDriver" msprop:Generator_UserDSName="DataSetBusDriver">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_User" msprop:Generator_TableClassName="tbl_UserDataTable" msprop:Generator_TableVarName="tabletbl_User" msprop:Generator_RowChangedName="tbl_UserRowChanged" msprop:Generator_TablePropName="tbl_User" msprop:Generator_RowDeletingName="tbl_UserRowDeleting" msprop:Generator_RowChangingName="tbl_UserRowChanging" msprop:Generator_RowEvHandlerName="tbl_UserRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_UserRowDeleted" msprop:Generator_RowClassName="tbl_UserRow" msprop:Generator_UserTableName="tbl_User" msprop:Generator_RowEvArgName="tbl_UserRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="User_FirstName" msprop:Generator_ColumnVarNameInTable="columnUser_FirstName" msprop:Generator_ColumnPropNameInRow="User_FirstName" msprop:Generator_ColumnPropNameInTable="User_FirstNameColumn" msprop:Generator_UserColumnName="User_FirstName" type="xs:string" minOccurs="0" />
+              <xs:element name="User_LastName" msprop:Generator_ColumnVarNameInTable="columnUser_LastName" msprop:Generator_ColumnPropNameInRow="User_LastName" msprop:Generator_ColumnPropNameInTable="User_LastNameColumn" msprop:Generator_UserColumnName="User_LastName" type="xs:string" minOccurs="0" />
+              <xs:element name="User_Cnic" msprop:Generator_ColumnVarNameInTable="columnUser_Cnic" msprop:Generator_ColumnPropNameInRow="User_Cnic" msprop:Generator_ColumnPropNameInTable="User_CnicColumn" msprop:Generator_UserColumnName="User_Cnic" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_Deiver" msprop:Generator_TableClassName="tbl_DeiverDataTable" msprop:Generator_TableVarName="tabletbl_Deiver" msprop:Generator_TablePropName="tbl_Deiver" msprop:Generator_RowDeletingName="tbl_DeiverRowDeleting" msprop:Generator_RowChangingName="tbl_DeiverRowChanging" msprop:Generator_RowEvHandlerName="tbl_DeiverRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_DeiverRowDeleted" msprop:Generator_UserTableName="tbl_Deiver" msprop:Generator_RowChangedName="tbl_DeiverRowChanged" msprop:Generator_RowEvArgName="tbl_DeiverRowChangeEvent" msprop:Generator_RowClassName="tbl_DeiverRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DriverSalary" msprop:Generator_ColumnVarNameInTable="columnDriverSalary" msprop:Generator_ColumnPropNameInRow="DriverSalary" msprop:Generator_ColumnPropNameInTable="DriverSalaryColumn" msprop:Generator_UserColumnName="DriverSalary" type="xs:int" minOccurs="0" />
+              <xs:element name="DriverExperience" msprop:Generator_ColumnVarNameInTable="columnDriverExperience" msprop:Generator_ColumnPropNameInRow="DriverExperience" msprop:Generator_ColumnPropNameInTable="DriverExperienceColumn" msprop:Generator_UserColumnName="DriverExperience" type="xs:string" minOccurs="0" />
+              <xs:element name="DriverPosition" msprop:Generator_ColumnVarNameInTable="columnDriverPosition" msprop:Generator_ColumnPropNameInRow="DriverPosition" msprop:Generator_ColumnPropNameInTable="DriverPositionColumn" msprop:Generator_UserColumnName="DriverPosition" type="xs:string" minOccurs="0" />
+              <xs:element name="DriverRouteCharge" msprop:Generator_ColumnVarNameInTable="columnDriverRouteCharge" msprop:Generator_ColumnPropNameInRow="DriverRouteCharge" msprop:Generator_ColumnPropNameInTable="DriverRouteChargeColumn" msprop:Generator_UserColumnName="DriverRouteCharge" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

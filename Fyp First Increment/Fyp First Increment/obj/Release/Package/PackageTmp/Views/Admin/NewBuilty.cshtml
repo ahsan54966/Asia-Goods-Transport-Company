@@ -1,0 +1,210 @@
+﻿@model Fyp_First_Increment.ViewModel.Admin.builty.BuiltyViewModel
+@{
+    ViewBag.Title = "NewBuilty";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item text-white">
+        <a href="/Admin/Index" class="text-info">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active text-info">Builty Home</li>
+</ol>
+<div class="container-fluid">
+
+    <div class="card card-body mx-auto ">
+        <div class="card-header text-center bg-info text-white font-weight-bold">New Builty</div>
+        <div class="card-body ">
+            @using (Html.BeginForm("NewBuilty", "Admin", FormMethod.Post, new { }))
+            {
+
+                <p>
+                    @TempData["message"]
+                </p>
+
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Ride Information</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+
+                            <label for="VehicleNumber">Vehicle No</label>
+                            <br />
+                           
+                            @Html.DropDownListFor(m => m.builty.BuiltyVehicleNumber, new SelectList(Model.Vehicles, "VehicleNumber", "VehicleNumber"), "Select Vehicle", new { @Class = "form-control", @Id = "VehicleNumber" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyVehicleNumber)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="DriverName">Driver Name</label>
+                            <br />
+                            @Html.DropDownListFor(m => m.builty.BuiltyDriverId, new SelectList(Model.Drivers, "UserId", "UserFirstName"), "Select Drivers", new { @Class = "form-control", @Id = "DriverName" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyDriverId)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideSeller">Seller</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltySeller, "", new { @Class = "form-control", @Id = "RideSeller", @Placeholder = "Peter Parker", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltySeller)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideBuyer">Buyer</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltyBuyer, "", new { @Class = "form-control", @Id = "RideBuyer", @Placeholder = "John Smith", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyBuyer)</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h5 class="text-info font-weight-bold">LOCATION</h5>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <label for="RideSource">start location</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltySource, "", new { @Class = "form-control", @Id = "RideSource", @minlength = "4", @maxlength = "25" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltySource)</p>
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-3">
+                            <h6 class="font-weight-bold">To</h6>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RideDestination">End Location</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltyDestination, "", new { @Class = "form-control", @Id = "RideDestination", @minlength = "4", @maxlength = "25" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyDestination)</p>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <br />
+                    <h5 class="text-info font-weight-bold">Ride Charge</h5>
+                    @*<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">*@
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <label for="RideIncom">Ride Incom</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltyFare, "", new { @Class = "form-control", @Id = "RideIncom", @Placeholder = "i.e 25000", @minlength = "1", @maxlength = "6" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyFare)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideIncom">Advance Payment</label>
+                            @Html.TextBoxFor(m => m.builty.AdvancePayment, "", new { @Class = "form-control", @Id = "RideIncom", @Placeholder = "i.e 25000", @minlength = "1", @maxlength = "6" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.AdvancePayment)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideDetail">Ride Detail</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltyDetail, "", new { @Class = "form-control", @Id = "RideDetail", @Placeholder = "ie- Mango", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyDetail)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RideDetail">Goods Quantaty</label>
+                            @Html.TextBoxFor(m => m.builty.BuiltyGoodsQuantaty, "", new { @Class = "form-control", @Id = "BuiltyGoodsQuantaty", @Placeholder = "ie- 30 Box", @minlength = "4", @maxlength = "15" })
+                            <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyGoodsQuantaty)</p>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+
+                            <div class="col-md-4">
+                                <label for="RideDate">Date</label>
+                                @if (Model.builty.BuiltyId == 0)
+                                {
+                                    @Html.TextBoxFor(m => m.builty.BuiltyDate, new { @id = "BookingRequestDate", @Class = "form-control", type = "date" })
+                                    <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyDate)</p>
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(m => m.builty.BuiltyDate, new { htmlAttributes = new { @id = "BookingRequestDate", @Class = "form-control", @Value = Model.builty.BuiltyDate } })
+                                   // <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyDate)</p>
+                                }
+
+
+
+                              
+                               
+                            </div>
+                            <div class="col-md-4">
+                                <label for="RideBuyer">Departure Time</label>
+                                @Html.TextBoxFor(m => m.builty.DeparturTime, "", new { @Class = "form-control", @Id = "DeparturTime", @type = "Time" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.DeparturTime)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="RideBuyer">Arrival Time </label>
+                                @Html.TextBoxFor(m => m.builty.ArivalTime, "", new { @Class = "form-control", @Id = "ArivalTime", @type = "Time" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.ArivalTime)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                       
+                            <div class="col-md-4">
+                                <label for="RideBuyer">Weight</label>
+                                @Html.TextBoxFor(m => m.builty.BuiltyWeight, "", new { @Class = "form-control", @Id = "BuiltyWeight", @Placeholder = "i.e 20 Ton", @minlength = "1", @maxlength = "6" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyWeight)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="RideBuyer">Worker Charge</label>
+                                @Html.TextBoxFor(m => m.builty.BuiltyWorkerCharge, "", new { @Class = "form-control", @Id = "BuiltyWorkerCharge", @Placeholder = "i.e 2500", @minlength = "1", @maxlength = "6" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyWorkerCharge)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="RideBuyer">Miscellaneous </label>
+                                @Html.TextBoxFor(m => m.builty.BuiltyMiscellaneous, "", new { @Class = "form-control", @Id = "BuiltyMiscellaneousr", @Placeholder = "i.e 2000 Ton", @minlength = "1", @maxlength = "6" })
+                                <p class="text-danger">@Html.ValidationMessageFor(m => m.builty.BuiltyMiscellaneous)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="form-row">
+
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.builty.CompanyId, new { @Value = Session["user_Id"] })
+                        @Html.HiddenFor(m => m.builty.BuiltyId)
+                       
+
+                        <div class="col-md-3">
+                            <input type="submit" value="Submit" class="btn btn-info text-white font-weight-bold" />
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUCOhuEzH731AU1Qu_DJ3tRJ1sZGy2fjI&sensor=false&libraries=places"></script>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function () {
+        var options = {
+            types: ['(regions)'],
+            componentRestrictions: { country: "pak" }
+        };
+
+        var destination = document.getElementById('RideDestination');
+        var place1 = new google.maps.places.Autocomplete(destination, options);
+        var source = document.getElementById('RideSource');
+        var place2 = new google.maps.places.Autocomplete(source, options);
+
+    });
+</script>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
